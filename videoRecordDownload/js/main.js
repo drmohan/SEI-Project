@@ -1,13 +1,7 @@
-/*
-*  Copyright (c) 2015 The WebRTC project authors. All Rights Reserved.
-*
-*  Use of this source code is governed by a BSD-style license
-*  that can be found in the LICENSE file in the root of the source
-*  tree.
-*/
-
-// This code is adapted from
+// Sources:
 // https://rawgit.com/Miguelao/demos/master/mediarecorder.html
+// https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record
+
 
 'use strict';
 
@@ -19,7 +13,7 @@ var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
 
-var gumVideo = document.querySelector('video#gum');
+var liveVideo = document.querySelector('video#live');
 var recordedVideo = document.querySelector('video#recorded');
 
 var recordButton = document.querySelector('button#record');
@@ -48,9 +42,9 @@ function handleSuccess(stream) {
   console.log('getUserMedia() got stream: ', stream);
   window.stream = stream;
   if (window.URL) {
-    gumVideo.src = window.URL.createObjectURL(stream);
+    liveVideo.src = window.URL.createObjectURL(stream);
   } else {
-    gumVideo.src = stream;
+    liveVideo.src = stream;
   }
 }
 
