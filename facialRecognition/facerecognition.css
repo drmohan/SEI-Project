@@ -3,9 +3,9 @@ video {
   transform: rotateY(180deg);
 }
 
-canvas {
+/*canvas {
   display: none;
-}
+}*/
 code { 
   font-weight: bold; 
 }
