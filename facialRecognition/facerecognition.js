@@ -63,7 +63,7 @@ function startCamera() {
         percentages.push(percentage);
         document.querySelector('code').textContent = percentageToInches(rollingAverage(5)).toFixed(0) + '"';
        });
-    }, 100); // or 300
+    }, 300); // or 300
 
     return stream; 
   })
