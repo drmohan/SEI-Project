@@ -12,7 +12,7 @@ Code development for project with SEI team, creating a website for their researc
 - **[facialRecognition:](facialRecognition)** a project in html, css, and javascript that plays a live webcam video, detects the user's face, and the user distance to the screen **Note:** As of recent, there seems to be a lag in the program. Investigate the possibility of using 'tracking.js' for this instead
 
   1. Navigate to project directory
-  2. Start up project: 
+  2. Start up project:
     * If using Chrome: In the terminal, type `python -m http.server` to start up a python server, navigate to `localhost:8000/facerecognition.html`
     * If using Firefox (or other browser): launch `facerecognition.html` in browser
   3. Once you access this page, you will be able to stop and start a video from your webcam, a red box should appear around your face, and below this video canvas there will be information on how many inches your face is from the screen
@@ -20,7 +20,7 @@ Code development for project with SEI team, creating a website for their researc
     * CCV Library (ccv.js)
     * CCV's Face Dataset (face.js)
 
-- **[videoRecordDownload:](videoRecordDownload)** a project in html, css, and javascript that allows the user to record a video, play back that video, and download that video 
+- **[videoRecordDownload:](videoRecordDownload)** a project in html, css, and javascript that allows the user to record a video, play back that video, and download that video
 
   1. Navigate to project directory
   2. In the terminal, type `python -m http.server` to start up a python server
@@ -31,3 +31,13 @@ Code development for project with SEI team, creating a website for their researc
   5. *Tools Used*:
     * MediaStream Recording API
 
+- **[webSocket:](webSocket)** a project in html and javascript that demonstrates basic data transfer between client and server through websockets
+
+  1. Navigate to project directory
+  2. In the terminal, type `npm install socket.io` to install socket.io
+  3. Ensure that the IP address in index.html corresponds to your local IP address
+  4. In the terminal, type 'node ss.js' to start the server
+  5. In your preferred browser, navigate to `<yourIP>:<port>`
+  5. *Tools Used*:
+    * Node.js
+    * socket.io
