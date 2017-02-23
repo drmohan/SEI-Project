@@ -1,0 +1,20 @@
+{
+    "browser"  : true,
+    "curly"    : true,
+    "eqeqeq"   : true,
+    "quotmark" : "single",
+    "trailing" : true,
+    "undef"    : true,
+    "predef"   : [
+        "videojs",
+        "RecordRTC",
+        "MRecordRTC",
+        "VorbisMediaRecorder",
+        "Recorder",
+        "AudioContext",
+        "Promise",
+        "module",
+        "require",
+        "define"
+    ]
+}

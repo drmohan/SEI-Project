@@ -1,0 +1,19 @@
+{
+    "libs": [
+        "browser"
+    ],
+
+    "loadEagerly": [
+        "src/wavesurfer.js",
+        "src/util.js",
+        "src/drawer.js",
+        "src/drawer.canvas.js",
+        "src/webaudio.js",
+        "src/mediaelement.js"
+    ],
+
+    "plugins": {
+        "node": {},
+        "highlight": {}
+    }
+}
