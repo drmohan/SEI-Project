@@ -19,12 +19,28 @@ function handler (req, res) {
 
 io.sockets.on('connection', function (socket) {
 
-  console.log('here');
   socket.on('message', function (data) {
-    console.log(data);
-    socket.emit('message', {
-      message: data.name,
-      size: data.size
+
+    // console.log(data);
+
+    var csvContent = "data:text/csv;charset=utf-8,";
+
+    var bl;
+    for(bl=0; bl < 5; bl++){
+      csvContent += bl + ": " + data[bl]
+    }
+
+    // console.log(csvContent);
+
+    var fs = require('fs');
+
+    fs.writeFile('media/my-data.csv', csvContent, 'utf8', function (err) {
+      if (err) {
+        console.log('Some error occured - file either not saved or corrupted file saved.');
+      } else{
+        console.log('It\'s saved!');
+      }
     });
+
   });
 });

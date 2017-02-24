@@ -12,13 +12,8 @@
 <body>
   <h1>WebSocket Demo</h1>
 
-
-  <form class="submit-message" method="post">
-    <input id="test" type="file" accept="video/*;capture=camcorder">
-    <input type="submit" value="Start">
-  </form>
-
-  <div class="messages"></div>
+  <input type="file" accept="video/*" />
+  <p id="progress"></p>
 
   </body>
 </html>
@@ -29,7 +24,7 @@
 (function(){
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
-  var socket = io.connect('http://128.237.192.76:8888');
+  var socket = io.connect('http://10.0.0.230:8888');
   var FReader;
   var Name;
 
@@ -48,9 +43,110 @@
     });
 
   socket.on('message', function (data) {
-      console.log(data.size)
-      $('.messages').append('<p>' + data.message + " is " + data.size + ' bytes </p>');
+      // console.log(data.size)
+      // $('.messages').append('<p>' + data.message + " is " + data.size + ' bytes </p>');
   });
+// })();
+
+
+document.querySelector('input').addEventListener('change', extractFrames, false);
+
+function extractFrames() {
+  var video = document.createElement('video');
+  var array = [];
+  var canvas = document.createElement('canvas');
+  var ctx = canvas.getContext('2d');
+  var pro = document.querySelector('#progress');
+
+  function initCanvas(e) {
+    canvas.width = this.videoWidth;
+    canvas.height = this.videoHeight;
+  }
+
+  function drawFrame(e) {
+    // this.pause();
+    ctx.drawImage(this, 0, 0);
+    /*
+    this will save as a Blob, less memory consumptive than toDataURL
+    a polyfill can be found at
+    https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob#Polyfill
+    */
+    canvas.toBlob(saveFrame, 'image/jpeg');
+    pro.innerHTML = ((this.currentTime / (this.duration)) * 100).toFixed(2) + ' %';
+    if (this.currentTime < this.duration) {
+      this.currentTime += 1;
+      // console.log("current" + this.currentTime);
+      // console.log("duration" + this.duration);
+      // this.play();
+    }
+  }
+
+  function saveFrame(blob) {
+    // debugger;
+
+    array.push(blob);
+
+  }
+
+  function revokeURL(e) {
+    URL.revokeObjectURL(this.src);
+  }
+
+  function onend(e) {
+    var img;
+    // do whatever with the frames
+    for (var i = 0; i < array.length; i++) {
+      img = new Image();
+      img.onload = revokeURL;
+      img.src = URL.createObjectURL(array[i]);
+      document.body.appendChild(img);
+    }
+    // we don't need the video's objectURL anymore
+    URL.revokeObjectURL(this.src);
+    console.log(array.length)
+
+    // debugger;
+    var b;
+    var frames = {};
+    for(b = 0; b < array.length; b++){
+      frames[b] = array[b];
+    }
+    // console.log(frames)
+    // debugger;
+
+    console.log(frames);
+    console.log(frames['0']);
+
+    console.log(frames['0'].size);
+
+    socket.emit('message', frames);
+
+
+  }
+
+  function emitFrames(array){
+    // console.log(array)
+
+    var b;
+    var frames = {};
+    for(b = 0; b < array.length; b++){
+      frames[b] = array[b];
+    }
+    // console.log(frames)
+    socket.emit('message', frames);
+
+  }
+
+  video.autoplay = true;
+  video.muted = true;
+
+  video.addEventListener('loadedmetadata', initCanvas, false);
+  video.addEventListener('timeupdate', drawFrame, false);
+  video.addEventListener('ended', onend, false);
+
+  video.src = URL.createObjectURL(this.files[0]);
+
+}
 })();
 
 </script>
