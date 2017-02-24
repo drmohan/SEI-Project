@@ -27,14 +27,14 @@ io.sockets.on('connection', function (socket) {
 
     var bl;
     for(bl=0; bl < 5; bl++){
-      csvContent += bl + ": " + data[bl]
+      csvContent += bl + ": " + data[bl] + \n
     }
 
     // console.log(csvContent);
 
     var fs = require('fs');
 
-    fs.writeFile('media/my-data.csv', csvContent, 'utf8', function (err) {
+    fs.writeFile('my-data.csv', csvContent, 'utf8', function (err) {
       if (err) {
         console.log('Some error occured - file either not saved or corrupted file saved.');
       } else{
