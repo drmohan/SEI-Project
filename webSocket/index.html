@@ -26,7 +26,9 @@
 (function(){
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
-  var socket = io.connect('http://10.0.0.230:8888');
+  var IP = '10.0.0.230';
+  var port = 8888;
+  var socket = io.connect('http://' + ':' + port);
   var FReader;
   var Name;
 
