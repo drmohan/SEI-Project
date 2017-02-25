@@ -21,16 +21,12 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('message', function (data) {
 
-    // console.log(data);
-
     var csvContent = "data:text/csv;charset=utf-8,";
 
     var bl;
     for(bl=0; bl < 5; bl++){
       csvContent += bl + ": " + data[bl] + '\n'
     }
-
-    // console.log(csvContent);
 
     var fs = require('fs');
 

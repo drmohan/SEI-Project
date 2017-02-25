@@ -28,7 +28,7 @@
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
   var IP = '10.0.0.230';
   var port = 8888;
-  var socket = io.connect('http://' + ':' + port);
+  var socket = io.connect('http://' + IP + ':' + port);
   var FReader;
   var Name;
 
@@ -63,9 +63,9 @@ function extractFrames() {
     canvas.toBlob(saveFrame, 'image/jpeg');
     pro.innerHTML = ((this.currentTime / (this.duration)) * 100).toFixed(2) + ' %';
     if (this.currentTime < this.duration) {
-      this.currentTime += 1;
-      // console.log("current" + this.currentTime);
-      // console.log("duration" + this.duration);
+
+      //0.03 is assuming 30 fps
+      this.currentTime += 0.03;
       // this.play();
     }
   }
