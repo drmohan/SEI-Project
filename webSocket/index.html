@@ -13,6 +13,8 @@
   <h1>WebSocket Demo</h1>
 
   <input type="file" accept="video/*" />
+
+  <h4>Progress</h4>
   <p id="progress"></p>
 
   </body>
@@ -59,13 +61,13 @@ function extractFrames() {
   var pro = document.querySelector('#progress');
 
   function initCanvas(e) {
-    canvas.width = this.videoWidth;
-    canvas.height = this.videoHeight;
+    canvas.width = 160;//this.videoWidth;
+    canvas.height = 90;//this.videoHeight;
   }
 
   function drawFrame(e) {
     // this.pause();
-    ctx.drawImage(this, 0, 0);
+    ctx.drawImage(this, 0, 0, 160, 90);
     /*
     this will save as a Blob, less memory consumptive than toDataURL
     a polyfill can be found at
