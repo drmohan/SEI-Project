@@ -30,25 +30,10 @@
   var FReader;
   var Name;
 
-  $('.submit-message').submit(function(event){
-    event.preventDefault();
-
-    if(document.getElementById('test').value != "")
-      {
-        var video = document.getElementById('test');
-        socket.emit('message', {'name': video.files[0].name, 'size':video.files[0].size});
-    }
-    else
-      {
-        alert("Please Select A File");
-      }
-    });
 
   socket.on('message', function (data) {
-      // console.log(data.size)
-      // $('.messages').append('<p>' + data.message + " is " + data.size + ' bytes </p>');
+    //client listens to server
   });
-// })();
 
 
 document.querySelector('input').addEventListener('change', extractFrames, false);
@@ -84,10 +69,7 @@ function extractFrames() {
   }
 
   function saveFrame(blob) {
-    // debugger;
-
     array.push(blob);
-
   }
 
   function revokeURL(e) {
@@ -107,36 +89,24 @@ function extractFrames() {
     URL.revokeObjectURL(this.src);
     console.log(array.length)
 
-    // debugger;
     var b;
     var frames = {};
     for(b = 0; b < array.length; b++){
       frames[b] = array[b];
     }
-    // console.log(frames)
-    // debugger;
 
-    console.log(frames);
-    console.log(frames['0']);
-
-    console.log(frames['0'].size);
-
+    //client sends dict of blobs to server
     socket.emit('message', frames);
-
 
   }
 
   function emitFrames(array){
-    // console.log(array)
-
     var b;
     var frames = {};
     for(b = 0; b < array.length; b++){
       frames[b] = array[b];
     }
-    // console.log(frames)
     socket.emit('message', frames);
-
   }
 
   video.autoplay = true;
