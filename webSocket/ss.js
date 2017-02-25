@@ -21,8 +21,6 @@ io.sockets.on('connection', function (socket) {
 
   socket.on('message', function (data) {
 
-    // console.log(data);
-
     var csvContent = "data:text/csv;charset=utf-8,";
 
     var bl;
@@ -33,8 +31,6 @@ io.sockets.on('connection', function (socket) {
       csvContent += bl + ": " + data[bl] + '\n'
 >>>>>>> jsTest
     }
-
-    // console.log(csvContent);
 
     var fs = require('fs');
 
