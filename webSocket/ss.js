@@ -25,11 +25,7 @@ io.sockets.on('connection', function (socket) {
 
     var bl;
     for(bl=0; bl < 5; bl++){
-<<<<<<< HEAD
-      csvContent += bl + ": " + data[bl] + \n
-=======
       csvContent += bl + ": " + data[bl] + '\n'
->>>>>>> jsTest
     }
 
     var fs = require('fs');
