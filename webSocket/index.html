@@ -14,8 +14,7 @@
 
   <input id="vid" type="file" accept="video/*" />
 
-  <h4>Progress</h4>
-  <p id="progress"></p>
+  <!-- <p id="progress"></p> -->
 
   </body>
 </html>
@@ -26,7 +25,7 @@
 (function(){
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
-  var IP = '128.237.195.24';
+  var IP = '128.237.180.38';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
   var FReader;
@@ -35,6 +34,7 @@
 
   socket.on('message', function (data) {
     //client listens to server
+    alert(data.response);
   });
 
 
@@ -44,11 +44,11 @@
 function sendFile(){
   file = document.getElementById('vid').files[0];
   file_name = file.name;
-  socket.emit('message', {data: file],
+  socket.emit('message', {data: file,
                           file_name: file_name});
 }
 
-// Send files as blob objects 
+// Send files as blob objects
 function extractFrames() {
   var video = document.createElement('video');
   var array = [];

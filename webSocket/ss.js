@@ -40,6 +40,7 @@ io.sockets.on('connection', function (socket) {
         console.log('Some error occured - file either not saved or corrupted file saved.');
       } else{
         console.log('It\'s saved!');
+        socket.emit('message', {response: 'File transferred'});
       }
     });
   });
