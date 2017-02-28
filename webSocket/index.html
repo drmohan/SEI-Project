@@ -12,7 +12,7 @@
 <body>
   <h1>WebSocket Demo</h1>
 
-  <input type="file" accept="video/*" />
+  <input id="vid" type="file" accept="video/*" />
 
   <h4>Progress</h4>
   <p id="progress"></p>
@@ -27,7 +27,7 @@
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
 
-  var IP = '10.0.0.230';
+  var IP = '128.237.195.24';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
   var FReader;
@@ -38,8 +38,17 @@
     //client listens to server
   });
 
+  // document.querySelector('input').addEventListener('change', extractFrames, false);
 
-document.querySelector('input').addEventListener('change', extractFrames, false);
+// document.querySelector('input').addEventListener('change', extractFrames, false);
+  document.querySelector('input').addEventListener('change', testFunction, false);
+
+function testFunction(){
+  console.log("testFunction");
+  socket.emit('message', {data: document.getElementById('vid').files[0],
+                          file_name: document.getElementById('vid').files[0].name});
+
+}
 
 function extractFrames() {
   var video = document.createElement('video');
@@ -49,6 +58,7 @@ function extractFrames() {
   var pro = document.querySelector('#progress');
 
   function initCanvas(e) {
+
     canvas.width = 160;//this.videoWidth;
     canvas.height = 90;//this.videoHeight;
   }
@@ -95,11 +105,14 @@ function extractFrames() {
     var b;
     var frames = {};
     for(b = 0; b < array.length; b++){
-      frames[b] = array[b];
+      var blob = new Blob([array[b]], {type: 'image/jpeg'});
+      frames[b] = blob;
     }
 
     //client sends dict of blobs to server
-    socket.emit('message', frames);
+    console.log(frames);
+    // socket.emit('message', document.getElementById('vid').files[0]);
+    // socket.emit('message', frames);
 
   }
 
