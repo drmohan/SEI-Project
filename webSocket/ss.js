@@ -38,9 +38,10 @@ io.sockets.on('connection', function (socket) {
     fs.writeFile(file_name, data.data, 'binary', function (err) {
       if (err) {
         console.log('Some error occured - file either not saved or corrupted file saved.');
+        socket.emit('message', {response: 'File transfer unsuccessful'});
       } else{
         console.log('It\'s saved!');
-        socket.emit('message', {response: 'File transferred'});
+        socket.emit('message', {response: 'File transferred successfully'});
       }
     });
   });
