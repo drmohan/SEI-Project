@@ -20,7 +20,9 @@ function handler (req, res) {
 io.sockets.on('connection', function (socket) {
 
   socket.on('message', function (data) {
-    // console.log(data);
+
+    // iterates through dictionary to write id:blob values to csv
+    // ----------------------------------------------------------
     // var csvContent = "data:text/csv;charset=utf-8,";
     //
     // var bl;
@@ -32,17 +34,13 @@ io.sockets.on('connection', function (socket) {
     var fs = require('fs');
 
     var file_name = data.file_name.toString();
-    // console.log("hello");
-    // console.log(data);
+
     fs.writeFile(file_name, data.data, 'binary', function (err) {
-    // fs.writeFile('my-data.csv', csvContent, 'utf8', function (err) {
       if (err) {
         console.log('Some error occured - file either not saved or corrupted file saved.');
       } else{
         console.log('It\'s saved!');
       }
-    // });
-
+    });
   });
-});
 });

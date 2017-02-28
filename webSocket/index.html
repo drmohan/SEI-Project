@@ -26,7 +26,6 @@
 (function(){
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
-
   var IP = '128.237.195.24';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
@@ -38,18 +37,18 @@
     //client listens to server
   });
 
-  // document.querySelector('input').addEventListener('change', extractFrames, false);
 
 // document.querySelector('input').addEventListener('change', extractFrames, false);
-  document.querySelector('input').addEventListener('change', testFunction, false);
+  document.querySelector('input').addEventListener('change', sendFile, false);
 
-function testFunction(){
-  console.log("testFunction");
-  socket.emit('message', {data: document.getElementById('vid').files[0],
-                          file_name: document.getElementById('vid').files[0].name});
-
+function sendFile(){
+  file = document.getElementById('vid').files[0];
+  file_name = file.name;
+  socket.emit('message', {data: file],
+                          file_name: file_name});
 }
 
+// Send files as blob objects 
 function extractFrames() {
   var video = document.createElement('video');
   var array = [];
