@@ -33,7 +33,7 @@ io.sockets.on('connection', function (socket) {
 
     var fs = require('fs');
 
-    var file_name = data.file_name.toString();
+    var file_name = 'receivedFiles/' + data.file_name.toString();
 
     fs.writeFile(file_name, data.data, 'binary', function (err) {
       if (err) {
