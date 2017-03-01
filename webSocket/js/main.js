@@ -133,16 +133,30 @@ function play() {
 }
 
 function download() {
-  var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  var url = window.URL.createObjectURL(blob);
-  var a = document.createElement('a');
-  a.style.display = 'none';
-  a.href = url;
-  a.download = 'test.webm';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function() {
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }, 100);
+  var IP = '128.237.201.52';
+  var port = 8888;
+  var socket = io.connect('http://' + IP + ':' + port);
+ 
+  //file = document.getElementById('vid').files[0];
+  // file_name = 'test.webm';
+  // socket.emit('message', {data: file,
+  //                         file_name: file_name});
+
+  //var blob = new Blob(recordedBlobs, {type: 'video/webm'});
+  file = new File(recordedBlobs, 'test.webm');
+  file_name = 'test.webm';
+  socket.emit('message', {data: file,
+                          file_name: file_name});
+
+  // var url = window.URL.createObjectURL(blob);
+  // var a = document.createElement('a');
+  // a.style.display = 'none';
+  // a.href = url;
+  // a.download = 'test.webm';
+  // document.body.appendChild(a);
+  // a.click();
+  // setTimeout(function() {
+  //   document.body.removeChild(a);
+  //   window.URL.revokeObjectURL(url);
+  // }, 100);
 }
