@@ -1,31 +1,42 @@
-<!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript" charset="utf-8"></script>
 
-  <title>WebSockets Demo</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+  <title>Video Recording Demo</title>
+  <link rel="stylesheet" href="css/main.css" type="text/css">
+  <script src="/socket.io/socket.io.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js" type="text/javascript"></script>
 
 </head>
 
 <body>
-  <h1>WebSocket Demo</h1>
 
-  <input id="vid" type="file" accept="video/*" />
+  <div id="container">
 
-  <!-- <p id="progress"></p> -->
-
-  </body>
-</html>
+    <h1>Video Recording Demo</h1>
 
 
-<script type="text/javascript">
+    <video id="live" autoplay muted></video>
+    <video id="recorded" autoplay loop></video>
+
+    <div>
+      <button id="record" disabled>Start Recording</button>
+      <button id="play" disabled>Play</button>
+      <button id="download" disabled>Download</button>
+    </div>
+
+    <input id="vid" type="file" accept="video/*" />
+
+
+  </div>
+
+    <script>
 
 (function(){
 
   // CHANGE THIS IP ADDRESS TO YOUR LOCAL ONE
-  var IP = '128.237.180.38';
+  var IP = '128.237.201.52';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
   var FReader;
@@ -137,3 +148,7 @@ function extractFrames() {
 })();
 
 </script>
+
+
+</body>
+</html>
