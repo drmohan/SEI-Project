@@ -41,3 +41,18 @@ Code development for project with SEI team, creating a website for their researc
   5. *Tools Used*:
     * Node.js
     * socket.io
+
+- **[webSocket and videoRecordDownload:](webSocket) (videoRecordDownload)** a project that combines the features of videoRecordDownload and webSocket. This project has the ability to record a video and transfer the video between the client and server through websockets.
+
+  1. Navigate to the videoRecordDownload directory and open up the main.js file
+     in a text editor of your choice. 
+  2. In the download function, ensure the IP address corresponds to your local address.
+  3. Follow steps 1 through 3 in the videoRecordDownload project section until you can 
+     see page where you will be able to start and stop recording. 
+  4. In a new terminal window, navigate to the websocket directory.
+  5. In the new terminal window, type 'npm install socket.io' to install socket.io
+  6. After socket.io is installed, start the server by typing 'node ss.js'
+  7. Go back to the web page, record a video and play it back. Once you hit download, the video  will successfully be sent over. The video file will be found in the receivedFiles folder in the webSocket directory. 
+
+  ** The data transfer is done via websockets while the video recording server is run 
+  via a python server.**
