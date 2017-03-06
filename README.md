@@ -50,8 +50,8 @@ Code development for project with SEI team, creating a website for their researc
   3. Follow steps 1 through 3 in the videoRecordDownload project section until you can 
      see page where you will be able to start and stop recording. 
   4. In a new terminal window, navigate to the websocket directory.
-  5. In the new terminal window, type 'npm install socket.io' to install socket.io
-  6. After socket.io is installed, start the server by typing 'node ss.js'
+  5. In the new terminal window, type `npm install socket.io` to install socket.io
+  6. After socket.io is installed, start the server by typing `node ss.js`
   7. Go back to the web page, record a video and play it back. Once you hit download, the video  will successfully be sent over. The video file will be found in the receivedFiles folder in the webSocket directory. 
 
   ** The data transfer is done via websockets while the video recording server is run 
