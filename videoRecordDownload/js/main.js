@@ -133,7 +133,7 @@ function play() {
 }
 
 function download() {
-  var IP = '128.237.201.52';
+  var IP = '128.237.194.217';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
  
