@@ -137,9 +137,10 @@ function download() {
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
-
     socket.on('message', function (data) {
       console.log(data.csvData);
+      var dataViz = document.getElementById("results");
+      dataViz.style = ""
     });
 
 
