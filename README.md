@@ -22,9 +22,9 @@ Code development for project with SEI team, creating a website for their researc
 
 - **[main:](main)** a project that consolidates the individual components developed in other projects.
 
-      ###### Prior to running, IP addresses should be changed in the following places to match that of the user's:
-      * [record.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/record.html#L9)
-      * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L136)
+      *Prior to running, IP addresses should be changed in the following places to match that of the user's:*
+      [record.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/record.html#L9)
+      [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L136)
 
       1. Navigate to project directory
       2. In the terminal, type `python -m http.server` to start up a python server
@@ -55,7 +55,7 @@ Code development for project with SEI team, creating a website for their researc
 
 - **[webSocket:](webSocket)** a project in html and javascript that demonstrates basic data transfer between client and server through websockets
 
-  ###### Prior to running, IP addresses should be changed in the following places to match that of the user's:
+  *Prior to running, IP addresses should be changed in the following places to match that of the user's:*
   * [index.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/record.html#L39)
 
   1. Navigate to project directory
@@ -70,7 +70,7 @@ Code development for project with SEI team, creating a website for their researc
 
 - **[webSocket and videoRecordDownload:](webSocket) (videoRecordDownload)** a project that combines the features of videoRecordDownload and webSocket. This project has the ability to record a video and transfer the video between the client and server through websockets.
 
-  ###### Prior to running, IP addresses should be changed in the following places to match that of the user's:
+  *Prior to running, IP addresses should be changed in the following places to match that of the user's:*
   * [videoRecord.html](https://github.com/KatAnne/SEI-Project/blob/dev/videoRecordDownload/videoRecord.html#L9)
   * [main.js](https://github.com/KatAnne/SEI-Project/blob/dev/videoRecordDownload/js/main.js#L136)
 
