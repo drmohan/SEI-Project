@@ -133,10 +133,10 @@ function play() {
 }
 
 function download() {
-  var IP = '128.237.194.217';
+  var IP = '10.0.0.230';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
- 
+
   //file = document.getElementById('vid').files[0];
   // file_name = 'test.webm';
   // socket.emit('message', {data: file,
