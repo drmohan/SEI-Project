@@ -22,24 +22,24 @@ Code development for project with SEI team, creating a website for their researc
 
 - **[main:](main)** a project that consolidates the individual components developed in other projects.
 
-      **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
-      * [record.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/record.html#L9)
-      * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L136)
+    **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
+    * [record.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/record.html#L9)
+    * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L136)
 
-      1. Navigate to project directory
-      2. In the terminal, type `python -m http.server` to start up a python server
-        * This project must be run from a localhost in order to get around browser security; because you are capturing user video usually only https links are trusted for this, but because the project isn't deployed you can run it locally to circumvent this block
-        * If you do not have python or wish to use another local server, such as a locally hosted apache server for Mac users, that would work as well
-      3. In a new terminal window, navigate to the [websocket](webSocket) directory.
-      5. In the new terminal window, type `npm install socket.io` to install socket.io
-      6. After socket.io is installed, start the server by typing `node ss.js`
-      7. Navigate to `localhost:8000` (unless a different port was specified) to access the web page, record a video, play it back, and view resulting mock data.
-      8. *Tools Used*:
-        * MediaStream Recording API
-        * Node.js
-        * Socket IO
-        * Semantic UI
-        * Highcharts
+    1. Navigate to project directory
+    2. In the terminal, type `python -m http.server` to start up a python server
+      * This project must be run from a localhost in order to get around browser security; because you are capturing user video usually only https links are trusted for this, but because the project isn't deployed you can run it locally to circumvent this block
+      * If you do not have python or wish to use another local server, such as a locally hosted apache server for Mac users, that would work as well
+    3. In a new terminal window, navigate to the [websocket](webSocket) directory.
+    5. In the new terminal window, type `npm install socket.io` to install socket.io
+    6. After socket.io is installed, start the server by typing `node ss.js`
+    7. Navigate to `localhost:8000` (unless a different port was specified) to access the web page, record a video, play it back, and view resulting mock data.
+    8. *Tools Used*:
+      * MediaStream Recording API
+      * Node.js
+      * Socket IO
+      * Semantic UI
+      * Highcharts
 
 
 - **[videoRecordDownload:](videoRecordDownload)** a project in html, css, and javascript that allows the user to record a video, play back that video, and download that video
