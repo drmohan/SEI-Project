@@ -1,18 +1,18 @@
-var bpms = [];
-var data = {};
+var bpms = [],
+    data = {},
+    ranges = [],
+    ranges2 = [],
+    ranges3 = [],
+    lowerLimit = 73,
+    upperLimit = 84;
 
 $(document).ready(function () {
-
 
   Highcharts.chart('container', {
 
       title: {
           text: 'Beats per Minute'
       },
-
-      // subtitle: {
-      //     text: 'Source: thesolarfoundation.com'
-      // },
 
       yAxis: {
           title: {
@@ -43,15 +43,44 @@ $(document).ready(function () {
                 marker: {
                     lineWidth: 1
                 }
-
-
           }
 
       },
       series: [{
           name: 'BPM',
-          data: bpms
-      }]
+          data: bpms,
+          color: '#000000'
+        },
+        {
+            name: 'Range',
+            data: ranges,
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: '#99b799',
+            fillOpacity: 0.2,
+            zIndex: 0
+        },
+        {
+            name: 'Range',
+            data: ranges2,
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: '#B22222',
+            fillOpacity: 0.2,
+            zIndex: -1
+        },
+        {
+            name: 'Range',
+            data: ranges3,
+            type: 'arearange',
+            lineWidth: 0,
+            linkedTo: ':previous',
+            color: '#99b799',
+            fillOpacity: 0.4,
+            zIndex: -1
+        }]
 
   });
 });
@@ -60,8 +89,7 @@ $(document).ready(function () {
 function processData(allText) {
   console.log("in processData");
   var lines = allText.split("\n");
-  // data = {}
-  // bpms = []
+
   for (var i=1; i<lines.length; i++) {
     l = lines[i-1];
     l = l.split(",");
@@ -70,7 +98,12 @@ function processData(allText) {
     time = l[3];
     data[frame] = {'bpm':bpm, 'time':time};
     bpms.push(bpm);
-    // console.log(bpms);
+    // 73=average, 84=below average
+    ranges.push([Number(frame), lowerLimit, upperLimit]);
+    ranges2.push([Number(frame), 84, 95]);
+    ranges3.push([Number(frame), 70, 73]);
+
+  // console.log(ranges);
 
   }
 
