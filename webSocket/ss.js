@@ -37,7 +37,7 @@ io.sockets.on('connection', function (socket) {
       else{
         // console.log('It\'s saved!');
         // socket.emit('message', {response: 'File transferred successfully'});
-        callback('File transfer successful');
+        callback('Text from server');
         fs.readFile('hillary-face-email-attack.csv', 'utf8', function(err, data) {
           if (err) throw err;
           socket.emit('message', {csvData: data});
