@@ -133,12 +133,12 @@ function play() {
 }
 
 function download() {
-  var IP = '128.237.204.63';
+  var IP = '128.237.185.161';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
-      console.log(data.csvData);
+      // console.log(data.csvData);
       var dataViz = document.getElementById("results");
       dataViz.style = ""
     });
@@ -152,8 +152,12 @@ function download() {
   console.log("File: ");
   console.log(file);
   var file_name = 'test.webm';
-  socket.emit('message', {data: file,
-                          file_name: file_name});
+  // socket.emit('message', {data: file,
+  //                         file_name: file_name});
+
+  socket.emit('message', {data: file, file_name: file_name}, function (data) {
+      alert(data); // data will be 'Text from server'
+    });
 
   var url = window.URL.createObjectURL(blob);
   var a = document.createElement('a');
