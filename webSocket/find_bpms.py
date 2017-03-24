@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import random
-import sys
+
 # Open a file
 bpms = open("bpms.csv", "w")
 
@@ -9,4 +9,6 @@ for i in range(20):
 
 # Close opend file
 bpms.close()
-sys.stdout.write("CSV generated")
+print("bpms.csv complete")
+
+# return "CSV generated"

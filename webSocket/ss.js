@@ -21,11 +21,14 @@ function handler (req, res) {
 
 var processVideo = function(video, sendCSV) {
   generateCSV(video);
-  sendCSV('bpms.csv')
+
+  //function passed in
+  //writes video to server side and emits bpms.csv -> client
+  sendCSV('bpms.csv');
 }
 
 function generateCSV(video){
-  // run a python script and invokes a callback with the results (stdout)
+  // run a python script and invokes a callback with the results
   PythonShell.run('find_bpms.py', function (err, results) {
     // script finished
     console.log(results);
@@ -42,6 +45,7 @@ io.sockets.on('connection', function (socket) {
 
     processVideo( data.data,
                   function(csvFilename) {
+                    //write video file to server side just to show it's been received
                     fs.writeFile(file_name, data.data, 'binary', function (err) {
                       if (err) {
                         callback("Error");
@@ -58,6 +62,3 @@ io.sockets.on('connection', function (socket) {
                 );
   });
 });
-
-
-var fs = require('fs');
