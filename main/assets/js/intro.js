@@ -5,12 +5,18 @@ $(document).ready(function() {
     // Hide Intro Text at beginning
     $('.intro-word')
         .transition('hide');
+
+    // Hide arrow at beginning
+    $('.arrow-right')
+        .transition('hide');
     
+    // Fade in welcome text
     $('.fade-in-welcome').transition({
         animation: 'fade in',
         duration: '3s'
     });
 
+    // Fade in team intro text
     $('.intro-word').data('hideInterval', setTimeout(function(){
         $('.intro-word')
     .transition({
@@ -22,6 +28,8 @@ $(document).ready(function() {
 
 
     // slide arrow in
+
+
 
     // show 'see demo' and 'skip intro'
 
