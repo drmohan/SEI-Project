@@ -19,17 +19,7 @@ function handler (req, res) {
 
 io.sockets.on('connection', function (socket) {
 
-  socket.on('message', function (data) {
-
-    // iterates through dictionary to write id:blob values to csv
-    // ----------------------------------------------------------
-    // var csvContent = "data:text/csv;charset=utf-8,";
-    //
-    // var bl;
-    // n = Object.keys(data).length
-    // for(bl=0; bl < n; bl++){
-    //   csvContent = bl + ": " + data[bl] + '\n'
-    // }
+  socket.on('message', function (data, callback) {
 
     var fs = require('fs');
 
@@ -37,12 +27,25 @@ io.sockets.on('connection', function (socket) {
 
     fs.writeFile(file_name, data.data, 'binary', function (err) {
       if (err) {
-        console.log('Some error occured - file either not saved or corrupted file saved.');
-        socket.emit('message', {response: 'File transfer unsuccessful'});
-      } else{
-        console.log('It\'s saved!');
-        socket.emit('message', {response: 'File transferred successfully'});
+        // console.log('Some error occured - file either not saved or corrupted file saved.');
+        // socket.emit('message', {response: 'File transfer unsuccessful'});
+
+        // "callback" refers to function passed in as parameter
+        // from client (video.js line 158)
+        callback("Text from server");
+      }
+      else{
+        // console.log('It\'s saved!');
+        // socket.emit('message', {response: 'File transferred successfully'});
+        callback('Text from server');
+        fs.readFile('hillary-face-email-attack.csv', 'utf8', function(err, data) {
+          if (err) throw err;
+          socket.emit('message', {csvData: data});
+        });
       }
     });
   });
 });
+
+
+var fs = require('fs');
