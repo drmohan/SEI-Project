@@ -20,3 +20,13 @@
 .intro-word.sei-text {
     color: navy;
 }
+
+.see-demo-button {
+    margin-left: 780px;
+}
+
+.skip-intro-button {
+    position: absolute;
+    margin-left: 90%;
+    top:0px;
+}
