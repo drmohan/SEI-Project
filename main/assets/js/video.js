@@ -133,12 +133,15 @@ function play() {
 }
 
 function download() {
-  var IP = '128.237.185.161';
+  var IP = '10.0.0.61';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
-      // console.log(data.csvData);
+      console.log("csv data");
+      console.log(data.csvData);
+      var results = document.getElementById("results-from-server")
+      results.textContent = data.csvData;
       var dataViz = document.getElementById("results");
       dataViz.style = ""
     });
