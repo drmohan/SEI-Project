@@ -1,0 +1,32 @@
+
+.arrow-right img {
+    height: 200px;
+    margin-top: 40px;
+    margin-left: 500px;
+}
+
+.fade-in-welcome {
+    font-size: 70px;
+    margin-top: 100px;
+    margin-left: 60px;
+}
+
+.fade-in-right-teamintro {
+    margin-left: 120px;
+    margin-top: 120px;
+    font-size: 35px;
+}
+
+.intro-word.sei-text {
+    color: navy;
+}
+
+.see-demo-button {
+    margin-left: 780px;
+}
+
+.skip-intro-button {
+    position: absolute;
+    margin-left: 90%;
+    top:0px;
+}
