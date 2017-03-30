@@ -64,7 +64,12 @@ $(document).ready(function() {
     $('skip-intro-button').onclick = "location.href='demo.html';";
 
     // if demo button is clicked
-    $('.see-demo-button').onclick = function(){myScript};
+    $('.see-demo-button').onclick = function(){
+        // move existing elements on page (Fly right)
+        console.log("hello");
+        $('.arrow-right')
+        .transition('fly right');
+    };
 
 
     // TRANSITION PAGES - page 1 to page 2
