@@ -6,6 +6,7 @@
     <title>PAGE TITLE GOES HERE</title>
     <link rel="stylesheet" type = "text/css" href="assets/css/semantic.min.css">
     <link rel="stylesheet" type = "text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type = "text/css" href="assets/css/contact.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
 <head>
 </head>
@@ -27,14 +28,48 @@
     </div>
   </div>
 
+
+
   <div class="ui text content">
-    <p> CONTACT </p>
+  
+  <!-- <form method = "post" action = "contact.php">
+  First Name: <input type="text" name = "first_name"><br>
+  Last Name: <input type="text" name="last_name"><br>
+  Email: <input type="text" name="email"><br>
+  Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
+  <input type="submit" name="submit" value="Submit">
+  </form> -->
+  <form class = "ui form" method="post" action="contact.php">
+    <div class = "fields">
+    <div class="field">
+        <label>First name</label>
+        <input id= "FirstName" type="text" placeholder="First Name">
+      </div>
+      
+      <div class="field">
+        <label>Last name</label>
+        <input type="text" placeholder="Last Name">
+      </div>
 
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+      <div class="field">
+        <label>Email</label>
+        <input type="text" placeholder="Email Address">
+      </div>
+    
+    </div>
+    
+    <div class = "field">
+    <label> How would you rate your experience using this technology </label><br>
+    <div class="ui star rating" data-rating="4"></div>
+    </div>
 
-    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
-</div>
-
+    <div class="field">
+    <label>Explain:</label><br><textarea rows="5" name="message" cols="30"></textarea><br> </div>
+    <input type="submit" name="submit" value="Submit">
+</form>
+  
+  </div>
+  </div> -->
   <div class="ui inverted vertical footer segment">
     <div class="ui center aligned container">
       <div class="ui stackable inverted divided grid">
@@ -77,5 +112,7 @@
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/transition.js"></script>
+    <script type="text/javascript" src="assets/js/contact.js"></script>
+</html> 
     <script type="text/javascript" src="assets/js/main.js"></script>
 </html>
