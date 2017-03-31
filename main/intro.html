@@ -11,13 +11,14 @@
 </head>
 <body>
 
+<div class="container">
 <!-- PAGE ONE  -->
   <!-- text  -->
   <button type="button" onclick = "location.href='about.html';" class="skip-intro-button">Skip Intro</button>
   <div class="fade-in-welcome">
     Welcome!
   </div>
-  <div class="fade-in-right-teamintro"> 
+  <div class="fade-in-text page-one"> 
     <span class="intro-word">We </span><span class="intro-word">are  </span><span class="intro-word">the </span><span class="intro-word sei-text">Software </span><span class="intro-word sei-text">Engineering </span><span class="intro-word sei-text">Institute.</span>
   </div>
 
@@ -26,23 +27,42 @@
     <img src="assets/img/arrow-right.png">
   </div>
 
-  <button type="button" class="see-demo-button">See Demo!</button>
+  <button type="button" onclick = "seeDemoButtonClicked();" class="see-demo-button">See Demo!</button>
 
+  <div class="fade-in-text page-two"> 
+    <span class="intro2-word-part1">We </span><span class="intro2-word-part1">have  </span><span class="intro2-word-part1">developed </span><span class="intro2-word-part1">an </span><span class="intro2-word-part1">innovative </span><span class="intro2-word-part1">software </span><span class="intro2-word-part1">that </span><span class="intro2-word-part1">detects </span><br><span class="intro2-word-part1 heartbeat-text">your </span><span class="intro2-word-part1 heartbeat-text">heartbeat </span><br><br>
+    <span class="intro2-word-part2">just </span><span class="intro2-word-part2">by </span><span class="intro2-word-part2">looking </span><span class="intro2-word-part2">at </span><span class="intro2-word-part2">you.</span>
+    <div>
+      <img id="heartbeat-line" src="assets/img/heartbeatline.png">
+    </div>
+  </div>
+  <!-- arrow  -->
+  <div class="arrow-left">
+    <img src="assets/img/arrow-left.png">
+  </div>
 
-  <!-- <br>
-  We have developed an innovative software that detects <strong> your heartbeat</strong> just by looking at you
+  <button type="button" onclick = "continueFirstButton();" class="continue-first-button">Continue</button>
 
-  <br>
-  Our research analyzes the frequency of light that bounces off of your face to capture your heartbeat...
+  <div class="fade-in-text page-three"> 
+    <span class="intro3-word">Our </span><span class="intro3-word">research </span><span class="intro3-word">analyzes </span><span class="intro3-word">the </span><span class="intro3-word">frequency </span><span class="intro3-word">of </span><span class="intro3-word">light </span><span class="intro3-word">that </span><span class="intro3-word">bounces </span><span class="intro3-word">off </span><span class="intro3-word">of </span><span class="intro3-word">your </span><span class="intro3-word">face </span><br><span class="intro3-word intro3-face"><img src="assets/img/intro3-face.jpg"></span><br><span class="intro3-word">to </span><span class="intro3-word">capture </span><span class="intro3-word">your </span><span class="intro3-word">heartbeat... </span>
+  </div>
 
-  <br>
+  <!-- arrow  -->
+  <div class="arrow-right-two">
+    <img src="assets/img/arrow-right.png">
+  </div>
+
+  <button type="button" onclick = "location.href='record.html';" class="go-to-demo-button">Continue</button>
+
+ <!--  <br>
   Ready?
-  <a href="demo.html">Go</a> -->
-
+  <a href="demo.html">Go</a>  -->
+</div>
 
 </body>
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/transition.js"></script>
     <script type="text/javascript" src="assets/js/intro.js"></script>
+
 </html>

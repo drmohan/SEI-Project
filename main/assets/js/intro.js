@@ -6,7 +6,31 @@ $(document).ready(function() {
     $('.intro-word')
         .transition('hide');
 
+    $('.intro2-word-part1')
+        .transition('hide');
+
+    $('.intro2-word-part2')
+        .transition('hide');
+
+    $('.intro3-word')
+        .transition('hide');
+
+    $('.heartbeat-text')
+        .transition('hide');
+
     $('.arrow-right')
+        .transition('hide');
+
+    $('.arrow-right-two')
+        .transition('hide');
+
+    $('.arrow-left')
+        .transition('hide');
+
+    $('.continue-first-button')
+        .transition('hide');
+
+    $('.go-to-demo-button')
         .transition('hide');
 
     $('.see-demo-button')
@@ -51,36 +75,20 @@ $(document).ready(function() {
     }, 4300));
 
 
-    // bounce 'see demo' once
-
-    $('.see-demo-button').data('hideInterval', setTimeout(function(){
-        $('.see-demo-button')
-            .transition('bounce')
-            .transition('bounce');
-    }, 4600));
-
-    // if skip intro button is clicked 
-
-    $('skip-intro-button').onclick = "location.href='demo.html';";
-
-    // if demo button is clicked
-    $('.see-demo-button').onclick = function(){
-        // move existing elements on page (Fly right)
-        console.log("hello");
-        $('.arrow-right')
-        .transition('fly right');
-    };
-
-
     // TRANSITION PAGES - page 1 to page 2
-
-    // move text and arrow up and to left
-
-
     
     // PAGE 2
 
     // show text until 'your heartbeat' faster
+    // Fade in description intro text page 2
+    $('.intro-word2').data('hideInterval', setTimeout(function(){
+        $('.intro-word2')
+            .transition({
+                animation: 'slide in right',
+                duration: '3s',
+                interval: 200
+            });
+    }, 2000));
 
     // show 'your heartbeat' on rhythm with visual graphic
 
@@ -91,3 +99,113 @@ $(document).ready(function() {
     // show arrow
 
 });
+
+// if demo button is clicked
+function seeDemoButtonClicked() {
+    // move all elements to the left
+    $('.page-one')
+        .transition('fly right');
+    $('.see-demo-button')
+        .transition('fly right')
+    $('.fade-in-welcome')
+        .transition('fly right')
+    $('.arrow-right')
+        .transition('fly right')
+
+    pageTwoText();
+};
+
+function pageTwoText() {
+    // show text until 'your heartbeat' faster
+    // Fade in description intro text page 2
+    $('.intro2-word-part1').data('hideInterval', setTimeout(function(){
+        $('.intro2-word-part1')
+            .transition({
+                animation: 'slide in right',
+                duration: '3s',
+                interval: 200
+            });
+    }, 1000));
+
+    moveRight();
+
+    $('.intro2-word-part2').data('hideInterval', setTimeout(function(){
+        $('.intro2-word-part2')
+            .transition({
+                animation: 'slide in right',
+                duration: '3s',
+                interval: 200
+            });
+    }, 4000));
+
+    // slide arrow in
+    $('.arrow-left').data('hideInterval', setTimeout(function(){
+        $('.arrow-left')
+            .transition('drop');
+    }, 5200));
+
+    // show 'see demo' and 'skip intro'
+
+    $('.continue-first-button').data('hideInterval', setTimeout(function(){
+        $('.continue-first-button')
+            .transition('swing down');
+    }, 5400));
+};
+
+function moveRight(){
+    var heartbeatLine = document.getElementById("heartbeat-line");
+    if (heartbeatLine.left < window.innerWidth) {
+       heartbeatLine.left = parseInt(heartbeatLine.style.left) + 10 + 'px';
+       animate = setTimeout(moveRight,20); // call moveRight in 20msec
+    }
+};
+
+function continueFirstButton() {
+    // move all elements to the left
+    $('.arrow-left')
+        .transition('fly left');
+    $('.page-two')
+        .transition('fly left');
+    $('.continue-first-button')
+        .transition('fly left');    
+
+    pageThreeText();
+};
+
+function pageThreeText() {
+    // Fade in description intro text page 2
+    $('.intro3-word').data('hideInterval', setTimeout(function(){
+        $('.intro3-word')
+            .transition({
+                animation: 'slide in right',
+                duration: '3s',
+                interval: 200
+            });
+        $('.intro3-face')
+            .transition('tada');
+    }, 500));
+
+    // jiggle face
+    $('.intro3-face').data('hideInterval', setTimeout(function(){
+        $('.intro3-face')
+            .transition('tada');
+    }, 4500));
+
+    // slide arrow in
+    $('.arrow-right-two').data('hideInterval', setTimeout(function(){
+        $('.arrow-right-two')
+            .transition('drop');
+    }, 4800));
+
+    // show 'see demo' and 'skip intro'
+
+    $('.go-to-demo-button').data('hideInterval', setTimeout(function(){
+        $('.go-to-demo-button')
+            .transition('swing down');
+    }, 5000));
+
+}
+
+
+
+
