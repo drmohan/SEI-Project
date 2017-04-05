@@ -5,6 +5,10 @@ $('.ui.rating')
   })
 ;
 
+$('.ui.checkbox')
+  .checkbox()
+;
+
 (function ($) {
     $('.ui.form').form({  
     on: "blur", 
