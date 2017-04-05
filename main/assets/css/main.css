@@ -36,6 +36,16 @@
     color: #183A53 !important;
 }
 
+.ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item.active {
+    color: #183A53 !important;
+}
+
+.ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item:hover {
+    color: #183A53 !important;
+    font-weight: bold;
+}
+
+
     .ui.vertical.stripe {
       padding: 8em 0em;
     }
