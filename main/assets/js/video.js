@@ -14,7 +14,7 @@ var recordedBlobs;
 var sourceBuffer;
 
 var liveVideo = document.querySelector('video#live');
-var recordedVideo = document.querySelector('video#recorded');
+//var recordedVideo = document.querySelector('video#recorded');
 
 var recordButton = document.querySelector('button#record');
 var playButton = document.querySelector('button#play');
@@ -61,11 +61,11 @@ function handleSourceOpen(event) {
   console.log('Source buffer: ', sourceBuffer);
 }
 
-recordedVideo.addEventListener('error', function(ev) {
-  console.error('MediaRecording.recordedMedia.error()');
-  alert('Your browser can not play\n\n' + recordedVideo.src
-    + '\n\n media clip. event: ' + JSON.stringify(ev));
-}, true);
+//recordedVideo.addEventListener('error', function(ev) {
+//  console.error('MediaRecording.recordedMedia.error()');
+//  alert('Your browser can not play\n\n' + recordedVideo.src
+//    + '\n\n media clip. event: ' + JSON.stringify(ev));
+//}, true);
 
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
@@ -127,10 +127,10 @@ function stopRecording() {
   recordedVideo.controls = true;
 }
 
-function play() {
-  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-  recordedVideo.src = window.URL.createObjectURL(superBuffer);
-}
+//function play() {
+//  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+//  recordedVideo.src = window.URL.createObjectURL(superBuffer);
+//}
 
 function download() {
 
