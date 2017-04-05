@@ -14,7 +14,32 @@ var recordedBlobs;
 var sourceBuffer;
 
 var liveVideo = document.querySelector('video#live');
-//var recordedVideo = document.querySelector('video#recorded');
+var recordedVideo = document.querySelector('video#recorded');
+
+// get canvas for facial tracking
+var canvas = document.getElementById('canvas');
+var context = canvas.getContext('2d');
+
+// get box for face tracking
+var tracker = new tracking.ObjectTracker('face');
+tracker.setInitialScale(4);
+tracker.setStepSize(2);
+tracker.setEdgesDensity(0.1);
+
+tracking.track('video#live', tracker, { camera: true });
+
+tracker.on('track', function(event) {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    event.data.forEach(function(rect) {
+      context.strokeStyle = '#a64ceb';
+      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+      context.font = '11px Helvetica';
+      context.fillStyle = "#fff";
+      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
+      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
+    });
+});
 
 var recordButton = document.querySelector('button#record');
 var playButton = document.querySelector('button#play');
@@ -61,11 +86,11 @@ function handleSourceOpen(event) {
   console.log('Source buffer: ', sourceBuffer);
 }
 
-//recordedVideo.addEventListener('error', function(ev) {
-//  console.error('MediaRecording.recordedMedia.error()');
-//  alert('Your browser can not play\n\n' + recordedVideo.src
-//    + '\n\n media clip. event: ' + JSON.stringify(ev));
-//}, true);
+recordedVideo.addEventListener('error', function(ev) {
+  console.error('MediaRecording.recordedMedia.error()');
+  alert('Your browser can not play\n\n' + recordedVideo.src
+    + '\n\n media clip. event: ' + JSON.stringify(ev));
+}, true);
 
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
@@ -127,14 +152,14 @@ function stopRecording() {
   recordedVideo.controls = true;
 }
 
-//function play() {
-//  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-//  recordedVideo.src = window.URL.createObjectURL(superBuffer);
-//}
+function play() {
+  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+  recordedVideo.src = window.URL.createObjectURL(superBuffer);
+}
 
 function download() {
 
-  var IP = '128.237.204.217';
+  var IP = '128.237.202.115';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
