@@ -36,7 +36,7 @@
   <input type="submit" name="submit" value="Submit">
   </form> -->
   <form class = "ui form" method="post" action="contact.php">
-    <div class = "fields">
+    <div class="three fields">
     <div class="field">
         <label>First name</label>
         <input id= "FirstName" type="text" placeholder="First Name">
@@ -46,22 +46,38 @@
         <label>Last name</label>
         <input type="text" placeholder="Last Name">
       </div>
-
       <div class="field">
         <label>Email</label>
         <input type="text" placeholder="Email Address">
       </div>
-    
     </div>
     
+    
     <div class = "field">
-    <label> How would you rate your experience using this technology </label><br>
-    <div class="ui star rating" data-rating="4"></div>
+    <label> How would you rate your overall experience using this technology </label><br>
+    
+    <div class="ui huge star rating" data-rating="4"></div>
     </div>
 
     <div class="field">
     <label>Explain:</label><br><textarea rows="5" name="message" cols="30"></textarea><br> </div>
-    <input type="submit" name="submit" value="Submit">
+
+    <div class = "field">
+    <label> Are there any glitches you came across while using the application? </label><br>
+    <label>Explain:</label><br><textarea rows="5" name="bugs" cols="30"></textarea><br> </div>
+
+    <div class = "field">
+    <label> Are there any particular feature requests you have for the technology? </label><br>
+    <label>Explain:</label><br><textarea rows="5" name="new_features" cols="30"></textarea><br> </div>
+
+    <div class="inline field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>I have interest in working with this project</label>
+    </div>
+  </div>
+    <button class="ui blue button" type="submit" name = "submit" value = "submit">Submit</button>
+    <!-- <input type="submit" name="submit" value="Submit"> -->
 </form>
   
   </div>
