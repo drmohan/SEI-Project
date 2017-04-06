@@ -1,14 +1,15 @@
 #!/usr/bin/python3
 import random
 
+f = open("hillary-face-email-attack.csv")
 # Open a file
 bpms = open("bpms.csv", "w")
 
-for i in range(20):
-    bpms.write(str(random.randint(60,90)) + "\n")
+next = f.readline()
+while next != "":
+    bpms.write(next)
+    next = f.readline()
 
 # Close opend file
 bpms.close()
 print("bpms.csv complete")
-
-# return "CSV generated"
