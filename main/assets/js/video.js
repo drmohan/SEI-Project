@@ -166,8 +166,17 @@ function download() {
     socket.on('message', function (data) {
 
       // debugger;
-      $("#container").hide();
-      $("#vid").load("partials/vid.html");
+
+
+      // var x = document.getElementById('vid');
+      // x.setAttribute("src", "hillary-face-email-attack.mov")
+      // x.setAttribute("width", "320");
+      // x.setAttribute("height", "240");
+      // x.setAttribute("id", "myVideo");
+
+      $('#container').hide();
+      $('#vid').load("partials/vid.html");
+      
 
       console.log(data.csvData);
       plotBPMs(data.csvData);
