@@ -42,3 +42,9 @@ video#recorded {
     margin: 0 10px 10px 0;
   }
 }
+
+#chartdiv {
+  width: 90%;
+  height: 500px;
+  margin-left: 5%;
+}

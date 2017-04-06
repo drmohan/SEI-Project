@@ -159,17 +159,22 @@ function play() {
 
 function download() {
 
-  var IP = '128.237.218.42';
+  var IP = '192.168.0.95';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
-      console.log("csv data");
+
+      // debugger;
+      $("#container").hide();
+      $("#vid").load("partials/vid.html");
+
       console.log(data.csvData);
-      var results = document.getElementById("results-from-server")
-      results.textContent = data.csvData;
-      var dataViz = document.getElementById("results");
-      dataViz.style = ""
+      plotBPMs(data.csvData);
+      // var results = document.getElementById("results-from-server")
+      // results.textContent = data.csvData;
+      // var dataViz = document.getElementById("results");
+      // dataViz.style = ""
     });
 
 
@@ -185,7 +190,7 @@ function download() {
   //                         file_name: file_name});
 
   socket.emit('message', {data: file, file_name: file_name}, function (data) {
-      alert(data); // data will be 'Text from server'
+      console.log(data); // data will be 'BPMs generated' or 'Error'
     });
 
   var url = window.URL.createObjectURL(blob);
@@ -200,3 +205,76 @@ function download() {
     window.URL.revokeObjectURL(url);
   }, 100);
 }
+
+function plotBPMs(csvData){
+  var chartData = generatechartData();
+
+  function generatechartData() {
+    var chartData = [];
+
+    var d = csvData.split('\n');
+    console.log(d[0]);
+    for ( var i = 0; i < d.length; i++ ) {
+      var line = d[i]
+      line = line.split(',')
+      chartData.push({
+        frame: Number(line[3]),
+        bpm: Number(line[2])
+      });
+    }
+    return chartData;
+  }
+
+
+  var chart = AmCharts.makeChart( "chartdiv", {
+    "theme": "light",
+    "type": "serial",
+    "dataProvider": chartData,
+    "valueAxes": [ {
+      "inside": true,
+      "axisAlpha": 0
+    } ],
+    "graphs": [ {
+      "id": "g1",
+      "balloonText": "<div style='margin:5px; font-size:19px;'><span style='font-size:13px;'>[[category]]</span><br>[[value]]</div>",
+      "oneBalloonOnly": true,
+      "bullet": "round",
+      "bulletSize": 0.1,
+      "bulletAlpha": 0,
+      // "bulletBorderColor": "#FFFFFF",
+      // "hideBulletsCount": 500,
+      "lineThickness": 4,
+      "lineColor": "#fdd400",
+      "negativeBase": 85,
+      "negativeLineColor": "#67b7dc",
+      "valueField": "bpm"
+    } ],
+    "chartScrollbar": {
+
+    },
+    "chartCursor": {},
+    "categoryField": "frame",
+
+    "listeners": [ {
+      "event": "dataUpdated",
+      "method": function() {
+        if ( chart ) {
+          if ( chart.zoomToIndexes ) {
+            chart.zoomToIndexes( 130, chartData.length - 1 );
+          }
+        }
+      }
+    } ]
+  } );
+
+  chart.addListener("rollOverGraphItem", function(event) {
+    setCurTime(Number(event.item.category));
+  });
+
+  function setCurTime(time) {
+    var vid = document.getElementById("myVideo")
+    vid.currentTime = time;
+    console.log(vid.currentTime);
+  }
+
+};
