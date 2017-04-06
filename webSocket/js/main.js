@@ -133,7 +133,14 @@ function play() {
 }
 
 function download() {
-  var IP = '128.237.218.42';
+
+// find IP using WebRTC - only compatible with certain browsers
+  var findIP = new Promise(r=>{var w=window,a=new (w.RTCPeerConnection||w.mozRTCPeerConnection||w.webkitRTCPeerConnection)({iceServers:[]}),b=()=>{};a.createDataChannel("");a.createOffer(c=>a.setLocalDescription(c,b,b),b);a.onicecandidate=c=>{try{c.candidate.candidate.match(/([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g).forEach(r)}catch(e){}}})
+
+  // assign IP value to local ip
+  var IP;
+  findIP.then(val => IP=val);
+  //var IP = '128.237.174.158';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
  
