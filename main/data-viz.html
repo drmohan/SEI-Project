@@ -50,7 +50,10 @@
     <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black" src="hillary-face-email-attack.mov"></video>
   </div>
 </div>
-
+<label> How accurate does this seem? </label><br></br>
+<div class="ui huge star rating" data-rating="4"></div>
+    </div>
+    
 <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <video id="myVideo" width="320" height="240" src="hillary-face-email-attack.mov"></video> -->
     </div>
@@ -80,4 +83,11 @@
     // console.log(time);
     x.currentTime = time;
   }
+
+  $('.ui.rating')
+  .rating({
+    initialRating: 3,
+    maxRating: 5
+  })
+;
 </script>
