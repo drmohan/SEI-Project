@@ -1,9 +1,12 @@
-#checklist {
+canvas {
+    background-color:darkslategray;
+    opacity: 0.7;
+}
+
+#checklist-container{
     font-size: 16px;
     color: whitesmoke;
-    background-color: darkslategrey;
     display: inline-block;
-    opacity: 0.5;
 }
 
 #checklist img {
