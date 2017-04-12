@@ -1,3 +1,16 @@
+#checklist {
+    font-size: 16px;
+    color: whitesmoke;
+    background-color: darkslategrey;
+    display: inline-block;
+    opacity: 0.5;
+}
+
+#checklist img {
+   height: 20px;
+   margin-right: 10px;
+}
+
 p.borderBelow {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;
@@ -6,8 +19,10 @@ p.borderBelow {
 
 video, canvas {
     margin-left: 0px !important;
-    margin-top: 100px;
+    margin-top: 30px;
     position: absolute;
+    height: auto;
+    z-index: -10;
   }
 
 
@@ -16,7 +31,7 @@ video:last-of-type {
 }
 
 video#recorded {
-    margin-top: 300px;
+    margin-top: 500px;
     width:30%;
     height: 30%;
     height:inherit !important;

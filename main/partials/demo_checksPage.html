@@ -2,11 +2,13 @@
   <div class="ui vertical masthead aligned segment">
       <video id="live" autoplay muted></video>
       <canvas id="canvas"></canvas>
-      <video id="recorded" autoplay loop></video>
-      <button id="record" disabled>Start Recording</button>
-      <button id="play" disabled>Play</button>
-      <button id="download" disabled>Download</button>
+      <div id="checklist">
+          <h2> Please stay still! </h2>
+          <p><span id="check-faces"><img src="assets/img/x-mark.png"></span> Only one face in the camera.</p>
+          <p><span id="check-distance"><img src="assets/img/x-mark.png"></span> At least 20 inches away from the screen.</p>
+      </div>
     </div>
+    <button id="go">Go!</button>
 
     <br>
     You sit roughly <code></code> inches from the screen.
@@ -20,7 +22,7 @@
     <div id="chartdiv"></div>
   </div>
 
-  <script src="assets/js/video.js"></script>
+  <script src="assets/js/checks.js"></script>
 
   <div class="six wide column">
     <div id="vid"></div>

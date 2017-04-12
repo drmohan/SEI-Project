@@ -14,10 +14,14 @@ var recordedBlobs;
 var sourceBuffer;
 
 var liveVideo = document.querySelector('video#live');
+liveVideo.width = screen.width*(3/5);
+liveVideo.height = screen.height*(3/5);
 var recordedVideo = document.querySelector('video#recorded');
 
 // get canvas for facial tracking
 var canvas = document.getElementById('canvas');
+canvas.width = liveVideo.width;
+canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
 
 // get box for face tracking
@@ -182,7 +186,7 @@ function play() {
 
 function download() {
 
-  var IP = '128.237.210.99';
+  var IP = '128.237.140.38';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
@@ -304,7 +308,7 @@ function plotBPMs(csvData){
   });
 
   function setCurTime(time) {
-    var vid = document.getElementById("myVideo")
+    var vid = document.getElementById("myVideo");
     vid.currentTime = time;
     console.log(vid.currentTime);
   }
