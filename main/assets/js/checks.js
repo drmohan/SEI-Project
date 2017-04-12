@@ -64,16 +64,15 @@ tracker.on('track', function(event) {
       context.lineWidth = 5
       context.strokeRect(rect.x, rect.y, rect.width, rect.height); 
 
-    if (lastRect != undefined) {
-        var oneFace = oneFaceVisible(lastRect, rect);
-        var imageCheckboxFace = document.querySelector("img#face-check");
-        if (oneFace == true){
-            imageCheckboxFace.src = "assets/img/check-mark.png";
-        } else {
-            imageCheckboxFace.src = "assets/img/x-mark.png";
-        }
+    // number of faces in screen
+    var imageCheckboxFace = document.querySelector("img#face-check");
+    if (rect.total == 1) {
+        imageCheckboxFace.src = "assets/img/check-mark.png";
+    } else {
+        imageCheckboxFace.src = "assets/img/x-mark.png";
     }
-    lastRect = rect;
+
+    // distance to screen
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
     var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
@@ -85,21 +84,14 @@ tracker.on('track', function(event) {
     }
         
     // Track average brightness of box around face
-    var t = tracking.Image.grayscale(rect, rect.width, rect.height, false);
+    console.log(canvas);
+    var t = tracking.Image.grayscale(canvas, rect.width, rect.height, false);
     console.log(t);
     
     
     });
     
 });
-
-// returns true if only one face is visible
-function oneFaceVisible(lastRect, currentRect) {
-    if ( Math.abs(lastRect.x - currentRect.x) > 100 || Math.abs(lastRect.y - currentRect.y) > 100) {
-        return false;
-    }
-    return true;
-}
 
 var recordButton = document.querySelector('button#go');
 recordButton.onclick = goButtonPressed;
