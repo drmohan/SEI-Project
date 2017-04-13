@@ -89,11 +89,13 @@ tracker.on('track', function(event) {
     tempCanvas.width = liveVideo.width;
     tempCanvas.height = liveVideo.height;
     var tempContext = tempCanvas.getContext('2d');    
-    var b = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
+    var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
     
     var imageCheckboxLight = document.querySelector("img#light-check");    
-    if (b < 75) {
-        
+    if (brightness >= 75) {
+        imageCheckboxLight.src = "assets/img/check-mark.png";
+    } else {
+        imageCheckboxLight.src = "assets/img/x-mark.png";
     }
     
     
