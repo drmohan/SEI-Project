@@ -19,7 +19,7 @@ liveVideo.height = screen.height*(3/5);
 var recordedVideo = document.querySelector('video#recorded');
 
 // get canvas for facial tracking
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('check-canvas');
 canvas.width = liveVideo.width;
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
@@ -30,21 +30,21 @@ tracker.setInitialScale(4);
 tracker.setStepSize(2);
 tracker.setEdgesDensity(0.1);
 
-// data collection for proximity to screen
-var percentages = [];
-
-// functions to handle input numbers for face proximity to screen
-function rollingAverage(size) {
-  percentages.splice(0, percentages.length - size);
-  var sum = percentages.reduce(function(total, num) {
-    return total + num
-  }, 0);
-  return sum / percentages.length;
-}
-
-function percentageToInches(p) {
-  return 49 * Math.exp(-0.023 * p);
-}
+//// data collection for proximity to screen
+//var percentages = [];
+//
+//// functions to handle input numbers for face proximity to screen
+//function rollingAverage(size) {
+//  percentages.splice(0, percentages.length - size);
+//  var sum = percentages.reduce(function(total, num) {
+//    return total + num
+//  }, 0);
+//  return sum / percentages.length;
+//}
+//
+//function percentageToInches(p) {
+//  return 49 * Math.exp(-0.023 * p);
+//}
 
 
 tracking.track('video#live', tracker, { camera: true });
@@ -52,28 +52,26 @@ tracking.track('video#live', tracker, { camera: true });
 tracker.on('track', function(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
+    console.log("ahhh");
     event.data.forEach(function(rect) {
-      context.strokeStyle = '#a64ceb';
+      context.strokeStyle = '#fff';
+      context.lineWidth = 5;
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
-      context.font = '11px Helvetica';
-      context.fillStyle = "#fff";
-      context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
-      context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
 
-      // write inches to screen in code element
-    var percentage = 100 * rect.height / canvas.height;
-    percentages.push(percentage);
-    document.querySelector('code').textContent = percentageToInches(rollingAverage(5)).toFixed(0) + '"';
+//      // write inches to screen in code element
+//    var percentage = 100 * rect.height / canvas.height;
+//    percentages.push(percentage);
+//    document.querySelector('code').textContent = percentageToInches(rollingAverage(5)).toFixed(0) + '"';
     });
 });
 
 
 var recordButton = document.querySelector('button#record');
 var playButton = document.querySelector('button#play');
-var downloadButton = document.querySelector('button#download');
+var analyzeButton = document.querySelector('button#analyze');
 recordButton.onclick = toggleRecording;
 playButton.onclick = play;
-downloadButton.onclick = download;
+analyzeButton.onclick = sendData;
 
 // window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
@@ -136,7 +134,7 @@ function toggleRecording() {
     stopRecording();
     recordButton.textContent = 'Start Recording';
     playButton.disabled = false;
-    downloadButton.disabled = false;
+    analyzeButton.disabled = false;
   }
 }
 
@@ -166,7 +164,7 @@ function startRecording() {
   console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
   recordButton.textContent = 'Stop Recording';
   playButton.disabled = true;
-  downloadButton.disabled = true;
+  analyzeButton.disabled = true;
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
   mediaRecorder.start(10); // collect 10ms of data
@@ -184,9 +182,9 @@ function play() {
   recordedVideo.src = window.URL.createObjectURL(superBuffer);
 }
 
-function download() {
+function sendData() {
 
-  var IP = '128.237.213.252';
+  var IP = '128.237.204.77';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 

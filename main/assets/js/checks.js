@@ -16,7 +16,7 @@ checklistDiv.width = screen.width*(3/5);
 checklistDiv.height = screen.height*(3/5);
 
 // get canvas for facial tracking
-var canvas = document.getElementById('canvas');
+var canvas = document.getElementById('check-canvas');
 canvas.width = liveVideo.width;
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
@@ -44,7 +44,7 @@ function percentageToInches(p) {
 }
 
 
-tracking.track('video#live', tracker, { camera: true });
+var track1 = tracking.track('video#live', tracker, { camera: true });
 
 var lastRect;
 
@@ -103,6 +103,7 @@ tracker.on('track', function(event) {
     
 });
 
+
 function getBrightness(w, h, ctx, video, rect) {
         // draw the current image
         ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
@@ -136,8 +137,10 @@ recordButton.onclick = goButtonPressed;
 
 
 function goButtonPressed() {
+  track1.stop();
   $('#checklist-container').hide();
     $('#demo-container').show();
+
     
 };
 
