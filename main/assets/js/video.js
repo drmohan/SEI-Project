@@ -59,7 +59,7 @@ tracker.on('track', function(event) {
       context.fillStyle = "#fff";
       context.fillText('x: ' + rect.x + 'px', rect.x + rect.width + 5, rect.y + 11);
       context.fillText('y: ' + rect.y + 'px', rect.x + rect.width + 5, rect.y + 22);
-        
+
       // write inches to screen in code element
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
@@ -192,25 +192,12 @@ function download() {
 
     socket.on('message', function (data) {
 
-      // debugger;
-
-
-      // var x = document.getElementById('vid');
-      // x.setAttribute("src", "hillary-face-email-attack.mov")
-      // x.setAttribute("width", "320");
-      // x.setAttribute("height", "240");
-      // x.setAttribute("id", "myVideo");
-
       $('#container').hide();
       $('#vid').load("partials/vid.html");
-      
 
       console.log(data.csvData);
       plotBPMs(data.csvData);
-      // var results = document.getElementById("results-from-server")
-      // results.textContent = data.csvData;
-      // var dataViz = document.getElementById("results");
-      // dataViz.style = ""
+
     });
 
 
@@ -303,10 +290,14 @@ function plotBPMs(csvData){
     } ]
   } );
 
+  // You have to roll over the line itself it doesn't work
+  // if you just move the cursor (not ideal sorry)
   chart.addListener("rollOverGraphItem", function(event) {
     setCurTime(Number(event.item.category));
   });
 
+  // Function that set's the video to match the time
+  // hovered over in graph
   function setCurTime(time) {
     var vid = document.getElementById("myVideo");
     vid.currentTime = time;
