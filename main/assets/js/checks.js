@@ -64,15 +64,16 @@ tracker.on('track', function(event) {
       context.lineWidth = 5
       context.strokeRect(rect.x, rect.y, rect.width, rect.height); 
 
-    // number of faces in screen
-    var imageCheckboxFace = document.querySelector("img#face-check");
-    if (rect.total == 1) {
-        imageCheckboxFace.src = "assets/img/check-mark.png";
-    } else {
-        imageCheckboxFace.src = "assets/img/x-mark.png";
+    if (lastRect != undefined) {
+        var oneFace = oneFaceVisible(lastRect, rect);
+        var imageCheckboxFace = document.querySelector("img#face-check");
+        if (oneFace == true){
+            imageCheckboxFace.src = "assets/img/check-mark.png";
+        } else {
+            imageCheckboxFace.src = "assets/img/x-mark.png";
+        }
     }
-
-    // distance to screen
+    lastRect = rect;
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
     var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
@@ -82,16 +83,69 @@ tracker.on('track', function(event) {
     } else {
         imageCheckboxDist.src = "assets/img/x-mark.png";
     }
+     
+    // check brightness
+    var tempCanvas = document.createElement('canvas');
+    tempCanvas.width = liveVideo.width;
+    tempCanvas.height = liveVideo.height;
+    var tempContext = tempCanvas.getContext('2d');    
+    tempContext.drawImage(liveVideo, 0, 0, tempCanvas.width, tempCanvas.height);
+    var i = tempContext.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
+    var p = i.data;
+    var b = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo);
+    console.log(b);
         
-    // Track average brightness of box around face
-    console.log(canvas);
-    var t = tracking.Image.grayscale(canvas, rect.width, rect.height, false);
-    console.log(t);
+//    var x = tracking.Image.computeIntegralImage(pixels, width, height, opt_integralImage);
+//    var tempCanvas = document.createElement('canvas');
+//    tempCanvas.width = liveVideo.width;
+//    tempCanvas.height = liveVideo.height;
+//    var tempContext = tempCanvas.getContext('2d');
+//    tempContext.drawImage(liveVideo);
+//    var x = tempContext.getImageData(tempCanvas, rect.x, rect.y, rect.width, rect.height).data;
+//    console.log(x);
+//    var c = getCropImg(liveVideo, rect);
+//    var b = getBrightness(c);
+//    console.log(b);
+        
+//    var brightness = getBrightness(video, rect);
+        
+//    // Track average brightness of box around face
+//    cn
+//    var t = tracking.Image.grayscale(canvas, rect.width, rect.height, false);
+//    console.log(t);
     
     
     });
     
 });
+
+function getBrightness(w, h, ctx, video) {
+        // draw the current image
+        ctx.drawImage(video, 0, 0, w, h);
+        var imgd = ctx.getImageData(0, 0, w, h);
+        var p = imgd.data;
+ 
+        var colorSum = 0;
+        var r, g, b, avg;
+        for (var i = 0, n = p.length; i < n; i += 4) {
+            r = p[i];
+            g = p[i+1];
+            b = p[i+2];
+            
+            avg = Math.floor((r+g+b)/3);
+            colorSum += avg;
+        }
+        var brightness = Math.floor(colorSum / (w*h));
+        return brightness;
+    }
+
+// returns true if only one face is visible
+function oneFaceVisible(lastRect, currentRect) {
+    if ( Math.abs(lastRect.x - currentRect.x) > 100 || Math.abs(lastRect.y - currentRect.y) > 100) {
+        return false;
+    }
+    return true;
+}
 
 var recordButton = document.querySelector('button#go');
 recordButton.onclick = goButtonPressed;
