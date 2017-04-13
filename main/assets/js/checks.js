@@ -89,40 +89,22 @@ tracker.on('track', function(event) {
     tempCanvas.width = liveVideo.width;
     tempCanvas.height = liveVideo.height;
     var tempContext = tempCanvas.getContext('2d');    
-    tempContext.drawImage(liveVideo, 0, 0, tempCanvas.width, tempCanvas.height);
-    var i = tempContext.getImageData(0, 0, tempCanvas.width, tempCanvas.height);
-    var p = i.data;
-    var b = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo);
-    console.log(b);
+    var b = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
+    
+    var imageCheckboxLight = document.querySelector("img#light-check");    
+    if (b < 75) {
         
-//    var x = tracking.Image.computeIntegralImage(pixels, width, height, opt_integralImage);
-//    var tempCanvas = document.createElement('canvas');
-//    tempCanvas.width = liveVideo.width;
-//    tempCanvas.height = liveVideo.height;
-//    var tempContext = tempCanvas.getContext('2d');
-//    tempContext.drawImage(liveVideo);
-//    var x = tempContext.getImageData(tempCanvas, rect.x, rect.y, rect.width, rect.height).data;
-//    console.log(x);
-//    var c = getCropImg(liveVideo, rect);
-//    var b = getBrightness(c);
-//    console.log(b);
-        
-//    var brightness = getBrightness(video, rect);
-        
-//    // Track average brightness of box around face
-//    cn
-//    var t = tracking.Image.grayscale(canvas, rect.width, rect.height, false);
-//    console.log(t);
+    }
     
     
     });
     
 });
 
-function getBrightness(w, h, ctx, video) {
+function getBrightness(w, h, ctx, video, rect) {
         // draw the current image
-        ctx.drawImage(video, 0, 0, w, h);
-        var imgd = ctx.getImageData(0, 0, w, h);
+        ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
+        var imgd = ctx.getImageData(0, 0, rect.width, rect.height);
         var p = imgd.data;
  
         var colorSum = 0;
@@ -135,7 +117,7 @@ function getBrightness(w, h, ctx, video) {
             avg = Math.floor((r+g+b)/3);
             colorSum += avg;
         }
-        var brightness = Math.floor(colorSum / (w*h));
+        var brightness = Math.floor(colorSum / (rect.width*rect.height));
         return brightness;
     }
 
