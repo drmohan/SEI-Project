@@ -44,7 +44,8 @@ function percentageToInches(p) {
 }
 
 
-var track1 = tracking.track('video#live', tracker, { camera: true });
+
+tracking.track('video#live', tracker, { camera: true });
 
 var lastRect;
 
@@ -137,7 +138,6 @@ recordButton.onclick = goButtonPressed;
 
 
 function goButtonPressed() {
-  track1.stop();
   $('#checklist-container').hide();
     $('#demo-container').show();
 

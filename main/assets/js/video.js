@@ -19,7 +19,7 @@ liveVideo.height = screen.height*(3/5);
 var recordedVideo = document.querySelector('video#recorded');
 
 // get canvas for facial tracking
-var canvas = document.getElementById('check-canvas');
+var canvas = document.getElementById('record-canvas');
 canvas.width = liveVideo.width;
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
@@ -47,7 +47,7 @@ tracker.setEdgesDensity(0.1);
 //}
 
 
-tracking.track('video#live', tracker, { camera: true });
+var track2 = tracking.track('video#live', tracker, { camera: true });
 
 tracker.on('track', function(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
