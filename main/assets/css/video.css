@@ -1,4 +1,16 @@
-#check-canvas {
+button#record{
+    visibility: hidden;
+}
+
+button#play{
+    visibility: hidden;
+}
+
+button#analyze{
+    visibility: hidden;
+}
+
+#canvas {
     background-color:darkslategray;
     opacity: 0.7;
 }
@@ -26,7 +38,7 @@ video, canvas {
     position: absolute;
     height: auto;
     z-index: -10;
-  }
+}
 
 
 video:last-of-type {

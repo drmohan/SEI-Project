@@ -1,12 +1,6 @@
-// Sources:
-// https://rawgit.com/Miguelao/demos/master/mediarecorder.html
-// https://github.com/webrtc/samples/tree/gh-pages/src/content/getusermedia/record
-
-
 'use strict';
 
 /* globals MediaRecorder */
-
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
@@ -16,10 +10,13 @@ var sourceBuffer;
 var liveVideo = document.querySelector('video#live');
 liveVideo.width = screen.width*(3/5);
 liveVideo.height = screen.height*(3/5);
-var recordedVideo = document.querySelector('video#recorded');
+var checklistDiv = document.getElementById('checklist');
+console.log(checklistDiv);
+checklistDiv.width = screen.width*(3/5);
+checklistDiv.height = screen.height*(3/5);
 
 // get canvas for facial tracking
-var canvas = document.getElementById('record-canvas');
+var canvas = document.getElementById('canvas');
 canvas.width = liveVideo.width;
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
@@ -30,48 +27,126 @@ tracker.setInitialScale(4);
 tracker.setStepSize(2);
 tracker.setEdgesDensity(0.1);
 
-//// data collection for proximity to screen
-//var percentages = [];
-//
-//// functions to handle input numbers for face proximity to screen
-//function rollingAverage(size) {
-//  percentages.splice(0, percentages.length - size);
-//  var sum = percentages.reduce(function(total, num) {
-//    return total + num
-//  }, 0);
-//  return sum / percentages.length;
-//}
-//
-//function percentageToInches(p) {
-//  return 49 * Math.exp(-0.023 * p);
-//}
+// data collection for proximity to screen
+var percentages = [];
+
+// functions to handle input numbers for face proximity to screen
+function rollingAverage(size) {
+  percentages.splice(0, percentages.length - size);
+  var sum = percentages.reduce(function(total, num) {
+    return total + num
+  }, 0);
+  return sum / percentages.length;
+}
+
+function percentageToInches(p) {
+  return 49 * Math.exp(-0.023 * p);
+}
 
 
-var track2 = tracking.track('video#live', tracker, { camera: true });
+tracking.track('video#live', tracker, { camera: true });
+
+var lastRect;
 
 tracker.on('track', function(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    console.log("ahhh");
+    // if no faces are detected in the screen
+    var imageCheckboxUser = document.querySelector("img#user-check");
+    if (event.data.length > 0) {
+        imageCheckboxUser.src = "assets/img/check-mark.png"
+    } else {
+        imageCheckboxUser.src = "assets/img/x-mark.png"
+
+    }
     event.data.forEach(function(rect) {
       context.strokeStyle = '#fff';
-      context.lineWidth = 5;
-      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
+      context.lineWidth = 5
+      context.strokeRect(rect.x, rect.y, rect.width, rect.height); 
 
-//      // write inches to screen in code element
-//    var percentage = 100 * rect.height / canvas.height;
-//    percentages.push(percentage);
-//    document.querySelector('code').textContent = percentageToInches(rollingAverage(5)).toFixed(0) + '"';
+    if (lastRect != undefined) {
+        var oneFace = oneFaceVisible(lastRect, rect);
+        var imageCheckboxFace = document.querySelector("img#face-check");
+        if (oneFace == true){
+            imageCheckboxFace.src = "assets/img/check-mark.png";
+        } else {
+            imageCheckboxFace.src = "assets/img/x-mark.png";
+        }
+    }
+    lastRect = rect;
+    var percentage = 100 * rect.height / canvas.height;
+    percentages.push(percentage);
+    var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
+    var imageCheckboxDist = document.querySelector("img#distance-check");
+    if (inchesFromScreen <= 20){
+        imageCheckboxDist.src = "assets/img/check-mark.png";
+    } else {
+        imageCheckboxDist.src = "assets/img/x-mark.png";
+    }
+     
+    // check brightness
+    var tempCanvas = document.createElement('canvas');
+    tempCanvas.width = liveVideo.width;
+    tempCanvas.height = liveVideo.height;
+    var tempContext = tempCanvas.getContext('2d');    
+    var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
+    
+    var imageCheckboxLight = document.querySelector("img#light-check");    
+    if (brightness >= 75) {
+        imageCheckboxLight.src = "assets/img/check-mark.png";
+    } else {
+        imageCheckboxLight.src = "assets/img/x-mark.png";
+    }
     });
 });
 
+function getBrightness(w, h, ctx, video, rect) {
+        // draw the current image
+        ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
+        var imgd = ctx.getImageData(0, 0, rect.width, rect.height);
+        var p = imgd.data;
+ 
+        var colorSum = 0;
+        var r, g, b, avg;
+        for (var i = 0, n = p.length; i < n; i += 4) {
+            r = p[i];
+            g = p[i+1];
+            b = p[i+2];
+            
+            avg = Math.floor((r+g+b)/3);
+            colorSum += avg;
+        }
+        var brightness = Math.floor(colorSum / (rect.width*rect.height));
+        return brightness;
+    }
 
+// returns true if only one face is visible
+function oneFaceVisible(lastRect, currentRect) {
+    if ( Math.abs(lastRect.x - currentRect.x) > 100 || Math.abs(lastRect.y - currentRect.y) > 100) {
+        return false;
+    }
+    return true;
+}
+
+var goButton = document.querySelector('button#go');
 var recordButton = document.querySelector('button#record');
 var playButton = document.querySelector('button#play');
 var analyzeButton = document.querySelector('button#analyze');
+goButton.onclick = goButtonPressed;
 recordButton.onclick = toggleRecording;
 playButton.onclick = play;
 analyzeButton.onclick = sendData;
+
+
+function goButtonPressed() {
+  $('div#checklist').hide();
+  $('canvas#canvas').css("background-color", "transparent");
+  $('button#go').hide();
+  $('button#record').css("visibility", "visible");
+  $('button#play').css("visibility", "visible");
+  $('button#analyze').css("visibility", "visible");
+};
+
 
 // window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
@@ -111,11 +186,11 @@ function handleSourceOpen(event) {
   console.log('Source buffer: ', sourceBuffer);
 }
 
-recordedVideo.addEventListener('error', function(ev) {
-  console.error('MediaRecording.recordedMedia.error()');
-  alert('Your browser can not play\n\n' + recordedVideo.src
-    + '\n\n media clip. event: ' + JSON.stringify(ev));
-}, true);
+//recordedVideo.addEventListener('error', function(ev) {
+//  console.error('MediaRecording.recordedMedia.error()');
+//  alert('Your browser can not play\n\n' + recordedVideo.src
+//    + '\n\n media clip. event: ' + JSON.stringify(ev));
+//}, true);
 
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
@@ -174,17 +249,17 @@ function startRecording() {
 function stopRecording() {
   mediaRecorder.stop();
   console.log('Recorded Blobs: ', recordedBlobs);
-  recordedVideo.controls = true;
+//  recordedVideo.controls = true;
 }
 
-function play() {
-  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-  recordedVideo.src = window.URL.createObjectURL(superBuffer);
-}
+//function play() {
+//  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+//  recordedVideo.src = window.URL.createObjectURL(superBuffer);
+//}
 
 function sendData() {
 
-  var IP = '128.237.204.77';
+  var IP = '128.237.138.96';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 

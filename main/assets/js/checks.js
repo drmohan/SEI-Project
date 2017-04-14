@@ -98,8 +98,6 @@ tracker.on('track', function(event) {
     } else {
         imageCheckboxLight.src = "assets/img/x-mark.png";
     }
-    
-    
     });
     
 });
