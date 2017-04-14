@@ -23,8 +23,8 @@ var context = canvas.getContext('2d');
 
 // get box for face tracking
 var tracker = new tracking.ObjectTracker('face');
-tracker.setInitialScale(4);
-tracker.setStepSize(2);
+tracker.setInitialScale(4.5);
+tracker.setStepSize(1);
 tracker.setEdgesDensity(0.1);
 
 // data collection for proximity to screen
