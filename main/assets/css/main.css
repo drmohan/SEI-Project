@@ -18,7 +18,7 @@ div#background {
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
-  background-color: #650404; /*376369*/
+  background-color: #16294B; /*376369*/
   opacity: 0.65;
   filter: alpha(opacity=65); /* For IE8 and earlier */
 }
@@ -32,11 +32,11 @@ body {
 
 #header {
     z-index: -1 !important;
-    background-color: #9A5A59; /*376369*/
+    background-color: #667289; /*376369*/
 }
 
 i.big.icon {
-    color: #9A5A59;
+    color: #667289;
     margin-top: 12px;
     margin-left: 7.5px;
     font-size: 3em;
@@ -56,13 +56,13 @@ i.big.icon {
     border: 0px solid whitesmoke !important;
     border-radius: 0px !important;
     background-color: whitesmoke !important;
-    color: #8C4240;
+    color: #667289;
 }
 
 .ui.huge.inverted.grey.button:hover {
     border-radius: 0px !important;
     background-color: rgba(245,245,245,0.8) !important;
-    color: #9A5A59;
+    color: #667289;
     border: 0px solid whitesmoke !important;
     -webkit-transition: all 500ms ease;
 -moz-transition: all 500ms ease;
@@ -83,7 +83,7 @@ transition: all 500ms ease;
      border-radius: 0px !important;
      border: 1px solid whitesmoke !important;
      background-color: rgba(245,245,245,0.9) !important;
-     color: #8C4240;
+     color: #667289;
     -webkit-transition: all 500ms ease;
 -moz-transition: all 500ms ease;
 -ms-transition: all 500ms ease;
@@ -93,7 +93,7 @@ transition: all 500ms ease;
 
 
 #footer {
-    background-color: #9A5A59 !important;
+    background-color: #667289 !important;
 }  
 
 .hidden.menu {
