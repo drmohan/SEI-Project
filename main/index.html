@@ -16,9 +16,14 @@
         });
     </script>
 </head>
-<body> 
-
-    <div class="ui vertical masthead center aligned segment">
+<body>
+    <video id="background-video" class="video" autoplay="autoplay" loop="loop" muted="" width="300" height="150">
+  <source src="w.mp4" type="video/mp4" />
+</video>
+    <div id="background">
+    </div>
+    
+<div class=" vertical masthead segment">
 
     <div id="header"></div>
 
@@ -26,8 +31,15 @@
       <h1 class="ui inverted header">
         Heart Rate Analytics
       </h1>
-      <h2>Analyzing your heartbeat through facial detection.</h2>
-      <a href="demo.html"><div class="ui huge primary button">Try the Demo<i class="right arrow icon"></i></div></a>
+    <h2>Analyzing your heartbeat through facial detection.</h2>
+      
+    <br><br><br>
+    <a href="demo.html">    
+    <div class="ui huge inverted grey button" tabindex="0">
+        <div >Try the Demo</div>
+    </div>  
+    </a>
+        
     </div>
 </div>
 

@@ -1,17 +1,98 @@
+video#background-video {
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: -2;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
+
+div#background {
+  position: fixed;
+  top: 50%; left: 50%;
+  z-index: -1;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  background-color: #650404; /*376369*/
+  opacity: 0.65;
+  filter: alpha(opacity=65); /* For IE8 and earlier */
+}
+
 body {
     font-family: 'Open Sans', 'Helvetica', sans-serif;
+    color: whitesmoke;
+    font-weight: 200 !important;
 }
 
-button#big {
-    
+#header {
+    z-index: -1 !important;
+    background-color: #9A5A59; /*376369*/
 }
 
-button#header {
-    
+i.big.icon {
+    color: #9A5A59;
+    margin-top: 12px;
+    margin-left: 7.5px;
+    font-size: 3em;
 }
+
+#icon-banner {
+    background-color: white !important;
+    width: 70px;
+    height: 70px;
+    margin-top: -15px;
+    margin-left: -25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.ui.huge.inverted.grey.button {
+    border: 0px solid whitesmoke !important;
+    border-radius: 0px !important;
+    background-color: whitesmoke !important;
+    color: #8C4240;
+}
+
+.ui.huge.inverted.grey.button:hover {
+    border-radius: 0px !important;
+    background-color: rgba(245,245,245,0.8) !important;
+    color: #9A5A59;
+    border: 0px solid whitesmoke !important;
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+}
+
+.ui.small.button {
+     border-radius: 0px !important;
+    border: 1px solid whitesmoke !important;
+     background-color: transparent !important;
+    color: whitesmoke;
+    font-weight: 300;
+}
+
+.ui.small.button:hover {
+     border-radius: 0px !important;
+     border: 1px solid whitesmoke !important;
+     background-color: rgba(245,245,245,0.9) !important;
+     color: #8C4240;
+    -webkit-transition: all 500ms ease;
+-moz-transition: all 500ms ease;
+-ms-transition: all 500ms ease;
+-o-transition: all 500ms ease;
+transition: all 500ms ease;
+}
+
 
 #footer {
-    background-color: black;
+    background-color: #9A5A59 !important;
 }  
 
 .hidden.menu {
@@ -26,18 +107,25 @@ button#header {
       margin-right: 1em;
     }
     .masthead .ui.menu .ui.button {
-      margin-left: 0.5em;
+      margin-left: 0em;
     }
     .masthead h1.ui.header {
-      margin-top: 3em;
+      margin-top: 1.2em;
       margin-bottom: 0em;
-      font-size: 4em;
-      font-weight: normal;
-        color: darkslategrey;
+      font-size: 6.2em;
+      font-weight: 300;
+        color: whitesmoke;
+      margin-left: 0.95em;
+transform:scale(1.2,1.1); /* W3C */
+-webkit-transform:scale(1.2,1.1); /* Safari and Chrome */
+-moz-transform:scale(1.2,1.1); /* Firefox */
+-ms-transform:scale(1.2,1.1); /* IE 9 */
+-o-transform:scale(1.2,1.1); /* Opera */
+/* Rest Of CSS Code Here*/
     }
     .masthead h2 {
       font-size: 1.7em;
-      font-weight: normal;
+      font-weight: 300;
     }
 
 .nav-img {
@@ -45,16 +133,19 @@ button#header {
 }
 
 .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item {
-    color: #183A53 !important;
+    color: whitesmoke !important;
+    font-weight: 300;
+    font-size: 0.9em !important;
 }
 
 .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item.active {
-    color: #183A53 !important;
+    color: whitesmoke !important;
 }
 
 .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item:hover {
-    color: #183A53 !important;
-    font-weight: bold;
+    color: whitesmoke !important;
+/*    font-weight: bold;*/
+    border-radius: 0px !important;
 }
 
 
@@ -93,7 +184,10 @@ button#header {
     .secondary.pointing.menu .toc.item {
       display: none;
     }
-    
+
+.ui.text.container {
+    max-width: 100% !important; 
+}
 .small-img {
     width: 30%;
 }
