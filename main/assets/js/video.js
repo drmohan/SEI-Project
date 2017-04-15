@@ -62,7 +62,7 @@ tracker.on('track', function(event) {
     event.data.forEach(function(rect) {
       context.strokeStyle = '#fff';
       context.lineWidth = 5
-      context.strokeRect(rect.x, rect.y, rect.width, rect.height); 
+      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 
     if (lastRect != undefined) {
         var oneFace = oneFaceVisible(lastRect, rect);
@@ -83,15 +83,15 @@ tracker.on('track', function(event) {
     } else {
         imageCheckboxDist.src = "assets/img/x-mark.png";
     }
-     
+
     // check brightness
     var tempCanvas = document.createElement('canvas');
     tempCanvas.width = liveVideo.width;
     tempCanvas.height = liveVideo.height;
-    var tempContext = tempCanvas.getContext('2d');    
+    var tempContext = tempCanvas.getContext('2d');
     var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
-    
-    var imageCheckboxLight = document.querySelector("img#light-check");    
+
+    var imageCheckboxLight = document.querySelector("img#light-check");
     if (brightness >= 75) {
         imageCheckboxLight.src = "assets/img/check-mark.png";
     } else {
@@ -105,14 +105,14 @@ function getBrightness(w, h, ctx, video, rect) {
         ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
         var imgd = ctx.getImageData(0, 0, rect.width, rect.height);
         var p = imgd.data;
- 
+
         var colorSum = 0;
         var r, g, b, avg;
         for (var i = 0, n = p.length; i < n; i += 4) {
             r = p[i];
             g = p[i+1];
             b = p[i+2];
-            
+
             avg = Math.floor((r+g+b)/3);
             colorSum += avg;
         }
@@ -259,7 +259,7 @@ function stopRecording() {
 
 function sendData() {
 
-  var IP = '128.237.138.96';
+  var IP = '172.31.99.232';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
