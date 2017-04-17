@@ -1,8 +1,10 @@
+/*
 div#container.demo {
-    background-color: #9A5A59;
+    background-color: #667289;
     z-index: -3;
     overflow:hidden;
 }
+*/
 
 video#background-video {
   position: fixed;
@@ -99,14 +101,10 @@ transition: all 500ms ease;
 
 
 #footer {
-<<<<<<< HEAD
     margin-top: 1em;
-    background-color: #9A5A59 !important;
     margin-bottom: 1em;
     text-align: center;
-=======
     background-color: #667289 !important;
->>>>>>> master
 }  
 
 .hidden.menu {

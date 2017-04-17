@@ -259,7 +259,7 @@ function stopRecording() {
 
 function sendData() {
 
-  var IP = '128.237.212.27';
+  var IP = '132.162.92.216';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
