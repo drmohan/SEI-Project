@@ -1,7 +1,9 @@
 <?php
-if($_POST["message"]) {
-    mail("asawarikanitkar@gmail.com", "Form to email message", $_POST["message"], "From: asawarikanitkar@gmail.com");
+if(isset($_POST['send'])) {
+    header("Location: "."http://localhost:8000/");  
+    $subject = $_POST['Interest'];
+    $message = $_POST['firstName'] . " " . $_POST['lastName'] . " " . $_POST['emailAddress'];
+    mail("asawarikanitkar@gmail.com", $subject, $message, "From: cmuform@gmail.com");
+       
 }
 ?>
-
-<p> Email successfully sent! </p>
