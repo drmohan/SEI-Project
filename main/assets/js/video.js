@@ -7,6 +7,16 @@ var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
 
+var bpms = [],
+    data = {},
+    ranges = [],
+    ranges2 = [],
+    ranges3 = [],
+    lowerLimit = 73,
+    upperLimit = 84;
+
+var vid;
+
 var liveVideo = document.querySelector('video#live');
 liveVideo.width = screen.width*(3/5);
 liveVideo.height = screen.height*(3/5);
@@ -62,7 +72,7 @@ tracker.on('track', function(event) {
     event.data.forEach(function(rect) {
       context.strokeStyle = '#fff';
       context.lineWidth = 5
-      context.strokeRect(rect.x, rect.y, rect.width, rect.height); 
+      context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 
     if (lastRect != undefined) {
         var oneFace = oneFaceVisible(lastRect, rect);
@@ -83,15 +93,15 @@ tracker.on('track', function(event) {
     } else {
         imageCheckboxDist.src = "assets/img/x-mark.png";
     }
-     
+
     // check brightness
     var tempCanvas = document.createElement('canvas');
     tempCanvas.width = liveVideo.width;
     tempCanvas.height = liveVideo.height;
-    var tempContext = tempCanvas.getContext('2d');    
+    var tempContext = tempCanvas.getContext('2d');
     var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
-    
-    var imageCheckboxLight = document.querySelector("img#light-check");    
+
+    var imageCheckboxLight = document.querySelector("img#light-check");
     if (brightness >= 75) {
         imageCheckboxLight.src = "assets/img/check-mark.png";
     } else {
@@ -105,14 +115,14 @@ function getBrightness(w, h, ctx, video, rect) {
         ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
         var imgd = ctx.getImageData(0, 0, rect.width, rect.height);
         var p = imgd.data;
- 
+
         var colorSum = 0;
         var r, g, b, avg;
         for (var i = 0, n = p.length; i < n; i += 4) {
             r = p[i];
             g = p[i+1];
             b = p[i+2];
-            
+
             avg = Math.floor((r+g+b)/3);
             colorSum += avg;
         }
@@ -259,17 +269,27 @@ function stopRecording() {
 
 function sendData() {
 
+<<<<<<< HEAD
   var IP = '132.162.92.216';
+=======
+  var IP = '10.0.0.61';
+>>>>>>> 11dae4fc096a0d68e18c64635e5b341209d59714
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
 
       $('#container').hide();
-      $('#vid').load("partials/vid.html");
 
-      console.log(data.csvData);
-      plotBPMs(data.csvData);
+      var recordedVideo = document.querySelector('video#recorded-vid');
+
+      var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+
+      recordedVideo.src = window.URL.createObjectURL(superBuffer);
+
+      vid = document.getElementById('recorded-vid');
+
+      processData(data.csvData);
 
     });
 
@@ -302,79 +322,124 @@ function sendData() {
   }, 100);
 }
 
-function plotBPMs(csvData){
-  var chartData = generatechartData();
+function processData(allText) {
+  console.log("in processData");
+  console.log(allText);
+  // var x = document.querySelector('video#recorded-vid');
 
-  function generatechartData() {
-    var chartData = [];
+  var lines = allText.split("\n");
 
-    var d = csvData.split('\n');
-    console.log(d[0]);
-    for ( var i = 0; i < d.length; i++ ) {
-      var line = d[i]
-      line = line.split(',')
-      chartData.push({
-        frame: Number(line[3]),
-        bpm: Number(line[2])
-      });
-    }
-    return chartData;
+  for (var i=1; i<lines.length; i++) {
+    var l = lines[i-1];
+    l = l.split(",");
+    console.log(l)
+    var frame = l[0];
+    var bpm = Number(l[2]);
+    var time = Number(l[3]);
+    data[time] = {'bpm':bpm, 'time':time};
+    bpms.push(bpm);
+    // 73=average, 84=below average
+    ranges.push([Number(frame), lowerLimit, upperLimit]);
+    ranges2.push([Number(frame), 84, 95]);
+    ranges3.push([Number(frame), 70, 73]);
+
+  // console.log(ranges);
+
   }
+  console.log("data");
+  console.log(data);
 
+  var hc = Highcharts.chart('container2', {
 
-  var chart = AmCharts.makeChart( "chartdiv", {
-    "theme": "light",
-    "type": "serial",
-    "dataProvider": chartData,
-    "valueAxes": [ {
-      "inside": true,
-      "axisAlpha": 0
-    } ],
-    "graphs": [ {
-      "id": "g1",
-      "balloonText": "<div style='margin:5px; font-size:19px;'><span style='font-size:13px;'>[[category]]</span><br>[[value]]</div>",
-      "oneBalloonOnly": true,
-      "bullet": "round",
-      "bulletSize": 0.1,
-      "bulletAlpha": 0,
-      // "bulletBorderColor": "#FFFFFF",
-      // "hideBulletsCount": 500,
-      "lineThickness": 4,
-      "lineColor": "#fdd400",
-      "negativeBase": 85,
-      "negativeLineColor": "#67b7dc",
-      "valueField": "bpm"
-    } ],
-    "chartScrollbar": {
+        title: {
+            text: ' '
+        },
 
-    },
-    "chartCursor": {},
-    "categoryField": "frame",
+        yAxis: {
+            title: {
+                text: 'Beats Per Minute'
+            }
+        },
 
-    "listeners": [ {
-      "event": "dataUpdated",
-      "method": function() {
-        if ( chart ) {
-          if ( chart.zoomToIndexes ) {
-            chart.zoomToIndexes( 130, chartData.length - 1 );
-          }
-        }
-      }
-    } ]
-  } );
+        xAxis: {
+            title: {
+                text: 'Time'
+            },
+            // tickInterval: 0.3
+        },
 
-  // You have to roll over the line itself it doesn't work
-  // if you just move the cursor (not ideal sorry)
-  chart.addListener("rollOverGraphItem", function(event) {
-    setCurTime(Number(event.item.category));
-  });
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle'
+        },
 
-  // Function that set's the video to match the time
-  // hovered over in graph
-  function setCurTime(time) {
-    var vid = document.getElementById("myVideo");
-    vid.currentTime = time;
-    console.log(vid.currentTime);
-  }
+        plotOptions: {
+              series: {
+                  cursor: 'pointer',
+                  pointStart: 0,
+                  pointInterval: 0.3,
+                  point: {
+                      events: {
+                          mouseOver: function (e) {
+                              x: e.pageX || e.clientX
+                              y: e.pageY || e.clientY
+                              console.log(this.x);
+                              // console.log(this.x);
+                              setCurTime(this.x);
+                          }
+                      }
+                  },
+                  marker: {
+                      lineWidth: 1
+                  }
+            }
 
-};
+        },
+        series: [{
+            name: 'BPM',
+            data: bpms,
+            color: '#FFFFFF'
+          },
+          // {
+          //     name: 'Range',
+          //     data: ranges,
+          //     type: 'arearange',
+          //     lineWidth: 0,
+          //     linkedTo: ':previous',
+          //     color: '#99b799',
+          //     fillOpacity: 0.2,
+          //     zIndex: 0
+          // },
+          // {
+          //     name: 'Range',
+          //     data: ranges2,
+          //     type: 'arearange',
+          //     lineWidth: 0,
+          //     linkedTo: ':previous',
+          //     color: '#B22222',
+          //     fillOpacity: 0.2,
+          //     zIndex: -1
+          // },
+          // {
+          //     name: 'Range',
+          //     data: ranges3,
+          //     type: 'arearange',
+          //     lineWidth: 0,
+          //     linkedTo: ':previous',
+          //     color: '#99b799',
+          //     fillOpacity: 0.4,
+          //     zIndex: -1
+          // }
+        ]
+
+    });
+
+}
+
+function setCurTime(time) {
+  // debugger;
+  // console.log(vid);
+  vid.currentTime = time;
+  console.log(vid.currentTime);
+}

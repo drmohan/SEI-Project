@@ -17,7 +17,7 @@
          * (c) 2010-2016 Torstein Honsi
          *
          * License: www.highcharts.com/license
-         * 
+         *
          * Dark theme for Highcharts JS
          * @author Torstein Honsi
          */
@@ -26,7 +26,7 @@
         /* global document */
         // Load the fonts
         Highcharts.createElement('link', {
-            href: 'https://fonts.googleapis.com/css?family=Unica+One',
+            href: 'https://fonts.googleapis.com/css?family=Open+Sans',
             rel: 'stylesheet',
             type: 'text/css'
         }, null, document.getElementsByTagName('head')[0]);
@@ -36,20 +36,21 @@
                 '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'
             ],
             chart: {
-                backgroundColor: {
-                    linearGradient: {
-                        x1: 0,
-                        y1: 0,
-                        x2: 1,
-                        y2: 1
-                    },
-                    stops: [
-                        [0, '#2a2a2b'],
-                        [1, '#3e3e40']
-                    ]
-                },
+                backgroundColor: 'rgba(0, 0, 0, 0.20)',
+                // {
+                //     linearGradient: {
+                //         x1: 0,
+                //         y1: 0,
+                //         x2: 1,
+                //         y2: 1
+                //     },
+                //     stops: [
+                //         [0, '#2a2a2b'],
+                //         [1, '#3e3e40']
+                //     ]
+                // },
                 style: {
-                    fontFamily: '\'Unica One\', sans-serif'
+                    fontFamily: '\'Open Sans\', sans-serif'
                 },
                 plotBorderColor: '#606063'
             },
