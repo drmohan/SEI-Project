@@ -73,8 +73,17 @@ video#recorded {
   }
 }
 
-#chartdiv {
-  width: 90%;
-  height: 500px;
-  margin-left: 5%;
+.testing{
+  position: relative;
+}
+
+#recorded-vid{
+  position: absolute;
+  width: 100%;
+}
+
+#container2{
+  position: absolute;
+  width: 100% !important;
+  top: 350px;
 }
