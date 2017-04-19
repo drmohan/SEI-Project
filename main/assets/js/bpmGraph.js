@@ -3,17 +3,22 @@ var bpms = [],
     avg = [],
     aboveAvg = [],
     belowAvg = [],
-    lowerLimit = 73,
-    upperLimit = 84;
-
-var belowAvgLower, belowAvgUpper, avgLower, avgUpper, aboveAvgLower, aboveAvgUpper;
+    belowAvgLower = 0,
+    belowAvgUpper = 0,
+    avgLower = 0,
+    avgUpper = 0,
+    aboveAvgLower = 0,
+    aboveAvgUpper = 0;
 
 
 // var paramURL = window.location.href;
 
 $(document).ready(function () {
-  localStorage.age = getParameterByName('age');
-  localStorage.gender = getParameterByName('dropdown');
+
+  // window.onload = function() {
+  //   console.log("here");
+
+  // };
 
   Highcharts.chart('container', {
 
@@ -58,8 +63,9 @@ $(document).ready(function () {
       series: [{
           name: 'BPM',
           data: bpms,
-          color: '#FFFFFF'
-        },
+          color: '#000000'
+        }
+        ,
         {
             name: 'Range',
             data: belowAvg,
@@ -97,6 +103,9 @@ $(document).ready(function () {
 
 function processData(allText) {
   console.log("in processData");
+  localStorage.age = getParameterByName('age');
+  localStorage.gender = getParameterByName('dropdown');
+
   var lines = allText.split("\n");
 
   for (var i=1; i<lines.length; i++) {
@@ -115,17 +124,20 @@ function processData(allText) {
     // console.log(ranges);
   }
 
-  // var start = 0;
-  // var diff = Number(data[Object.keys(data)[1]].time) - Number(data[Object.keys(data)[0]].time);
-  // var age = localStorage.age;
-  // var gender = localStorage.gender;
-  // // getRanges(age, gender);
-  // for(var n=0; n<lines.length; i++){
-  //   aboveAvg.push(start, aboveAvgLower, aboveAvgUpper);
-  //   avg.push(start, avgLower, avgUpper);
-  //   belowAvg.push(start, belowAvgLower, belowAvgUpper);
-  //   start += diff;
-  // }
+  var start = 0;
+  var diff = Number(data[Object.keys(data)[1]].time) - Number(data[Object.keys(data)[0]].time);
+  var age = localStorage.age;
+  var gender = localStorage.gender;
+  var rangeValues = getRanges(Number(age), gender);
+  console.log("testing values");
+  console.log(rangeValues);
+
+  for(var n=0; n<lines.length; n++){
+    aboveAvg.push([start, rangeValues.aboveAvgLower, rangeValues.aboveAvgUpper]);
+    avg.push([start, rangeValues.avgLower, rangeValues.avgUpper]);
+    belowAvg.push([start, rangeValues.belowAvgLower, rangeValues.belowAvgUpper]);
+    start += diff;
+  }
 }
 
 function getParameterByName(name, url) {
@@ -139,6 +151,17 @@ function getParameterByName(name, url) {
 }
 
 function getRanges(age, gender){
+  console.log(age);
+  console.log(gender)
+  console.log(gender == "F")
+
+  var belowAvgLower;
+  var belowAvgUpper;
+  var avgLower;
+  var avgUpper;
+  var aboveAvgLower;
+  var aboveAvgUpper;
+  console.log("getting ranges")
   if( gender == "M" ){
     if( age >= 18 || age <= 25 ){
       belowAvgLower = 74;
@@ -197,6 +220,14 @@ function getRanges(age, gender){
       avgUpper = 78;
       aboveAvgLower = 70;
       aboveAvgUpper = 73;
+      return {
+        belowAvgLower: belowAvgLower,
+        belowAvgUpper: belowAvgUpper,
+        avgLower: avgLower,
+        avgUpper: avgUpper,
+        aboveAvgLower: aboveAvgLower,
+        aboveAvgUpper: aboveAvgUpper
+      };
     }
     else if( age >= 26 || age <= 35 ){
       belowAvgLower = 77;
@@ -239,6 +270,7 @@ function getRanges(age, gender){
       aboveAvgUpper = 72;
     }
   }
+
 }
 
 // function getParams(paramURL) {
@@ -246,8 +278,3 @@ function getRanges(age, gender){
 //   console.log(age);
 //   console.log(gender);
 // }
-
-// window.onload = function() {
-//   console.log(localStorage.age)
-//   console.log(localStorage.gender)
-// };
