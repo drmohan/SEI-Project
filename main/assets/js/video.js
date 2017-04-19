@@ -267,25 +267,38 @@ function stopRecording() {
 //  recordedVideo.src = window.URL.createObjectURL(superBuffer);
 //}
 
+function showForm(){
+  // debugger;
+  $('.ui.modal').modal('show');      //things to do on click
+};
+
 function sendData() {
 
-  var IP = '128.237.210.157';
+  var x = showForm()
+  var IP = '128.237.135.156';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
+      console.log("BPMS HAVE BEEN RECEIVED");
+      $('#loading-icon').css("display", "none");
+      $('#view-the-results').css("display", "");
 
-      $('#container').hide();
+      localStorage.csvData = data.csvData;
 
-      var recordedVideo = document.querySelector('video#recorded-vid');
 
-      var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-
-      recordedVideo.src = window.URL.createObjectURL(superBuffer);
-
-      vid = document.getElementById('recorded-vid');
-
-      processData(data.csvData);
+      // $('#container').hide();
+      //
+      // var recordedVideo = document.querySelector('video#recorded-vid');
+      //
+      // var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+      //
+      // recordedVideo.src = window.URL.createObjectURL(superBuffer);
+      //
+      // vid = document.getElementById('recorded-vid');
+      //
+      // processData(data.csvData);
+      // $('.ui.modal').modal('show');
 
     });
 
@@ -310,7 +323,7 @@ function sendData() {
   a.style.display = 'none';
   a.href = url;
   a.download = 'test.webm';
-  window.location.href = "loading.html"
+  // window.location.href = "loading.html"
   document.body.appendChild(a);
   a.click();
   setTimeout(function() {
@@ -381,8 +394,6 @@ function processData(allText) {
                           mouseOver: function (e) {
                               x: e.pageX || e.clientX
                               y: e.pageY || e.clientY
-                              console.log(this.x);
-                              // console.log(this.x);
                               setCurTime(this.x);
                           }
                       }
@@ -434,35 +445,35 @@ function processData(allText) {
 
 }
 
-function setCurTime(time) {
-  // debugger;
-  // console.log(vid);
-  vid.currentTime = time;
-  console.log(vid.currentTime);
-}
+// function setCurTime(time) {
+//   // debugger;
+//   // console.log(vid);
+//   vid.currentTime = time;
+//   console.log(vid.currentTime);
+// }
 
 
 
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
+// function getParameterByName(name, url) {
+//     if (!url) url = window.location.href;
+//     name = name.replace(/[\[\]]/g, "\\$&");
+//     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//         results = regex.exec(url);
+//     if (!results) return null;
+//     if (!results[2]) return '';
+//     return decodeURIComponent(results[2].replace(/\+/g, " "));
+// }
+//
+// var age = getParameterByName('age');
+// var gender = getParameterByName('dropdown');
+// var paramURL = window.location.href;
+//
+// function getParams(paramURL) {
+//   console.log(paramURL);
+//   console.log(age);
+//   console.log(gender);
+// }
 
-var age = getParameterByName('age');
-var gender = getParameterByName('dropdown');
-var paramURL = window.location.href;
-
-function getParams(paramURL) {
-  console.log(paramURL);
-  console.log(age);
-  console.log(gender);
-}
-
-window.onload = function() {
-  getParams(paramURL);
-};
+// window.onload = function() {
+//   getParams(paramURL);
+// };

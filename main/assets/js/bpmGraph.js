@@ -1,12 +1,19 @@
 var bpms = [],
     data = {},
-    ranges = [],
-    ranges2 = [],
-    ranges3 = [],
+    avg = [],
+    aboveAvg = [],
+    belowAvg = [],
     lowerLimit = 73,
     upperLimit = 84;
 
+var belowAvgLower, belowAvgUpper, avgLower, avgUpper, aboveAvgLower, aboveAvgUpper;
+
+
+// var paramURL = window.location.href;
+
 $(document).ready(function () {
+  localStorage.age = getParameterByName('age');
+  localStorage.gender = getParameterByName('dropdown');
 
   Highcharts.chart('container', {
 
@@ -29,14 +36,16 @@ $(document).ready(function () {
 
             series: {
                 cursor: 'pointer',
-                pointStart: 500,
+                pointStart: Number(data[Object.keys(data)[0]].time),
+                pointInterval: Number(data[Object.keys(data)[1]].time) - Number(data[Object.keys(data)[0]].time),
                 point: {
                     events: {
                         mouseOver: function (e) {
                             x: e.pageX || e.clientX
                             y: e.pageY || e.clientY
                             // console.log(data[this.x]);
-                            setCurTime(data[this.x].time);
+                            var vid = document.getElementById("myVideo");
+                            vid.currentTime = this.x;
                         }
                     }
                 },
@@ -49,11 +58,11 @@ $(document).ready(function () {
       series: [{
           name: 'BPM',
           data: bpms,
-          color: '#000000'
+          color: '#FFFFFF'
         },
         {
             name: 'Range',
-            data: ranges,
+            data: belowAvg,
             type: 'arearange',
             lineWidth: 0,
             linkedTo: ':previous',
@@ -63,7 +72,7 @@ $(document).ready(function () {
         },
         {
             name: 'Range',
-            data: ranges2,
+            data: avg,
             type: 'arearange',
             lineWidth: 0,
             linkedTo: ':previous',
@@ -73,7 +82,7 @@ $(document).ready(function () {
         },
         {
             name: 'Range',
-            data: ranges3,
+            data: aboveAvg,
             type: 'arearange',
             lineWidth: 0,
             linkedTo: ':previous',
@@ -99,14 +108,146 @@ function processData(allText) {
     data[frame] = {'bpm':bpm, 'time':time};
     bpms.push(bpm);
     // 73=average, 84=below average
-    ranges.push([Number(frame), lowerLimit, upperLimit]);
-    ranges2.push([Number(frame), 84, 95]);
-    ranges3.push([Number(frame), 70, 73]);
+    // ranges.push([Number(frame), lowerLimit, upperLimit]);
+    // ranges2.push([Number(frame), 84, 95]);
+    // ranges3.push([Number(frame), 70, 73]);
 
-  // console.log(ranges);
-
+    // console.log(ranges);
   }
 
-
-
+  // var start = 0;
+  // var diff = Number(data[Object.keys(data)[1]].time) - Number(data[Object.keys(data)[0]].time);
+  // var age = localStorage.age;
+  // var gender = localStorage.gender;
+  // // getRanges(age, gender);
+  // for(var n=0; n<lines.length; i++){
+  //   aboveAvg.push(start, aboveAvgLower, aboveAvgUpper);
+  //   avg.push(start, avgLower, avgUpper);
+  //   belowAvg.push(start, belowAvgLower, belowAvgUpper);
+  //   start += diff;
+  // }
 }
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function getRanges(age, gender){
+  if( gender == "M" ){
+    if( age >= 18 || age <= 25 ){
+      belowAvgLower = 74;
+      belowAvgUpper = 81;
+      avgLower = 70;
+      avgUpper = 73;
+      aboveAvgLower = 66;
+      aboveAvgUpper = 69;
+    }
+    else if( age >= 26 || age <= 35 ){
+      belowAvgLower = 75;
+      belowAvgUpper = 81;
+      avgLower = 71;
+      avgUpper = 74;
+      aboveAvgLower = 66;
+      aboveAvgUpper = 70;
+    }
+    else if( age >= 36 || age <= 45 ){
+      belowAvgLower = 76;
+      belowAvgUpper = 82;
+      avgLower = 71;
+      avgUpper = 75;
+      aboveAvgLower = 67;
+      aboveAvgUpper = 70;
+    }
+    else if( age >= 46 || age <= 55 ){
+      belowAvgLower = 77;
+      belowAvgUpper = 83;
+      avgLower = 72;
+      avgUpper = 76;
+      aboveAvgLower = 68;
+      aboveAvgUpper = 71;
+    }
+    else if( age >= 56 || age <= 65 ){
+      belowAvgLower = 76;
+      belowAvgUpper = 81;
+      avgLower = 72;
+      avgUpper = 75;
+      aboveAvgLower = 68;
+      aboveAvgUpper = 71;
+    }
+    else if( age > 65 ){
+      belowAvgLower = 74;
+      belowAvgUpper = 79;
+      avgLower = 70;
+      avgUpper = 73;
+      aboveAvgLower = 66;
+      aboveAvgUpper = 79;
+    }
+  }
+  else{
+    if( age >= 18 || age <= 25 ){
+      belowAvgLower = 79;
+      belowAvgUpper = 84;
+      avgLower = 74;
+      avgUpper = 78;
+      aboveAvgLower = 70;
+      aboveAvgUpper = 73;
+    }
+    else if( age >= 26 || age <= 35 ){
+      belowAvgLower = 77;
+      belowAvgUpper = 82;
+      avgLower = 73;
+      avgUpper = 76;
+      aboveAvgLower = 69;
+      aboveAvgUpper = 72;
+    }
+    else if( age >= 36 || age <= 45 ){
+      belowAvgLower = 79;
+      belowAvgUpper = 84;
+      avgLower = 74;
+      avgUpper = 78;
+      aboveAvgLower = 70;
+      aboveAvgUpper = 73;
+    }
+    else if( age >= 46 || age <= 55 ){
+      belowAvgLower = 78;
+      belowAvgUpper = 83;
+      avgLower = 74;
+      avgUpper = 77;
+      aboveAvgLower = 70;
+      aboveAvgUpper = 73;
+    }
+    else if( age >= 56 || age <= 65 ){
+      belowAvgLower = 78;
+      belowAvgUpper = 83;
+      avgLower = 74;
+      avgUpper = 77;
+      aboveAvgLower = 69;
+      aboveAvgUpper = 73;
+    }
+    else if( age > 65 ){
+      belowAvgLower = 77;
+      belowAvgUpper = 84;
+      avgLower = 73;
+      avgUpper = 76;
+      aboveAvgLower = 69;
+      aboveAvgUpper = 72;
+    }
+  }
+}
+
+// function getParams(paramURL) {
+//   console.log(paramURL);
+//   console.log(age);
+//   console.log(gender);
+// }
+
+// window.onload = function() {
+//   console.log(localStorage.age)
+//   console.log(localStorage.gender)
+// };
