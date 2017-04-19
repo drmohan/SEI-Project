@@ -27,6 +27,10 @@ button#analyze{
    margin-right: 10px;
 }
 
+.control-button {
+    background-color: olivedrab
+}
+
 p.borderBelow {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;

@@ -17,6 +17,15 @@ video#background-video {
   transform: translate(-50%, -50%);
 }
 
+video#intro-video {
+    max-width: 70%;
+    height: auto;
+    text-align: center !important;
+    -webkit-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+-moz-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+}
+
 div#background {
   position: fixed;
   top: 50%; left: 50%;
