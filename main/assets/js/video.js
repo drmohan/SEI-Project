@@ -269,7 +269,7 @@ function stopRecording() {
 
 function sendData() {
 
-  var IP = '10.0.0.61';
+  var IP = '128.237.195.244';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
@@ -310,6 +310,7 @@ function sendData() {
   a.style.display = 'none';
   a.href = url;
   a.download = 'test.webm';
+  window.location.href = "loading.html"
   document.body.appendChild(a);
   a.click();
   setTimeout(function() {
@@ -439,3 +440,29 @@ function setCurTime(time) {
   vid.currentTime = time;
   console.log(vid.currentTime);
 }
+
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+var age = getParameterByName('age');
+var gender = getParameterByName('dropdown');
+var paramURL = window.location.href;
+
+function getParams(paramURL) {
+  console.log(paramURL);
+  console.log(age);
+  console.log(gender);
+}
+
+window.onload = function() {
+  getParams(paramURL);
+};

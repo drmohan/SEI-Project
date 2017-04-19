@@ -8,7 +8,7 @@
     <link rel="stylesheet" type = "text/css" href="assets/css/main.css">
     <link rel="shortcut icon" href="assets/img/browserimg.ico"/>
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
+    
     <script> 
         $(function(){
           $("#header").load("partials/header.html"); 
@@ -23,18 +23,26 @@
 
     <div id="header"></div>
         <div class="ui text container">
-        <div class"ui form">
-        <div class="field">
-        <label>Age:</label>
-        <input id= "Age" type="text" placeholder="Age">
-        </div>
-      
-        <div class="field">
-        <label>Gender</label>
-        <input type="Gender" placeholder="Gender">
-        </div>
-        </div>
-    </div>
+         <form class = "ui form" method="get" action="demo.html">
+            <div class="field">
+                <label>Age</label>
+                <input id= "Age" type="text" placeholder="Age" name = "age">
+            </div>
+            <div class="ui selection dropdown">
+                <input type="hidden" name="dropdown">
+                <i class="dropdown icon"></i>
+                <div class="default text">Gender</div>
+                <div class="menu">
+                <div class="item" data-value="M" name = "Male">M</div>
+                <div class="item" data-value="F" name = "Female">F</div>
+            </div>
+            
+</div>
+    <button class="ui submit button" type="submit" name = "send" value = "submit">Submit</button>
+</form>
+
+         </div>
+
     
 </div>
 
@@ -44,5 +52,7 @@
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/transition.js"></script>
+    <script type="text/javascript" src="assets/js/contact.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
 </html>
+
