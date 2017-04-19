@@ -1,3 +1,9 @@
+// when certain buttons are clicked, hide the intro and continue to the demo
+function endIntro() {
+   $('#intro-container').hide();
+   $('#demo-container').show();
+};
+
 $(document).ready(function() {
 
     // PAGE 1

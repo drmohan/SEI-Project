@@ -1,3 +1,11 @@
+/*
+div#container.demo {
+    background-color: #667289;
+    z-index: -3;
+    overflow:hidden;
+}
+*/
+
 video#background-video {
   position: fixed;
   top: 50%; left: 50%;
@@ -7,6 +15,15 @@ video#background-video {
   width: auto;
   height: auto;
   transform: translate(-50%, -50%);
+}
+
+video#intro-video {
+    max-width: 70%;
+    height: auto;
+    text-align: center !important;
+    -webkit-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+-moz-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
 }
 
 div#background {
@@ -93,6 +110,9 @@ transition: all 500ms ease;
 
 
 #footer {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
     background-color: #667289 !important;
 }
 

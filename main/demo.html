@@ -32,22 +32,40 @@
           $("#header").load("partials/header.html");
           $("#footer").load("partials/footer.html");
           $("#demo-container").load("partials/demo_video.html");
+//          $('#demo-container').hide();
+          
         });
     </script>
 <head>
 </head>
 <body>
 
+<div class=" vertical masthead segment">
+
 <div id="header"></div>
 
+<!--
+<div id="intro-container">
+
+    <video id="intro-video" class="video" autoplay="autoplay" muted="" width="300" height="150">
+        <source src="intro.mp4" type="video/mp4" />
+    </video>
+    
+    <button type="button" class="control-button" id="intro-end" onclick="endIntro();">Ready?</button>
+    
+</div>
+-->
+    
 <div id="demo-container"></div>
-
+</div>
 <div id="footer"></div>
-
 </body>
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
+<!--
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/transition.js"></script>
+-->
+<!--    <script type="text/javascript" src="assets/js/intro.js"></script>-->
     <script type="text/javascript" src="assets/js/demo.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
 

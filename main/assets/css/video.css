@@ -11,7 +11,7 @@ button#analyze{
 }
 
 #canvas {
-    background-color:darkslategray;
+    background-color:#4E4E4E;
     opacity: 0.7;
 }
 
@@ -19,6 +19,7 @@ button#analyze{
     font-size: 16px;
     color: whitesmoke;
     display: inline-block;
+    z-index: 10000;
 }
 
 #checklist img {
@@ -26,18 +27,28 @@ button#analyze{
    margin-right: 10px;
 }
 
+.control-button {
+    background-color: olivedrab
+}
+
 p.borderBelow {
   margin: 0 0 20px 0;
   padding: 0 0 20px 0;
 }
 
+video {
+    width: auto;
+    overflow:hidden;
+    display:block;
+    height: 400px;
+}
 
 video, canvas {
     margin-left: 0px !important;
-    margin-top: 30px;
+/*    margin-top: 30px;*/
     position: absolute;
     height: auto;
-    z-index: -10;
+    z-index: -2;
 }
 
 
@@ -45,13 +56,15 @@ video:last-of-type {
   margin: 0 0 20px 0;
 }
 
+/*
 video#recorded {
     margin-top: 500px;
-    width:30%;
+    width:50%;
     height: 30%;
     height:inherit !important;
     position: relative;
 }
+*/
 
 @media screen and (max-width: 500px) {
   button {
