@@ -275,7 +275,7 @@ function showForm(){
 function sendData() {
 
   var x = showForm()
-  var IP = '10.0.0.61';
+  var IP = '128.237.135.156';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
@@ -283,6 +283,9 @@ function sendData() {
       console.log("BPMS HAVE BEEN RECEIVED");
       $('#loading-icon').css("display", "none");
       $('#view-the-results').css("display", "");
+
+      localStorage.csvData = data.csvData;
+
 
       // $('#container').hide();
       //
@@ -391,8 +394,6 @@ function processData(allText) {
                           mouseOver: function (e) {
                               x: e.pageX || e.clientX
                               y: e.pageY || e.clientY
-                              console.log(this.x);
-                              // console.log(this.x);
                               setCurTime(this.x);
                           }
                       }
@@ -444,35 +445,35 @@ function processData(allText) {
 
 }
 
-function setCurTime(time) {
-  // debugger;
-  // console.log(vid);
-  vid.currentTime = time;
-  console.log(vid.currentTime);
-}
+// function setCurTime(time) {
+//   // debugger;
+//   // console.log(vid);
+//   vid.currentTime = time;
+//   console.log(vid.currentTime);
+// }
 
 
 
-function getParameterByName(name, url) {
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
+// function getParameterByName(name, url) {
+//     if (!url) url = window.location.href;
+//     name = name.replace(/[\[\]]/g, "\\$&");
+//     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+//         results = regex.exec(url);
+//     if (!results) return null;
+//     if (!results[2]) return '';
+//     return decodeURIComponent(results[2].replace(/\+/g, " "));
+// }
+//
+// var age = getParameterByName('age');
+// var gender = getParameterByName('dropdown');
+// var paramURL = window.location.href;
+//
+// function getParams(paramURL) {
+//   console.log(paramURL);
+//   console.log(age);
+//   console.log(gender);
+// }
 
-var age = getParameterByName('age');
-var gender = getParameterByName('dropdown');
-var paramURL = window.location.href;
-
-function getParams(paramURL) {
-  console.log(paramURL);
-  console.log(age);
-  console.log(gender);
-}
-
-window.onload = function() {
-  getParams(paramURL);
-};
+// window.onload = function() {
+//   getParams(paramURL);
+// };

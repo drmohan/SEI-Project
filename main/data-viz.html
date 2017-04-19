@@ -19,23 +19,23 @@
     <script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
     <script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
     <script src="assets/js/bpmGraph.js"></script>
-    
-    <script> 
+
+    <script>
         $(function(){
-          $("#header").load("partials/header.html"); 
-          $("#footer").load("partials/footer.html"); 
+          $("#header").load("partials/header.html");
+          $("#footer").load("partials/footer.html");
         });
-    </script> 
+    </script>
 
 <head>
 </head>
 <body>
-    
+
 <div class="ui vertical masthead center aligned segment">
 
-    
+
   <div id="header"></div>
-    
+
     <div class="ui text container">
 
 
@@ -47,13 +47,13 @@
     <div id="container"></div>
   </div>
   <div class="four wide column">
-    <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black" src="hillary-face-email-attack.mov"></video>
+    <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black"></video>
   </div>
 </div>
 <label> How accurate does this seem? </label><br></br>
 <div class="ui huge star rating" data-rating="4"></div>
     </div>
-    
+
 <!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
 <video id="myVideo" width="320" height="240" src="hillary-face-email-attack.mov"></video> -->
     </div>
@@ -74,15 +74,17 @@
       url: "/hillary-face-email-attack.csv",
       dataType: "text",
       success: function(data) {
-        processData(data);
+        var video = document.getElementById('myVideo');
+        video.src = "Down/test.webm";
+        processData(localStorage.csvData);
       }
    });
 
-  var x = document.getElementById("myVideo");
-  function setCurTime(time) {
-    // console.log(time);
-    x.currentTime = time;
-  }
+  // var x = document.getElementById("myVideo");
+  // function setCurTime(time) {
+  //   // console.log(time);
+  //   x.currentTime = time;
+  // }
 
   $('.ui.rating')
   .rating({

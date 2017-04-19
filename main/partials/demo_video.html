@@ -26,45 +26,46 @@
 
   <div class="description">
 
-    <div class="ui grid">
-      <div class="four wide column">
-        <div class="ui header">Enter your age and gender for more tailored results</div>
-      </div>
-      <div class="twelve wide column">
-        <div class="ui text container">
-
-        <form class = "ui form" method="get" action="data-viz.html">
-            <div class="field">
-                <!-- <label>Age</label> -->
-                <input id= "Age" type="text" placeholder="Age" name = "age">
-            </div>
-            <div class="ui selection dropdown">
-                <input type="hidden" name="dropdown">
-                <i class="dropdown icon"></i>
-                <div class="default text">Gender</div>
-                <div class="menu">
-                  <div class="item" data-value="M" name = "Male">M</div>
-                  <div class="item" data-value="F" name = "Female">F</div>
-                </div>
-            </div>
-        </form>
-      </div>
+    <div class="ui header">Enter your age and gender for more tailored results</div>
+    <div class="ui text container">
+      <form class = "ui form" method="get" action="data-viz.html">
+          <div class="field">
+              <!-- <label>Age</label> -->
+              <input id= "Age" type="text" placeholder="Age" name = "age">
+          </div>
+          <div class="ui selection dropdown">
+              <input type="hidden" name="dropdown">
+              <i class="dropdown icon"></i>
+              <div class="default text">Gender</div>
+              <div class="menu">
+                <div class="item" data-value="M" name = "Male">M</div>
+                <div class="item" data-value="F" name = "Female">F</div>
+              </div>
+          </div>
+          <div class="ui clearing segment">
+            <h3 class="ui right floated header">
+              <button id="view-the-results" style="display:none;"class="ui submit button" type="submit" name = "send" value = "submit">View Results</button>
+              <i id="loading-icon" class="spinner loading icon"></i>
+            </h3>
+            <h3 class="ui left floated header">
+              We're working on analyzing your video to extract your heart rate
+            </h3>
+          </div>
+      </form>
     </div>
-  </div>
 
   <!-- <div class="header">
     We're working on analyzing your video to extract your heart rate
   </div> -->
-  </div>
+  <!-- </div>
   <div class="ui clearing segment">
     <h3 class="ui right floated header">
       <i id="loading-icon" class="spinner loading icon"></i>
-      <button id="view-the-results" style="display:none;"class="ui submit button" type="submit" name = "send" value = "submit">View Results</button>
     </h3>
     <h3 class="ui left floated header">
       We're working on analyzing your video to extract your heart rate
     </h3>
-  </div>
+  </div> -->
 
   <!-- <div class="actions">
     <div class="ui black deny button">
