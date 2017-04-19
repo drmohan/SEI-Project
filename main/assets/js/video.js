@@ -267,25 +267,35 @@ function stopRecording() {
 //  recordedVideo.src = window.URL.createObjectURL(superBuffer);
 //}
 
+function showForm(){
+  // debugger;
+  $('.ui.modal').modal('show');      //things to do on click
+};
+
 function sendData() {
 
-  var IP = '128.237.195.244';
+  var x = showForm()
+  var IP = '10.0.0.61';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
+      console.log("BPMS HAVE BEEN RECEIVED");
+      $('#loading-icon').css("display", "none");
+      $('#view-the-results').css("display", "");
 
-      $('#container').hide();
-
-      var recordedVideo = document.querySelector('video#recorded-vid');
-
-      var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-
-      recordedVideo.src = window.URL.createObjectURL(superBuffer);
-
-      vid = document.getElementById('recorded-vid');
-
-      processData(data.csvData);
+      // $('#container').hide();
+      //
+      // var recordedVideo = document.querySelector('video#recorded-vid');
+      //
+      // var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
+      //
+      // recordedVideo.src = window.URL.createObjectURL(superBuffer);
+      //
+      // vid = document.getElementById('recorded-vid');
+      //
+      // processData(data.csvData);
+      // $('.ui.modal').modal('show');
 
     });
 
@@ -310,7 +320,7 @@ function sendData() {
   a.style.display = 'none';
   a.href = url;
   a.download = 'test.webm';
-  window.location.href = "loading.html"
+  // window.location.href = "loading.html"
   document.body.appendChild(a);
   a.click();
   setTimeout(function() {
