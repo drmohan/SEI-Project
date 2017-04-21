@@ -72,7 +72,7 @@ $(document).ready(function () {
             type: 'arearange',
             lineWidth: 0,
             linkedTo: ':previous',
-            color: '#99b799',
+            color: '#B22222',
             fillOpacity: 0.2,
             zIndex: 0
         },
@@ -82,7 +82,7 @@ $(document).ready(function () {
             type: 'arearange',
             lineWidth: 0,
             linkedTo: ':previous',
-            color: '#B22222',
+            color: '#99b799',
             fillOpacity: 0.2,
             zIndex: -1
         },
@@ -124,7 +124,7 @@ function processData(allText) {
     // console.log(ranges);
   }
 
-  var start = 0;
+  var start = Number(data[Object.keys(data)[0]].time);
   var diff = Number(data[Object.keys(data)[1]].time) - Number(data[Object.keys(data)[0]].time);
   var age = localStorage.age;
   var gender = localStorage.gender;
@@ -163,7 +163,7 @@ function getRanges(age, gender){
   var aboveAvgUpper;
   console.log("getting ranges")
   if( gender == "M" ){
-    if( age >= 18 || age <= 25 ){
+    if( age >= 18 && age <= 25 ){
       belowAvgLower = 74;
       belowAvgUpper = 81;
       avgLower = 70;
@@ -171,7 +171,7 @@ function getRanges(age, gender){
       aboveAvgLower = 66;
       aboveAvgUpper = 69;
     }
-    else if( age >= 26 || age <= 35 ){
+    else if( age >= 26 && age <= 35 ){
       belowAvgLower = 75;
       belowAvgUpper = 81;
       avgLower = 71;
@@ -179,7 +179,7 @@ function getRanges(age, gender){
       aboveAvgLower = 66;
       aboveAvgUpper = 70;
     }
-    else if( age >= 36 || age <= 45 ){
+    else if( age >= 36 && age <= 45 ){
       belowAvgLower = 76;
       belowAvgUpper = 82;
       avgLower = 71;
@@ -187,7 +187,7 @@ function getRanges(age, gender){
       aboveAvgLower = 67;
       aboveAvgUpper = 70;
     }
-    else if( age >= 46 || age <= 55 ){
+    else if( age >= 46 && age <= 55 ){
       belowAvgLower = 77;
       belowAvgUpper = 83;
       avgLower = 72;
@@ -195,7 +195,7 @@ function getRanges(age, gender){
       aboveAvgLower = 68;
       aboveAvgUpper = 71;
     }
-    else if( age >= 56 || age <= 65 ){
+    else if( age >= 56 && age <= 65 ){
       belowAvgLower = 76;
       belowAvgUpper = 81;
       avgLower = 72;
@@ -213,23 +213,15 @@ function getRanges(age, gender){
     }
   }
   else{
-    if( age >= 18 || age <= 25 ){
+    if( age >= 18 && age <= 25 ){
       belowAvgLower = 79;
       belowAvgUpper = 84;
       avgLower = 74;
       avgUpper = 78;
       aboveAvgLower = 70;
       aboveAvgUpper = 73;
-      return {
-        belowAvgLower: belowAvgLower,
-        belowAvgUpper: belowAvgUpper,
-        avgLower: avgLower,
-        avgUpper: avgUpper,
-        aboveAvgLower: aboveAvgLower,
-        aboveAvgUpper: aboveAvgUpper
-      };
     }
-    else if( age >= 26 || age <= 35 ){
+    else if( age >= 26 && age <= 35 ){
       belowAvgLower = 77;
       belowAvgUpper = 82;
       avgLower = 73;
@@ -237,7 +229,7 @@ function getRanges(age, gender){
       aboveAvgLower = 69;
       aboveAvgUpper = 72;
     }
-    else if( age >= 36 || age <= 45 ){
+    else if( age >= 36 && age <= 45 ){
       belowAvgLower = 79;
       belowAvgUpper = 84;
       avgLower = 74;
@@ -245,7 +237,7 @@ function getRanges(age, gender){
       aboveAvgLower = 70;
       aboveAvgUpper = 73;
     }
-    else if( age >= 46 || age <= 55 ){
+    else if( age >= 46 && age <= 55 ){
       belowAvgLower = 78;
       belowAvgUpper = 83;
       avgLower = 74;
@@ -253,7 +245,7 @@ function getRanges(age, gender){
       aboveAvgLower = 70;
       aboveAvgUpper = 73;
     }
-    else if( age >= 56 || age <= 65 ){
+    else if( age >= 56 && age <= 65 ){
       belowAvgLower = 78;
       belowAvgUpper = 83;
       avgLower = 74;
@@ -270,6 +262,14 @@ function getRanges(age, gender){
       aboveAvgUpper = 72;
     }
   }
+  return {
+    belowAvgLower: belowAvgLower,
+    belowAvgUpper: belowAvgUpper,
+    avgLower: avgLower,
+    avgUpper: avgUpper,
+    aboveAvgLower: aboveAvgLower,
+    aboveAvgUpper: aboveAvgUpper
+  };
 
 }
 
