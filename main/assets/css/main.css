@@ -6,6 +6,10 @@ div#container.demo {
 }
 */
 
+button.control {
+    color: black;
+}
+
 video#background-video {
   position: fixed;
   top: 50%; left: 50%;

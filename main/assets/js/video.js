@@ -275,7 +275,7 @@ function showForm(){
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.210.157';
+  var IP = '128.237.221.192';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
