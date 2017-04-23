@@ -1,16 +1,18 @@
 <div id="container" class="demo">
   <div class="ui vertical masthead aligned segment">
+      <div id="video-container">
       <video id="live" autoplay muted></video>
       <canvas id="canvas"></canvas>
       <div id="checklist">
           <h2> Please stay still! </h2>
           <p><img src="assets/img/x-mark.png" id="user-check"> Sit down in front of the computer screen. </p>
-          <p><img src="assets/img/x-mark.png" id="face-check"> Only one face in the camera.</p>
+          <p><img src="assets/img/x-mark.png" id="face-check"> Only one face in the camera (no interfering objects in background).</p>
           <p><img src="assets/img/x-mark.png" id="distance-check"> At least 20 inches away from the screen.</p>
           <p><img src="assets/img/x-mark.png" id="light-check"> Properly lit setting.</p>
       </div>
+      <button id="go" class="control ui inverted basic button">Go!</button>
+      </div>
     </div>
-    <button id="go" class="control">Go!</button>
 <!--    <video id="recorded" autoplay loop></video>-->
     <button id="record" class="control" disabled>Start Recording</button>
     <button id="play" class="control" disabled>Play</button>

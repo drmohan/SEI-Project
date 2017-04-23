@@ -6,9 +6,13 @@ div#container.demo {
 }
 */
 
-button.control {
+button.control#go {
     color: black;
+    position:absolute;
+    left: 50%;
+    margin: -5px;
 }
+
 
 video#background-video {
   position: fixed;
