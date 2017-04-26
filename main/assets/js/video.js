@@ -57,11 +57,12 @@ function percentageToInches(p) {
 tracking.track('video#live', tracker, { camera: true });
 
 var lastRect;
+var rectColor = '#fff';
 
 tracker.on('track', function(event) {
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // if no faces are detected in the screen
+    // Check: there is a face in the screen
     var imageCheckboxUser = document.querySelector("img#user-check");
     if (event.data.length > 0) {
         imageCheckboxUser.src = "assets/img/check-mark.png"
@@ -70,10 +71,11 @@ tracker.on('track', function(event) {
 
     }
     event.data.forEach(function(rect) {
-      context.strokeStyle = '#fff';
+      context.strokeStyle = rectColor;
       context.lineWidth = 5
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
 
+    // Check: only one face
     if (lastRect != undefined) {
         var oneFace = oneFaceVisible(lastRect, rect);
         var imageCheckboxFace = document.querySelector("img#face-check");
@@ -88,13 +90,14 @@ tracker.on('track', function(event) {
     percentages.push(percentage);
     var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
     var imageCheckboxDist = document.querySelector("img#distance-check");
-    if (inchesFromScreen <= 20){
+    var distanceThreshold = 20;
+    if (inchesFromScreen <= distanceThreshold){
         imageCheckboxDist.src = "assets/img/check-mark.png";
     } else {
         imageCheckboxDist.src = "assets/img/x-mark.png";
     }
 
-    // check brightness
+    // Check: brightness
     var tempCanvas = document.createElement('canvas');
     tempCanvas.width = liveVideo.width;
     tempCanvas.height = liveVideo.height;
@@ -102,10 +105,34 @@ tracker.on('track', function(event) {
     var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
 
     var imageCheckboxLight = document.querySelector("img#light-check");
-    if (brightness >= 75) {
+    var brightnessThreshold = 75;
+    if (brightness >= brightnessThreshold) {
         imageCheckboxLight.src = "assets/img/check-mark.png";
     } else {
         imageCheckboxLight.src = "assets/img/x-mark.png";
+    }
+        
+    // determine color of rectangle based on thresholds
+    var total = 0;
+    if (brightness >= brightnessThreshold) {
+        ++total;
+    }
+    if (inchesFromScreen <= distanceThreshold) {
+        ++total;
+    }
+    if (oneFace == true){
+        ++total;
+    }
+    if (event.data.length > 0) {
+        ++total;
+    }
+        
+    if (total <= 1) {
+        rectColor = '#C44857';
+    } else if (total < 4) {
+        rectColor = '#F9BF61';
+    } else {
+        rectColor = '#90B867';
     }
     });
 });
@@ -275,7 +302,7 @@ function showForm(){
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.218.236';
+  var IP = '128.237.221.255';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
