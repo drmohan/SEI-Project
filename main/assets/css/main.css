@@ -13,6 +13,12 @@ button.control#go {
     margin: -5px;
 }
 
+div#video-controls {
+    position:absolute;
+    left: 50%;
+    margin: -90px;
+}
+
 
 video#background-video {
   position: fixed;

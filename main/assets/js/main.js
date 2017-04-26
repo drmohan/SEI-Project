@@ -39,4 +39,5 @@ function resizeVideoDiv() {
     // change position of button
     newButtonHeight = newHeight - 20;
     $('#go').css({'top':newButtonHeight + 'px'});
+    $('div#video-controls').css({'top':newButtonHeight + 'px'});
 }
