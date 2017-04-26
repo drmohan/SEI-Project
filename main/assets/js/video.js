@@ -6,6 +6,7 @@ mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
+var fileNum = 0;
 
 var bpms = [],
     data = {},
@@ -205,6 +206,12 @@ function handleSourceOpen(event) {
 function handleDataAvailable(event) {
   if (event.data && event.data.size > 0) {
     recordedBlobs.push(event.data);
+    if(recordedBlobs.length == 20){
+      sendData();
+      recordedBlobs = [];
+    }
+    console.log("recordedBlobs:")
+    console.log(recordedBlobs)
   }
 }
 
@@ -274,8 +281,8 @@ function showForm(){
 
 function sendData() {
 
-  var x = showForm()
-  var IP = '128.237.221.192';
+  // var x = showForm()
+  var IP = '10.0.0.61';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
@@ -307,10 +314,12 @@ function sendData() {
   console.log("Blob: ");
   console.log(blob);
 
-  var file = new File([blob], 'test.webm');
+  var file_name = 'test'+ fileNum +'.webm';
+  var file = new File([blob], file_name);
   console.log("File: ");
   console.log(file);
-  var file_name = 'test.webm';
+  fileNum += 1;
+  // var file_name = 'test.webm';
   // socket.emit('message', {data: file,
   //                         file_name: file_name});
 
