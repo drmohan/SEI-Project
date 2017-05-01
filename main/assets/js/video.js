@@ -299,23 +299,17 @@ function showForm(){
   $('.ui.modal').modal('show');      //things to do on click
 };
 //click out of modal
-var modal = document.getElementById('modal');
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+var cancelButton = document.getElementById('cancel-process');
+cancelButton.onclick = function(event) {
+    console.log("cancel clicked");
+    $('.ui.modal').modal('hide');
 }
 
-function closeForm(){
-  // debugger;
-  console.log("at least i found the button");
-  $('.ui.modal').modal('hide');      //things to do on click
-};
 
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.194.162';
+  var IP = '128.237.211.33';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
