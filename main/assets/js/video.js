@@ -320,20 +320,6 @@ function sendData() {
 
       localStorage.csvData = data.csvData;
 
-
-      // $('#container').hide();
-      //
-      // var recordedVideo = document.querySelector('video#recorded-vid');
-      //
-      // var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-      //
-      // recordedVideo.src = window.URL.createObjectURL(superBuffer);
-      //
-      // vid = document.getElementById('recorded-vid');
-      //
-      // processData(data.csvData);
-      // $('.ui.modal').modal('show');
-
     });
 
 
@@ -368,5 +354,3 @@ function sendData() {
 
   console.log("data");
   console.log(data);
-
-  

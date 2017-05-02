@@ -146,17 +146,17 @@ function getParameterByName(name, url) {
 }
 
 function getRanges(age, gender){
-  console.log(age);
-  console.log(gender)
-  console.log(gender == "F")
+  // console.log(age);
+  // console.log(gender)
+  // console.log(gender == "F")
 
-  var belowAvgLower;
-  var belowAvgUpper;
-  var avgLower;
-  var avgUpper;
-  var aboveAvgLower;
-  var aboveAvgUpper;
-  console.log("getting ranges")
+  var belowAvgLower = 76;
+  var belowAvgUpper = 82;
+  var avgLower = 71;
+  var avgUpper = 75;
+  var aboveAvgLower = 67;
+  var aboveAvgUpper = 70;
+  // console.log("getting ranges")
   if( gender == "M" ){
     if( age >= 18 && age <= 25 ){
       belowAvgLower = 74;
