@@ -111,7 +111,7 @@ tracker.on('track', function(event) {
     } else {
         imageCheckboxLight.src = "assets/img/x-mark.png";
     }
-        
+
     // determine color of rectangle based on thresholds
     var total = 0;
     if (brightness >= brightnessThreshold) {
@@ -126,7 +126,7 @@ tracker.on('track', function(event) {
     if (event.data.length > 0) {
         ++total;
     }
-        
+
     if (total <= 1) {
         rectColor = '#C44857';
     } else if (total < 4) {
@@ -309,7 +309,7 @@ cancelButton.onclick = function(event) {
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.211.33';
+  var IP = '172.31.99.233';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
@@ -366,148 +366,7 @@ function sendData() {
   }, 100);
 }
 
-function processData(allText) {
-  console.log("in processData");
-  console.log(allText);
-  // var x = document.querySelector('video#recorded-vid');
-
-  var lines = allText.split("\n");
-
-  for (var i=1; i<lines.length; i++) {
-    var l = lines[i-1];
-    l = l.split(",");
-    console.log(l)
-    var frame = l[0];
-    var bpm = Number(l[2]);
-    var time = Number(l[3]);
-    data[time] = {'bpm':bpm, 'time':time};
-    bpms.push(bpm);
-    // 73=average, 84=below average
-    ranges.push([Number(frame), lowerLimit, upperLimit]);
-    ranges2.push([Number(frame), 84, 95]);
-    ranges3.push([Number(frame), 70, 73]);
-
-  // console.log(ranges);
-
-  }
   console.log("data");
   console.log(data);
 
-  var hc = Highcharts.chart('container2', {
-
-        title: {
-            text: ' '
-        },
-
-        yAxis: {
-            title: {
-                text: 'Beats Per Minute'
-            }
-        },
-
-        xAxis: {
-            title: {
-                text: 'Time'
-            },
-            // tickInterval: 0.3
-        },
-
-        legend: {
-            layout: 'vertical',
-            align: 'right',
-            verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-              series: {
-                  cursor: 'pointer',
-                  pointStart: 0,
-                  pointInterval: 0.3,
-                  point: {
-                      events: {
-                          mouseOver: function (e) {
-                              x: e.pageX || e.clientX
-                              y: e.pageY || e.clientY
-                              setCurTime(this.x);
-                          }
-                      }
-                  },
-                  marker: {
-                      lineWidth: 1
-                  }
-            }
-
-        },
-        series: [{
-            name: 'BPM',
-            data: bpms,
-            color: '#FFFFFF'
-          },
-          // {
-          //     name: 'Range',
-          //     data: ranges,
-          //     type: 'arearange',
-          //     lineWidth: 0,
-          //     linkedTo: ':previous',
-          //     color: '#99b799',
-          //     fillOpacity: 0.2,
-          //     zIndex: 0
-          // },
-          // {
-          //     name: 'Range',
-          //     data: ranges2,
-          //     type: 'arearange',
-          //     lineWidth: 0,
-          //     linkedTo: ':previous',
-          //     color: '#B22222',
-          //     fillOpacity: 0.2,
-          //     zIndex: -1
-          // },
-          // {
-          //     name: 'Range',
-          //     data: ranges3,
-          //     type: 'arearange',
-          //     lineWidth: 0,
-          //     linkedTo: ':previous',
-          //     color: '#99b799',
-          //     fillOpacity: 0.4,
-          //     zIndex: -1
-          // }
-        ]
-
-    });
-
-}
-
-// function setCurTime(time) {
-//   // debugger;
-//   // console.log(vid);
-//   vid.currentTime = time;
-//   console.log(vid.currentTime);
-// }
-
-
-
-// function getParameterByName(name, url) {
-//     if (!url) url = window.location.href;
-//     name = name.replace(/[\[\]]/g, "\\$&");
-//     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-//         results = regex.exec(url);
-//     if (!results) return null;
-//     if (!results[2]) return '';
-//     return decodeURIComponent(results[2].replace(/\+/g, " "));
-// }
-//
-// var age = getParameterByName('age');
-// var gender = getParameterByName('dropdown');
-// var paramURL = window.location.href;
-//
-// function getParams(paramURL) {
-//   console.log(paramURL);
-//   console.log(age);
-//   console.log(gender);
-// }
-
-// window.onload = function() {
-//   getParams(paramURL);
-// };
+  

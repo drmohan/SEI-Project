@@ -116,12 +116,7 @@ function processData(allText) {
     time = l[3];
     data[frame] = {'bpm':bpm, 'time':time};
     bpms.push(bpm);
-    // 73=average, 84=below average
-    // ranges.push([Number(frame), lowerLimit, upperLimit]);
-    // ranges2.push([Number(frame), 84, 95]);
-    // ranges3.push([Number(frame), 70, 73]);
 
-    // console.log(ranges);
   }
 
   var start = Number(data[Object.keys(data)[0]].time);
@@ -272,9 +267,3 @@ function getRanges(age, gender){
   };
 
 }
-
-// function getParams(paramURL) {
-//   console.log(paramURL);
-//   console.log(age);
-//   console.log(gender);
-// }
