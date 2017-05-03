@@ -116,12 +116,7 @@ function processData(allText) {
     time = l[3];
     data[frame] = {'bpm':bpm, 'time':time};
     bpms.push(bpm);
-    // 73=average, 84=below average
-    // ranges.push([Number(frame), lowerLimit, upperLimit]);
-    // ranges2.push([Number(frame), 84, 95]);
-    // ranges3.push([Number(frame), 70, 73]);
 
-    // console.log(ranges);
   }
 
   var start = Number(data[Object.keys(data)[0]].time);
@@ -151,17 +146,17 @@ function getParameterByName(name, url) {
 }
 
 function getRanges(age, gender){
-  console.log(age);
-  console.log(gender)
-  console.log(gender == "F")
+  // console.log(age);
+  // console.log(gender)
+  // console.log(gender == "F")
 
-  var belowAvgLower;
-  var belowAvgUpper;
-  var avgLower;
-  var avgUpper;
-  var aboveAvgLower;
-  var aboveAvgUpper;
-  console.log("getting ranges")
+  var belowAvgLower = 76;
+  var belowAvgUpper = 82;
+  var avgLower = 71;
+  var avgUpper = 75;
+  var aboveAvgLower = 67;
+  var aboveAvgUpper = 70;
+  // console.log("getting ranges")
   if( gender == "M" ){
     if( age >= 18 && age <= 25 ){
       belowAvgLower = 74;
@@ -272,9 +267,3 @@ function getRanges(age, gender){
   };
 
 }
-
-// function getParams(paramURL) {
-//   console.log(paramURL);
-//   console.log(age);
-//   console.log(gender);
-// }

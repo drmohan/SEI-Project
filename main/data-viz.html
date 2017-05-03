@@ -33,33 +33,26 @@
 
 <div class="ui vertical masthead center aligned segment">
 
-
   <div id="header"></div>
 
-    <div class="ui text container">
-
-
-
-<h1 style="text-align:center">Summary</h1><br>
-
-<div class="ui grid">
-  <div class="twelve wide column">
-    <div id="container"></div>
+  <div class="ui text container">
+    <h1 style="text-align:center">Summary</h1><br>
+      <div class="ui grid">
+        <div class="twelve wide column">
+          <div id="container"></div>
+        </div>
+        <div class="four wide column">
+          <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black"></video>
+        </div>
+      </div>
+    <label> How accurate does this seem? </label><br></br>
+    <div class="ui huge star rating" data-rating="4"></div>
   </div>
-  <div class="four wide column">
-    <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black"></video>
-  </div>
+
 </div>
-<label> How accurate does this seem? </label><br></br>
-<div class="ui huge star rating" data-rating="4"></div>
-    </div>
-
-<!-- <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<video id="myVideo" width="320" height="240" src="hillary-face-email-attack.mov"></video> -->
-    </div>
 <!-- footer -->
-    <div id="footer"></div>
-</div>
+  <div id="footer"></div>
+<!-- </div> -->
 </body>
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
@@ -80,11 +73,6 @@
       }
    });
 
-  // var x = document.getElementById("myVideo");
-  // function setCurTime(time) {
-  //   // console.log(time);
-  //   x.currentTime = time;
-  // }
 
   $('.ui.rating')
   .rating({

@@ -18,15 +18,10 @@
         </div>
       </div>
     </div>
-<!--    <video id="recorded" autoplay loop></video>-->
   </div>
 
-<div class="testing">
-  <video id="recorded-vid"></video>
-  <div id="container2"></div>
-</div>
 
-<div class="ui modal">
+<div id = "modal" class="ui modal">
 
   <div class="description">
 
@@ -48,6 +43,7 @@
           </div>
           <div class="ui clearing segment">
             <h3 class="ui right floated header">
+              <button class="ui button" id = "cancel-process" type = "button">Cancel</button>
               <button id="view-the-results" style="display:none;"class="ui submit button" type="submit" name = "send" value = "submit">View Results</button>
               <i id="loading-icon" class="spinner loading icon"></i>
             </h3>
@@ -58,37 +54,8 @@
       </form>
     </div>
 
-  <!-- <div class="header">
-    We're working on analyzing your video to extract your heart rate
-  </div> -->
-  <!-- </div>
-  <div class="ui clearing segment">
-    <h3 class="ui right floated header">
-      <i id="loading-icon" class="spinner loading icon"></i>
-    </h3>
-    <h3 class="ui left floated header">
-      We're working on analyzing your video to extract your heart rate
-    </h3>
-  </div> -->
-
-  <!-- <div class="actions">
-    <div class="ui black deny button">
-      Nope
-    </div>
-    <div class="ui positive right labeled icon button">
-      Yep, that's me
-      <i class="checkmark icon"></i>
-    </div>
-  </div> -->
 </div>
 
-
-  <!-- <div class="ui grid">
-    <div class="ten wide column">
-    </div>
-    <div class="six wide column">
-    </div>
-  </div> -->
 <script type="text/javascript">
   $('.ui.dropdown')
     .dropdown()
