@@ -7,7 +7,7 @@ div#container.demo {
 */
 
 button.control#go {
-    color: black;
+/*    color: black;*/
     position:absolute;
     left: 50%;
     margin: -5px;
@@ -222,7 +222,14 @@ transform:scale(1.2,1.1); /* W3C */
 
 .ui.text.container {
     max-width: 100% !important;
+    color: black;
 }
+
+.ui.text.container h2 {
+    max-width: 100% !important;
+    color: whitesmoke;
+}
+
 .small-img {
     width: 30%;
 }

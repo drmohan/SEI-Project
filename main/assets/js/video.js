@@ -33,7 +33,7 @@ var context = canvas.getContext('2d');
 
 // get box for face tracking
 var tracker = new tracking.ObjectTracker('face');
-tracker.setInitialScale(4.5);
+tracker.setInitialScale(5.7);
 tracker.setStepSize(1);
 tracker.setEdgesDensity(0.1);
 
@@ -128,11 +128,14 @@ tracker.on('track', function(event) {
     }
         
     if (total <= 1) {
-        rectColor = '#C44857';
+        // red frame
+        rectColor = '#F21340';
     } else if (total < 4) {
-        rectColor = '#F9BF61';
+        // yellow frame
+        rectColor = '#FFE739';
     } else {
-        rectColor = '#90B867';
+        // green frame
+        rectColor = '#4CC568';
     }
     });
 });
@@ -302,7 +305,7 @@ function showForm(){
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.221.255';
+  var IP = '128.237.137.174';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
