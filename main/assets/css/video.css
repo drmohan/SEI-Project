@@ -51,6 +51,11 @@ video, canvas {
     width: auto;
     z-index: -2;
     left: 50%;
+    
+     /*flip video image*/
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
 }
 
 

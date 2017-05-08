@@ -312,7 +312,7 @@ cancelButton.onclick = function(event) {
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.133.54';
+  var IP = '128.237.223.21';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
