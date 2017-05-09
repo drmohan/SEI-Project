@@ -58,29 +58,44 @@ body {
     font-family: 'Open Sans', 'Helvetica', sans-serif;
     color: whitesmoke;
     font-weight: 200 !important;
-    background-color: #EDEDED;
+    background-color: #667289;
 }
 
 #header {
     z-index: -1 !important;
     background-color: #667289; /*376369*/
+    top: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
+
+
+/*make square corners for contact form*/
+/*input, .dropdown, .menu, textarea {*/
+/*
+input, .dropdown, textarea {
+    border-radius: 0 !important;
+    opacity: 0.9;
+    filter: alpha(opacity=90);  For IE8 and earlier 
+    
+}
+
+.menu {
+    border-radius: 0 !important;   
+}
+*/
 
 i.big.icon {
-    color: #667289;
-    margin-top: 12px;
-    margin-left: 7.5px;
-    font-size: 3em;
+    color:whitesmoke;
+/*    margin-top: 12px;*/
+/*    margin-left: -15px;*/
+/*    font-size: 3em;*/
+    padding-top: 10px;
 }
 
-#icon-banner {
-    background-color: white !important;
-    width: 70px;
-    height: 70px;
-    margin-top: -15px;
-    margin-left: -25px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+label {
+    text-align: left;
+    color: whitesmoke !important;
 }
 
 .ui.huge.inverted.grey.button {
@@ -183,6 +198,9 @@ transform:scale(1.2,1.1); /* W3C */
     border-radius: 0px !important;
 }
 
+.ui.vertical.segment {
+    border-bottom: 0px;
+}
 
     .ui.vertical.stripe {
       padding: 8em 0em;
@@ -204,6 +222,14 @@ transform:scale(1.2,1.1); /* W3C */
       margin: 3em 0em;
     }
 
+.ui.vertical.masthead.center.aligned.segment {
+    padding: 0;
+}
+
+.vertical.masthead.segment {
+    padding: 0;
+}
+
     .quote.stripe.segment {
       padding: 0em;
     }
@@ -220,9 +246,17 @@ transform:scale(1.2,1.1); /* W3C */
       display: none;
     }
 
+
 .ui.text.container {
-    max-width: 100% !important;
+/*    max-width: 100% !important;*/
     color: black;
+    margin-top: 5em;
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+.ui.text.container.homepage {
+    max-width: 100% !important
 }
 
 .ui.text.container h2 {

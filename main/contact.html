@@ -25,41 +25,31 @@
 
 
         <div class="ui text container">
-<br><br><br>
+            <h2>Leave us a message.</h2>
 
   <div class="ui text content">
   <form class = "ui form" method="post" action="contact.php">
     <div class="field">
         <label>Name</label>
-        <div class="two fields">
-            <div class="field">
-                <input id= "FirstName" type="text" placeholder="First Name" name = "firstName">
-            </div>
-            
-            <div class="field">
-                <input type="text" placeholder="Last Name" name = "lastName">
-            </div>
-        </div>
-      </div>
-      <div class="two fields">
-          <div class="ten wide field">
-            <label>Email</label>
-            <input type="text" placeholder="Email Address" name = "emailAddress">
-          </div>
-          <div class="six wide field">
-              <label>Interest</label>
-              <div class="ui selection dropdown">
-                  <input type="hidden" name="dropdown">
-                  <i class="dropdown icon"></i>
-                  <div class="default text">Interest</div>
-                  <div class="menu">
-                    <div class="item" data-value="0" name = "funding">Funding</div>
-                    <div class="item" data-value="1" name = "features">Features</div>
-                    <div class="item" data-value="2" name = "bugs">Bugs</div>
-                  </div>
-                </div>
-          </div>
+        <input id= "Name" type="text" placeholder="Name" name = "Name">
     </div>
+    <div class="field">
+        <label>Email</label>
+        <input type="text" placeholder="Email Address" name = "emailAddress">
+    </div>
+      <div class="six wide field">
+          <label>Interest</label>
+          <div class="ui selection dropdown">
+              <input type="hidden" name="dropdown">
+              <i class="dropdown icon"></i>
+              <div class="default text">Interest</div>
+              <div class="menu">
+                <div class="item" data-value="0" name = "funding">Funding</div>
+                <div class="item" data-value="1" name = "features">Features</div>
+                <div class="item" data-value="2" name = "bugs">Bugs</div>
+              </div>
+            </div>
+      </div>
     <div class="field">
     <label>Explain:</label><textarea rows="5" name="message" cols="30"></textarea><br> 
     </div>
