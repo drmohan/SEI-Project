@@ -10,26 +10,39 @@ button#analyze{
     visibility: hidden;
 }
 
+button#back{
+    visibility: hidden;
+}
+
 #canvas {
     background-color:#4E4E4E;
     opacity: 0.7;
 }
 
 #checklist{
-    font-size: 16px;
+    font-size: 2.3vh;
     color: whitesmoke;
     display: inline-block;
-    left: 50%;
+    left: 57%;
     position: absolute;
+    top: 5%;
+    text-align: justify;
 }
+
+#checklist h2 {
+    text-align: center;
+    font-size: 4.5vh;
+}
+
+#checklist h4 {
+    text-align: center;
+    font-size: 2.1vh;
+}
+
 
 #checklist img {
    height: 20px;
    margin-right: 10px;
-}
-
-.control-button {
-    background-color: olivedrab
 }
 
 p.borderBelow {
@@ -51,11 +64,20 @@ video, canvas {
     width: auto;
     z-index: -2;
     left: 50%;
+    margin-top: 1em;
     
      /*flip video image*/
     transform: rotateY(180deg);
     -webkit-transform:rotateY(180deg); /* Safari and Chrome */
     -moz-transform:rotateY(180deg); /* Firefox */
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
+-webkit-transform: rotate(0.000001deg); 
+-webkit-border-radius: 10px; 
+-moz-border-radius: 10px;
+border-radius: 10px; 
+overflow: hidden;
+    border-color: white;
+    border-width: 2px;
 }
 
 

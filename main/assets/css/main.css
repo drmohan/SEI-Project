@@ -8,10 +8,26 @@ div#container.demo {
 
 
 button.control#go {
-/*    color: black;*/
-    position:absolute;
-    left: 50%;
-    margin: -5px;
+    margin-top:15vh;
+    margin-left: 39%;
+    width: 25%;
+    height: auto;
+}
+
+
+h5 {
+    color: black;
+}
+
+button.ui.yes.button:focus {
+    background-color: darkseagreen;
+}
+.ui.compact.segment {
+    left: 38%;
+}
+
+button.ui.no.button:focus {
+    background-color:indianred;
 }
 
 i.circular.icon {
@@ -21,11 +37,14 @@ i.circular.icon {
     border-color:white;
 }
 
+/*
 div#video-controls {
-    position:absolute;
-    left: 50%;
-    margin: -90px;
+    margin-top:15vh;
+    margin-left: 39%;
+    width: 25%;
+    height: auto;
 }
+*/
 
 
 video#background-video {
@@ -82,9 +101,6 @@ body {
 
 i.big.icon {
     color:whitesmoke;
-/*    margin-top: 12px;*/
-/*    margin-left: -15px;*/
-/*    font-size: 3em;*/
     padding-top: 10px;
 }
 
@@ -194,6 +210,10 @@ transform:scale(1.2,1.1); /* W3C */
 
 .nav-img {
     width: 23%;
+}
+
+button.ui.basic.button.redo {
+    left: 0 !important;
 }
 
 .ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item {

@@ -21,13 +21,12 @@ var liveVideo = document.querySelector('video#live');
 liveVideo.width = screen.width*(3/5);
 liveVideo.height = screen.height*(3/5);
 var checklistDiv = document.getElementById('checklist');
-console.log(checklistDiv);
 checklistDiv.width = screen.width*(3/5);
 checklistDiv.height = screen.height*(3/5);
 
 // get canvas for facial tracking
 var canvas = document.getElementById('canvas');
-canvas.width = liveVideo.width;
+canvas.width = liveVideo.width*(.85);
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
 
@@ -130,12 +129,16 @@ tracker.on('track', function(event) {
     if (total <= 1) {
         // red frame
         rectColor = '#F21340';
+        goButton.disabled = true;
     } else if (total < 4) {
         // yellow frame
         rectColor = '#FFE739';
+        goButton.disabled = false;
+//        document.getElementById.attr('data-tooltip', 'w00t');
     } else {
         // green frame
         rectColor = '#4CC568';
+        goButton.disabled = false;
     }
     });
 });
@@ -183,6 +186,9 @@ function goButtonPressed() {
   $('canvas#canvas').css("background-color", "transparent");
   $('button#go').hide();
   $('button#record').css("visibility", "visible");
+  $('button#play').css("visibility", "visible");
+  $('button#analyze').css("visibility", "visible");
+  $('button#back').css("visibility", "visible");
   $('button#play').css("visibility", "visible");
   $('button#analyze').css("visibility", "visible");
 };

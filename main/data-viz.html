@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <title>PAGE TITLE GOES HERE</title>
+    <title>Heart Rate Analytics | Carnegie Mellon University</title>
     <link rel="stylesheet" type = "text/css" href="assets/css/semantic.min.css">
     <script type="text/javascript" src="assets/js/jquery.min.js"></script>
     <link rel="stylesheet" type = "text/css" href="assets/css/main.css">
@@ -35,8 +35,13 @@
 
   <div id="header"></div>
 
-  <div class="ui text container">
+  <div class="ui container">
     <h1 style="text-align:center">Summary</h1><br>
+      <a href="demo.html"><button class="ui basic button redo">
+  <i class="icon repeat"></i>
+          Try Again
+</button></a>
+      <br><br>
       <div class="ui grid">
         <div class="twelve wide column">
           <div id="container"></div>
@@ -45,8 +50,19 @@
           <video id="myVideo" height="240" style="margin-top:90px;border:5px solid black"></video>
         </div>
       </div>
-    <label> How accurate does this seem? </label><br></br>
-    <div class="ui huge star rating" data-rating="4"></div>
+      <br>
+      
+      <div class="ui compact segment">
+  <h5> Does this reading seem accurate? </h5>
+      <div class="ui large buttons">
+  <button class="ui yes button">Yes</button>
+  <div class="or"></div>
+  <button class="ui no button">No</button>
+</div>
+      
+</div>
+    
+    
   </div>
 
 </div>

@@ -36,9 +36,9 @@ function resizeVideoDiv() {
     $('#checklist').css({'margin-left':listWidth + 'px'});
     
     
-    // change position of button
-    newButtonHeight = newHeight - 40;
-    $('#go').css({'top':newButtonHeight + 'px'});
-    $('div#video-controls').css({'top':(newButtonHeight+100) + 'px'});
-    $('div#video-controls').css({'margin-left':(-40) + 'px'});
+//    // change position of button
+//    newButtonHeight = newHeight - 40;
+//    $('#go').css({'top':newButtonHeight + 'px'});
+//    $('div#video-controls').css({'top':(newButtonHeight+100) + 'px'});
+//    $('div#video-controls').css({'margin-left':(-40) + 'px'});
 }

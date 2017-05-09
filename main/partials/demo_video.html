@@ -1,16 +1,23 @@
 <div id="container" class="demo">
   <div class="ui vertical masthead aligned segment">
+      <a href="demo.html"><button class="ui basic button" id="back">
+  <i class="icon repeat"></i>
+          Back
+</button></a>
       <div id="video-container">
-      <video id="live" autoplay muted></video>
+      <video id="live" autoplay muted ></video>
       <canvas id="canvas"></canvas>
       <div id="checklist">
-          <h2> Please stay still! </h2>
+          <h2> Welcome! </h2>
+          <h4> Please remain still while we check your environment.</h4>
+          <br>
           <p><img src="assets/img/x-mark.png" id="user-check"> Sit down in front of the computer screen. </p>
           <p><img src="assets/img/x-mark.png" id="face-check"> Only one face in the camera (no interfering objects in background).</p>
-          <p><img src="assets/img/x-mark.png" id="distance-check"> At least 20 inches away from the screen.</p>
-          <p><img src="assets/img/x-mark.png" id="light-check"> Properly lit setting.</p>
+          <p><img src="assets/img/x-mark.png" id="distance-check"> Sit at least 20 inches away from the screen.</p>
+          <p><img src="assets/img/x-mark.png" id="light-check"> Ensure your environment is properly lit.</p>
+          <br>
+          <button id="go" class=" large control ui inverted button" data-tooltip="Your environment is not properly set up! This may affect the accuracy of your results" data-position="right center" >Go!</button>
       </div>
-      <button id="go" class=" huge control ui inverted button">Go!</button>
         <div id="video-controls">
         <button id="record" class="control ui inverted button" disabled>Start Recording</button>
         <button id="play" class="control ui inverted button" disabled>Play</button>
@@ -21,7 +28,7 @@
   </div>
 
 
-<div id = "modal" class="ui modal">
+<div id = "modal" class="ui basic modal">
 
   <div class="description">
 
