@@ -14,6 +14,10 @@ button.control#go {
     height: auto;
 }
 
+strong {
+    color: white;
+}
+
 
 h5 {
     color: black;
@@ -115,8 +119,9 @@ label {
 
 p {
     font-size: 1.1em;
-    color: whitesmoke;
+    color: #D7D7D7;
     text-align: justify;
+    letter-spacing: 0.05em;
 }
 
 p.credit {
