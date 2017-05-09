@@ -70,20 +70,7 @@ body {
 }
 
 
-/*make square corners for contact form*/
-/*input, .dropdown, .menu, textarea {*/
-/*
-input, .dropdown, textarea {
-    border-radius: 0 !important;
-    opacity: 0.9;
-    filter: alpha(opacity=90);  For IE8 and earlier 
-    
-}
 
-.menu {
-    border-radius: 0 !important;   
-}
-*/
 
 i.big.icon {
     color:whitesmoke;
@@ -115,6 +102,11 @@ label {
 -ms-transition: all 500ms ease;
 -o-transition: all 500ms ease;
 transition: all 500ms ease;
+}
+
+.ui.submit.button {
+    background-color:whitesmoke;
+    color: #667289;
 }
 
 .ui.small.button {

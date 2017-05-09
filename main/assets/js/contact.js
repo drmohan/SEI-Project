@@ -9,11 +9,11 @@ $('.ui.form')
     on: 'blur',
     fields: {
       FirstName: {
-        identifier  : 'firstName',
+        identifier  : 'Name',
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please enter your name'
+            prompt : 'Please enter your name.'
           }
         ]
       },
@@ -22,16 +22,20 @@ $('.ui.form')
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please enter your eamil'
+            prompt : 'Please enter your email.'
+          },
+          {
+            type   : 'email',
+            prompt : 'Please enter a valid e-mail.'
           }
         ]
       },
       dropdown: {
-        identifier  : 'dropdown',
+        identifier  : 'interests',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please select one'
+            type   : 'minCount[1]',
+            prompt : 'Please select at least one interest.'
           }
         ]
       }

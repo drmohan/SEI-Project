@@ -29,7 +29,8 @@
 
   <div class="ui text content">
   <form class = "ui form" method="post" action="contact.php">
-    <div class="field">
+    <div class="ui error message"></div>
+      <div class="field">
         <label>Name</label>
         <input id= "Name" type="text" placeholder="Name" name = "Name">
     </div>
@@ -39,6 +40,16 @@
     </div>
       <div class="six wide field">
           <label>Interest</label>
+          <select name="interests" multiple="" class="ui dropdown">
+                <option value="">Interest</option>
+                <option value="funding">Funding</option>
+                <option value="features">Features</option>
+                <option value="bugs">Bugs</option>
+                <option value="other">Other</option>
+            </select>
+          
+          
+<!--
           <div class="ui selection dropdown">
               <input type="hidden" name="dropdown">
               <i class="dropdown icon"></i>
@@ -47,16 +58,22 @@
                 <div class="item" data-value="0" name = "funding">Funding</div>
                 <div class="item" data-value="1" name = "features">Features</div>
                 <div class="item" data-value="2" name = "bugs">Bugs</div>
+                  <div class="item" data-value="2" name = "bugs">Other</div>
               </div>
             </div>
+-->
       </div>
     <div class="field">
     <label>Explain:</label><textarea rows="5" name="message" cols="30"></textarea><br> 
     </div>
 
-    <button class="ui submit button" type="submit" name = "send" value = "submit">Submit</button>
+    <br>
+      
+    <button class="ui vertical animated submit button" type="submit" name = "send" value = "submit"> <div class="hidden content"><i class="mail icon"></i></div>
+  <div class="visible content">
+    Submit
+  </div></button>
     
-</div>
 </form>
   
   </div>
@@ -68,6 +85,5 @@
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/transition.js"></script>
     <script type="text/javascript" src="assets/js/contact.js"></script>
-</html> 
     <script type="text/javascript" src="assets/js/main.js"></script>
 </html>
