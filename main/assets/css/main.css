@@ -6,11 +6,19 @@ div#container.demo {
 }
 */
 
+
 button.control#go {
 /*    color: black;*/
     position:absolute;
     left: 50%;
     margin: -5px;
+}
+
+i.circular.icon {
+    box-shadow: 0 0 0 0.08em white;
+    margin-left: 1.1em;
+    margin-right: 1.1em;
+    border-color:white;
 }
 
 div#video-controls {
@@ -80,9 +88,23 @@ i.big.icon {
     padding-top: 10px;
 }
 
+img.example {
+    max-width: 60%;
+}
+
 label {
     text-align: left;
     color: whitesmoke !important;
+}
+
+p {
+    font-size: 1.1em;
+    color: whitesmoke;
+    text-align: justify;
+}
+
+p.credit {
+    font-size: 0.8em;
 }
 
 .ui.huge.inverted.grey.button {
