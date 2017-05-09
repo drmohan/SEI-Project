@@ -27,7 +27,7 @@ Code development for project with SEI team, creating a website for their researc
     * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L136)
 
     1. Navigate to project directory
-    2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully. Such server can be installed with 'npm install http-server' and run with 'http-server -p 8000'
+    2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully. Such server can be installed with `npm install http-server` and run with `http-server -p 8000`
       * This project must be run from a localhost in order to get around browser security; because you are capturing user video usually only https links are trusted for this, but because the project isn't deployed you can run it locally to circumvent this block
       * If you do not have python or wish to use another local server, such as a locally hosted apache server for Mac users, that would work as well
     3. In a new terminal window, navigate to the [websocket](webSocket) directory.
