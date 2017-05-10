@@ -34,14 +34,20 @@ button.ui.no.button:focus {
     background-color:indianred;
 }
 
+button.ui.yes.button.selected {
+    background-color: darkseagreen;
+}
+
+button.ui.no.button.selected {
+    background-color: darkseagreen;
+}
+
 i.circular.icon {
     box-shadow: 0 0 0 0.08em white;
     margin-left: 1.1em;
     margin-right: 1.1em;
     border-color:white;
 }
-
-
 
 video#background-video {
   position: fixed;
@@ -300,4 +306,20 @@ button.ui.basic.button.redo {
   padding: 20px;
   padding-top: 40px;
   padding-bottom: 40px;
+}
+
+#agreement{
+  color: gray !important;
+}
+
+#accuracy{
+  text-align:left !important;
+}
+
+#confirmation-content{
+  color:black !important;
+}
+
+.circular{
+  color: black !important;
 }

@@ -112,16 +112,16 @@ video, canvas {
     margin-top: 2%;
 /*    left: 50%;*/
 /*    margin-top: 1em;*/
-    
+
      /*flip video image*/
     transform: translate(-50%, -50%) rotateY(180deg);
     -webkit-transform:translate(-50%, -50%) rotateY(180deg) ; /* Safari and Chrome */
     -moz-transform: translate(-50%, -50%) rotateY(180deg); /* Firefox */
     /*round corners*/
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
-    -webkit-border-radius: 10px; 
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px; 
+    border-radius: 10px;
 /*    overflow: hidden;*/
     border-color: white;
     border-width: 2px;

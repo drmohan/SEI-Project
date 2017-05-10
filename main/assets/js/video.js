@@ -72,7 +72,7 @@ tracker.on('track', function(event) {
         // if the user isn't detected in the image, then no faces and no distance
         imageCheckboxFace.src = "assets/img/x-mark.png";
         imageCheckboxDist.src = "assets/img/x-mark.png";
-        
+
 
     }
     event.data.forEach(function(rect) {
@@ -365,7 +365,8 @@ cancelButton.onclick = function(event) {
 function sendData() {
 
   var x = showForm()
-  var IP = '128.237.205.104';
+
+  var IP = '128.237.184.93';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
