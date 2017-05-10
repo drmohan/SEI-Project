@@ -253,8 +253,10 @@ function handleStop(event) {
 }
 
 function toggleRecording() {
-  if (recordButton.textContent === 'Start Recording') {
+  if (recordButton.textContent === 'Start Recording') {      
     startRecording();
+    recordButton.disabled = true;
+    setTimeout( function() { recordButton.disabled = false; }, 10000);
   } else {
     stopRecording();
     recordButton.textContent = 'Start Recording';
