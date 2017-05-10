@@ -51,6 +51,10 @@ $(document).ready(function () {
                             // console.log(data[this.x]);
                             var vid = document.getElementById("myVideo");
                             vid.currentTime = this.x;
+
+                            var bpm = document.getElementById("bpm");
+                            bpm.textContent = this.y;
+
                         }
                     }
                 },
