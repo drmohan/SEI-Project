@@ -2,6 +2,7 @@
 
 body {
     min-width: 748px !important;
+    min-height: 572px !important;
     overflow: auto;
 }
 
@@ -204,9 +205,6 @@ transform:scale(1.2,1.1); /* W3C */
       font-weight: 300;
     }
 
-.nav-img {
-    width: 23%;
-}
 
 button.ui.basic.button.redo {
     left: 0 !important;

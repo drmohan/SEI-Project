@@ -1,9 +1,15 @@
 <?php
 if(isset($_POST['send'])) {
-    header("Location: "."http://localhost:8000/");  
-    $subject = $_POST['Interest'];
-    $message = $_POST['Name'] . " " . $_POST['emailAddress'];
-    mail("asawarikanitkar@gmail.com", $subject, $message, "From: cmuform@gmail.com");
+    header("Location: "."http://localhost:8000/"); 
+    $to = "kaw1@andrew.cmu.edu";
+    $from = "From: " . $_POST['emailAddress'];
+    $subject = "Heart Rate Analytics: Contact Form Message"
+    $message = "From: " . $_POST['Name'] . "\r\n" .
+    "Reply-to: " . $_POST['emailAddress'] . "\r\n" .
+    "Interest: " . $_POST['interests'] . "\r\n" .
+    "Message: " . $_POST['message'];
+
+    mail($to, $subject, $message, $from);
        
 }
 ?>
