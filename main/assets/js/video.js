@@ -179,6 +179,10 @@ var goButton = document.querySelector('button#go');
 var recordButton = document.querySelector('button#record');
 var playButton = document.querySelector('button#play');
 var analyzeButton = document.querySelector('button#analyze');
+var videoTimeText = document.querySelector('div#video-time');
+var videoStartTime;
+var recording = false;
+var timeTextInterval;
 goButton.onclick = goButtonPressed;
 recordButton.onclick = toggleRecording;
 playButton.onclick = play;
@@ -195,6 +199,7 @@ function goButtonPressed() {
   $('button#back').css("visibility", "visible");
   $('button#play').css("visibility", "visible");
   $('button#analyze').css("visibility", "visible");
+  $('div#video-time').css("visibility", "visible");
 };
 
 
@@ -255,6 +260,7 @@ function handleStop(event) {
 function toggleRecording() {
   if (recordButton.textContent === 'Start Recording') {      
     startRecording();
+    startTimer();
     recordButton.disabled = true;
     setTimeout( function() { recordButton.disabled = false; }, 10000);
   } else {
@@ -265,7 +271,40 @@ function toggleRecording() {
   }
 }
 
+function formatTime(time) {
+    var timeInSeconds = Math.floor(time/1000);
+    var seconds = timeInSeconds%60;
+    var minutes = Math.floor(timeInSeconds/60);
+
+    var timeText = "";
+    timeText += (minutes.toString() + ":");
+    if (seconds < 10) {
+        timeText += "0";
+    }
+    timeText += seconds.toString();
+    return timeText;
+}
+
+function getTimeSinceStart() {
+    var currVidTime = new Date();
+    var timeDiff = currVidTime - videoStartTime;
+    return timeDiff;
+}
+
+function startTimer() {
+    // get time that start recording button was clicked
+    videoStartTime = new Date();
+        
+    if (recording == true) {
+        // Start the timer 
+        timeTextInterval = setInterval( function() { 
+        videoTimeText.textContent = formatTime(getTimeSinceStart());}, 1000);
+    }
+}
+
+
 function startRecording() {
+  recording = true;
   recordedBlobs = [];
   var options = {mimeType: 'video/webm;codecs=vp9'};
   if (!MediaRecorder.isTypeSupported(options.mimeType)) {
@@ -299,6 +338,8 @@ function startRecording() {
 }
 
 function stopRecording() {
+  recording = false;
+  clearInterval(timeTextInterval);
   mediaRecorder.stop();
   console.log('Recorded Blobs: ', recordedBlobs);
 //  recordedVideo.controls = true;

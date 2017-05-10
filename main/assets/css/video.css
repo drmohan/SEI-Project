@@ -10,6 +10,15 @@ button#analyze{
     visibility: hidden;
 }
 
+div#video-time {
+    visibility: hidden;
+    margin: 5%;
+    position: absolute;
+    right: 0;
+    font-size: 2em;
+    font-weight: 500;
+}
+
 button#back{
     visibility: hidden;
     margin: 5%;
