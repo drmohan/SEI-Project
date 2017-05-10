@@ -52,6 +52,9 @@ $(document).ready(function () {
                             var vid = document.getElementById("myVideo");
                             vid.currentTime = this.x;
 
+                            var bpmContainer = document.getElementById("bpm-container")
+                            bpmContainer.style.display = "";
+                            
                             var bpm = document.getElementById("bpm");
                             bpm.textContent = this.y;
 
