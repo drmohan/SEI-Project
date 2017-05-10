@@ -32,13 +32,16 @@
 
   <div class="description">
 
-    <div class="ui header">Enter your age and gender for more tailored results</div>
     <div class="ui text container">
+      <div class="ui header range-form">We're working on analyzing your video to extract your heart rate</div>
+      <p class="range-form">Enter your heart rate and gender for more tailored results</p><br/
       <form class = "ui form" method="get" action="data-viz.html">
-          <div class="field">
+          <div class="ui input field">
               <!-- <label>Age</label> -->
               <input id= "Age" type="text" placeholder="Age" name = "age">
-          </div>
+          <!-- </div> -->
+          <!-- <br> -->
+          &nbsp;&nbsp;
           <div class="ui selection dropdown">
               <input type="hidden" name="dropdown">
               <i class="dropdown icon"></i>
@@ -48,16 +51,17 @@
                 <div class="item" data-value="F" name = "Female">F</div>
               </div>
           </div>
-          <div class="ui clearing segment">
-            <h3 class="ui right floated header">
-              <button class="ui button" id = "cancel-process" type = "button">Cancel</button>
-              <button id="view-the-results" style="display:none;"class="ui submit button" type="submit" name = "send" value = "submit">View Results</button>
-              <i id="loading-icon" class="spinner loading icon"></i>
+        </div>
+        <br>
+
+          <!-- <div class="ui clearing segment"> -->
+            <h3 class="ui center aligned header">
+              <button id="view-the-results" style="display:none;"class="ui inverted submit button" type="submit" name = "send" value = "submit">View Results</button>
+              <!-- <i id="loading-icon" class="white spinner loading icon"></i> -->
+              <button id="loading-icon" class="ui inverted loading button">Loading</button>
+              <button class="ui inverted button" id = "cancel-process" type = "button">Cancel</button>
             </h3>
-            <h3 class="ui left floated header">
-              We're working on analyzing your video to extract your heart rate
-            </h3>
-          </div>
+          <!-- </div> -->
       </form>
     </div>
 
