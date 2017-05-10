@@ -75,6 +75,7 @@ video, canvas {
     height: auto;
     width: auto;
     z-index: -2;
+<<<<<<< HEAD
     position: fixed;
       top: 50%;
       left: 50%;
@@ -92,6 +93,21 @@ video, canvas {
     -moz-border-radius: 10px;
     border-radius: 10px; 
 /*    overflow: hidden;*/
+=======
+    left: 50%;
+    margin-top: 1em;
+
+     /*flip video image*/
+    transform: rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+-webkit-transform: rotate(0.000001deg);
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+overflow: hidden;
+>>>>>>> ef10d49ac757dcfadd295b4570280ff7ee8405e3
     border-color: white;
     border-width: 2px;
 }
@@ -111,13 +127,10 @@ video, canvas {
   position: relative;
 }
 
-#recorded-vid{
-  position: absolute;
-  width: 100%;
+.range-form{
+  color:white !important;
 }
 
-#container2{
-  position: absolute;
-  width: 100% !important;
-  top: 350px;
+#loading-icon{
+  color:white;
 }
