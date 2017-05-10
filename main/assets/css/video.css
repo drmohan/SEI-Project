@@ -21,6 +21,7 @@ button#back{
 
 #checklist h2 {
     text-align: center;
+    font-size: 2.3em;
 /*    font-size: 4.5vh;*/
 }
 
@@ -48,15 +49,14 @@ video {
 }
 
  #video-text {
-    position: absolute;
+    position: relative;
       top: 50%;
       left: 50%;
       /* bring your own prefixes */
     transform: translate(-50%, -50%);
      -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
     -moz-transform: translate(-50%, -50%); /* Firefox*/
-     
-    margin-top: 2%;
+     padding: 10%;
 /*     font-size: 2.3vh;*/
     color: whitesmoke;
 /*    display: inline-block;*/
@@ -66,7 +66,16 @@ video {
 
 #video-container {
     position: relative;
-    top: 180px;
+    margin-top: 225px;
+/*    top: 180px;*/
+    height: 500px;
+    width: 680px;
+    top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+     -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%); /* Firefox*/
 }
 
 #video-controls {
@@ -77,8 +86,8 @@ video {
 video, canvas {
 /*    margin-left: 0px !important;*/
 /*    margin-top: 30px;*/
-    height: auto;
-    width: auto;
+    height: inherit;
+    width: inherit;
     z-index: -2;
     position: absolute;
       top: 50%;
@@ -104,11 +113,12 @@ video, canvas {
 
 [data-tooltip] {
     border: 1px solid rgba(228,3,3,0.47);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 [data-tooltip]:after{
    border: 1px solid rgba(228,3,3,0.47);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 
