@@ -12,6 +12,8 @@ button#analyze{
 
 button#back{
     visibility: hidden;
+    margin: 5%;
+    position: absolute;
 }
 
 #canvas {
@@ -66,7 +68,7 @@ video {
 
 #video-container {
     position: relative;
-    margin-top: 225px;
+    margin-top: 250px;
 /*    top: 180px;*/
     height: 500px;
     width: 680px;
@@ -80,8 +82,10 @@ video {
 }
 
 #video-controls {
-    position: relative;
-    bottom: 0;
+    position: absolute;
+    top: 250px;
+    left: 17%;
+    
 }
 
 video, canvas {

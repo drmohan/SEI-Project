@@ -1,11 +1,15 @@
-          <a href="demo.html"><button class="ui basic button" id="back">
-  <i class="icon arrow left"></i>
-          Back
-</button></a>
+
     <div id="video-container">
+        <div id="back-button">
+        <a href="demo.html"><button class="ui inverted grey basic button" id="back">
+            <i class="icon arrow left"></i>
+          Back
+        </button></a>
+        </div>
       <video id="live" autoplay muted ></video>
       <canvas id="canvas"></canvas>
       <div id="video-text">
+          
           <div id="checklist">
           <h2> Let's Find Your Heartbeat! </h2>
           <h4> Please remain still while we check your environment.</h4>
@@ -20,7 +24,6 @@
         </div>
               
           <div id="video-controls">
-<!--            <button id="go" class="large control ui inverted button" data-tooltip="Your environment is not properly set up! This may affect the accuracy of your results" data-position="top center" >Go!</button>-->
         <button id="record" class="ui right labeled icon button" disabled><i class="record icon"></i>Start Recording</button>
         <button id="play" class="ui right labeled icon button" disabled><i class="play icon"></i>Play</button>
         <button id="analyze" class="ui right labeled icon button" disabled><i class="right arrow icon"></i>Analyze</button>
