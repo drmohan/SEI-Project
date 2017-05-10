@@ -1,9 +1,10 @@
 //
 //
 //// When window resizes, make sure video container fits into user viewport
-//window.onresize = function(event){
+window.onresize = function(event){
 //  resizeVideoDiv();  
-//};
+    console.log(window.innerHeight);
+};
 //
 //window.onload = function(event){
 //   resizeVideoDiv();  
