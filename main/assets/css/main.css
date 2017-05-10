@@ -1,17 +1,20 @@
-/*
-div#container.demo {
-    background-color: #667289;
-    z-index: -3;
-    overflow:hidden;
-}
-*/
 
+
+body {
+    min-width: 748px !important;
+    overflow: auto;
+}
 
 button.control#go {
     margin-top:15vh;
     margin-left: 39%;
     width: 25%;
     height: auto;
+    z-index: 100;
+}
+
+strong {
+    color: white;
 }
 
 
@@ -37,14 +40,6 @@ i.circular.icon {
     border-color:white;
 }
 
-/*
-div#video-controls {
-    margin-top:15vh;
-    margin-left: 39%;
-    width: 25%;
-    height: auto;
-}
-*/
 
 
 video#background-video {
@@ -115,8 +110,9 @@ label {
 
 p {
     font-size: 1.1em;
-    color: whitesmoke;
+    color: #D7D7D7;
     text-align: justify;
+    letter-spacing: 0.03em;
 }
 
 p.credit {
@@ -301,30 +297,6 @@ button.ui.basic.button.redo {
 .small-img {
     width: 30%;
 }
-
-    @media only screen and (max-width: 700px) {
-      .ui.fixed.menu {
-        display: none !important;
-      }
-      .secondary.pointing.menu .item,
-      .secondary.pointing.menu .menu {
-        display: none;
-      }
-      .secondary.pointing.menu .toc.item {
-        display: block;
-      }
-      .masthead.segment {
-        min-height: 350px;
-      }
-      .masthead h1.ui.header {
-        font-size: 2em;
-        margin-top: 1.5em;
-      }
-      .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-      }
-    }
 
 #description{
   padding: 20px;

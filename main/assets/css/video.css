@@ -23,10 +23,11 @@ button#back{
     font-size: 2.3vh;
     color: whitesmoke;
     display: inline-block;
-    left: 57%;
+/*    left: 57%;*/
     position: absolute;
-    top: 5%;
+/*    top: 5%;*/
     text-align: justify;
+    padding-top: 5%;
 }
 
 #checklist h2 {
@@ -56,66 +57,55 @@ video {
     display:block;
 }
 
+ #checklist {
+    position: fixed;
+      top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+     -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%); /* Firefox*/
+     
+    margin-top: 2%;
+}
+
 video, canvas {
 /*    margin-left: 0px !important;*/
 /*    margin-top: 30px;*/
-    position: absolute;
     height: auto;
     width: auto;
     z-index: -2;
-    left: 50%;
-    margin-top: 1em;
-
+    position: fixed;
+      top: 50%;
+      left: 50%;
+    margin-top: 2%;
+/*    left: 50%;*/
+/*    margin-top: 1em;*/
+    
      /*flip video image*/
-    transform: rotateY(180deg);
-    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
-    -moz-transform:rotateY(180deg); /* Firefox */
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
--webkit-transform: rotate(0.000001deg);
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
-overflow: hidden;
+    transform: translate(-50%, -50%) rotateY(180deg);
+    -webkit-transform:translate(-50%, -50%) rotateY(180deg) ; /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%) rotateY(180deg); /* Firefox */
+    /*round corners*/
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
+    -webkit-border-radius: 10px; 
+    -moz-border-radius: 10px;
+    border-radius: 10px; 
+/*    overflow: hidden;*/
     border-color: white;
     border-width: 2px;
 }
 
 
-/*
-video:last-of-type {
-  margin: 0 0 20px 0;
-}
-*/
-
-/*
-video#recorded {
-    margin-top: 500px;
-    width:50%;
-    height: 30%;
-    height:inherit !important;
-    position: relative;
-}
-*/
-
-@media screen and (max-width: 500px) {
-  button {
-    font-size: 0.8em;
-    width: calc(33% - 5px);
-  }
+[data-tooltip] {
+    border: 1px solid rgba(228,3,3,0.47);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-@media screen and (max-width: 720px) {
-  video {
-    height: calc((50vw - 48px) * 3 / 4);
-    margin: 0 10px 10px 0;
-    width: calc(50vw - 48px);
-  }
-
-  video#liveVideo {
-    margin: 0 10px 10px 0;
-  }
+[data-tooltip]:after{
+   border: 1px solid rgba(228,3,3,0.47);
 }
+
 
 .testing{
   position: relative;

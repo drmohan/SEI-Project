@@ -26,7 +26,7 @@ checklistDiv.height = screen.height*(3/5);
 
 // get canvas for facial tracking
 var canvas = document.getElementById('canvas');
-canvas.width = liveVideo.width*(.85);
+canvas.width = liveVideo.width*(.838);
 canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
 
@@ -63,10 +63,16 @@ tracker.on('track', function(event) {
 
     // Check: there is a face in the screen
     var imageCheckboxUser = document.querySelector("img#user-check");
+    var imageCheckboxFace = document.querySelector("img#face-check");
+    var imageCheckboxDist = document.querySelector("img#distance-check");
     if (event.data.length > 0) {
         imageCheckboxUser.src = "assets/img/check-mark.png"
     } else {
         imageCheckboxUser.src = "assets/img/x-mark.png"
+        // if the user isn't detected in the image, then no faces and no distance
+        imageCheckboxFace.src = "assets/img/x-mark.png";
+        imageCheckboxDist.src = "assets/img/x-mark.png";
+
 
     }
     event.data.forEach(function(rect) {
@@ -77,7 +83,6 @@ tracker.on('track', function(event) {
     // Check: only one face
     if (lastRect != undefined) {
         var oneFace = oneFaceVisible(lastRect, rect);
-        var imageCheckboxFace = document.querySelector("img#face-check");
         if (oneFace == true){
             imageCheckboxFace.src = "assets/img/check-mark.png";
         } else {
@@ -88,7 +93,6 @@ tracker.on('track', function(event) {
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
     var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
-    var imageCheckboxDist = document.querySelector("img#distance-check");
     var distanceThreshold = 20;
     if (inchesFromScreen <= distanceThreshold){
         imageCheckboxDist.src = "assets/img/check-mark.png";
