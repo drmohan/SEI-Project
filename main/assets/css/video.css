@@ -21,6 +21,7 @@ button#back{
 
 #checklist h2 {
     text-align: center;
+    font-size: 2.3em;
 /*    font-size: 4.5vh;*/
 }
 
@@ -48,15 +49,14 @@ video {
 }
 
  #video-text {
-    position: absolute;
+    position: relative;
       top: 50%;
       left: 50%;
       /* bring your own prefixes */
     transform: translate(-50%, -50%);
      -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
     -moz-transform: translate(-50%, -50%); /* Firefox*/
-     
-    margin-top: 2%;
+     padding: 10%;
 /*     font-size: 2.3vh;*/
     color: whitesmoke;
 /*    display: inline-block;*/
@@ -66,7 +66,17 @@ video {
 
 #video-container {
     position: relative;
-    top: 180px;
+    margin-top: 225px;
+/*    top: 180px;*/
+    height: 500px;
+    width: 680px;
+    overflow: hidden;
+    top: 50%;
+      left: 50%;
+      /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+     -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%); /* Firefox*/
 }
 
 #video-controls {
@@ -77,7 +87,7 @@ video {
 video, canvas {
 /*    margin-left: 0px !important;*/
 /*    margin-top: 30px;*/
-    height: auto;
+    height: inherit;
     width: auto;
     z-index: -2;
     position: absolute;
@@ -86,16 +96,16 @@ video, canvas {
     margin-top: 2%;
 /*    left: 50%;*/
 /*    margin-top: 1em;*/
-    
+
      /*flip video image*/
     transform: translate(-50%, -50%) rotateY(180deg);
     -webkit-transform:translate(-50%, -50%) rotateY(180deg) ; /* Safari and Chrome */
     -moz-transform: translate(-50%, -50%) rotateY(180deg); /* Firefox */
     /*round corners*/
-    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%); 
-    -webkit-border-radius: 10px; 
+    -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
+    -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px; 
+    border-radius: 10px;
 /*    overflow: hidden;*/
     border-color: white;
     border-width: 2px;
@@ -104,11 +114,12 @@ video, canvas {
 
 [data-tooltip] {
     border: 1px solid rgba(228,3,3,0.47);
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 [data-tooltip]:after{
    border: 1px solid rgba(228,3,3,0.47);
+    background-color: rgba(255, 255, 255, 0.7);
 }
 
 

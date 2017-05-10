@@ -36,41 +36,74 @@
 
   <div id="header"></div>
 
+  <br>
   <div class="ui container">
-    <!-- <h1 style="text-align:center">Summary</h1><br> -->
-      <a href="demo.html"><button class="ui basic button redo">
-  <i class="icon repeat"></i>
-          Try Again
-</button></a>
-      <br><br>
+    <h1 style="text-align:center">Here are your results</h1><br>
+
       <div class="ui grid">
+
         <div class="ten wide column">
           <div class="ui raised segment">
             <div id="container"></div>
           </div>
         </div>
+
         <div class="six wide column">
           <div class="ui raised segment">
-            <video id="myVideo" style="margin-top:90px;border:5px solid black"></video>
+            <video id="myVideo" height="auto" width="100%"></video>
           </div>
-        </div>
+
+          <div class="ui segment">
+            <form class = "ui form" id="feedback-form">
+              <div class="ui grid">
+                <div class="eight wide column">
+                  <h5 id="accuracy"> Does this reading seem accurate? </h5>
+                </div>
+                <div class="one wide column">
+                  <div class="ui large buttons">
+                    <button type="button" onclick="toggleYes()" id="yes" name="Yes" class="ui yes button">Yes</button>
+                    <div class="or"></div>
+                    <button type="button" onclick="toggleNo()" id="no" name="No" class="ui no button">No</button>
+                  </div>
+                </div>
+              </div>
+
+              <br>
+              <div class="ui checkbox">
+                <input type="checkbox" name="consent">
+                <label id="agreement" >I would like to allow anonymized data from this session to be used for research purposes</label>
+              </div>
+
+              <br><br>
+              <button onclick="showConfirmation()" class="ui tiny button" type="button">Submit</button>
+            </form>
+
+            <div id="confirmation" style="display:none;">
+              <h4 class="ui center aligned icon header">
+                <i class="circular inverted heartbeat icon"></i>
+                Thank you!
+              </h4>
+              <div class="content" id="confirmation-content">Your feedback will aid us in improving the accuracy of our technology</div>
+            </div>
       </div>
+
       <br>
-
-      <div class="ui compact segment">
-  <h5> Does this reading seem accurate? </h5>
-      <div class="ui large buttons">
-  <button class="ui yes button">Yes</button>
-  <div class="or"></div>
-  <button class="ui no button">No</button>
-</div>
-
-</div>
-
 
   </div>
 
+  <br>
+    <div class="sixteen wide column">
+      <a href="demo.html">
+        <button class="ui inverted basic button redo">
+          <i class="icon repeat"></i>
+          Try Again
+        </button>
+      </a>
+    </div>
+  </div>
+
 </div>
+<br>
 <!-- footer -->
   <div id="footer"></div>
 <!-- </div> -->
@@ -101,4 +134,29 @@
     maxRating: 5
   })
 ;
+
+function toggleYes(){
+  var yesButton = document.getElementById('yes');
+  var noButton = document.getElementById('no');
+
+  noButton.className = "ui no button"
+  yesButton.className = "ui yes button selected"
+}
+
+function toggleNo(){
+  var yesButton = document.getElementById('yes');
+  var noButton = document.getElementById('no');
+
+  noButton.className = "ui no button selected"
+  yesButton.className = "ui yes button"
+}
+
+function showConfirmation(){
+  var form = document.getElementById("feedback-form");
+  form.style.display = "none";
+
+  var confirmation = document.getElementById("confirmation");
+  confirmation.style.display = "";
+}
+
 </script>
