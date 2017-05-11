@@ -138,7 +138,6 @@ tracker.on('track', function(event) {
         // yellow frame
         rectColor = '#FFE739';
         goButton.disabled = false;
-//        document.getElementById.attr('data-tooltip', 'w00t');
     } else {
         // green frame
         rectColor = '#4CC568';
@@ -177,7 +176,7 @@ function oneFaceVisible(lastRect, currentRect) {
 
 var goButton = document.querySelector('button#go');
 var recordButton = document.querySelector('button#record');
-var playButton = document.querySelector('button#play');
+//var playButton = document.querySelector('button#play');
 var analyzeButton = document.querySelector('button#analyze');
 var videoTimeText = document.querySelector('div#video-time');
 var videoStartTime;
@@ -185,7 +184,7 @@ var recording = false;
 var timeTextInterval;
 goButton.onclick = goButtonPressed;
 recordButton.onclick = toggleRecording;
-playButton.onclick = play;
+//playButton.onclick = play;
 analyzeButton.onclick = sendData;
 
 
@@ -267,11 +266,13 @@ function toggleRecording() {
     stopRecording();
     recordButton.textContent = 'Start Recording';
 
+
     var iconElem = document.createElement("I");
     iconElem.className = "record icon"
     recordButton.appendChild(iconElem)
 
-    playButton.disabled = false;
+    // playButton.disabled = false;
+
     analyzeButton.disabled = false;
   }
 }
@@ -339,7 +340,8 @@ function startRecording() {
   iconElem.className = "stop icon"
   recordButton.appendChild(iconElem)
 
-  playButton.disabled = true;
+  // playButton.disabled = true;
+
   analyzeButton.disabled = true;
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
@@ -377,7 +379,7 @@ function sendData() {
 
   var x = showForm()
 
-  var IP = '128.237.184.93';
+  var IP = '128.237.205.104';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
