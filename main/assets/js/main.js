@@ -3,11 +3,13 @@ $("button#submit-results").click(function(e){
 
     var yesButton = document.getElementById('yes');
     var noButton = document.getElementById('no');
+    
     var resultsAreAcc;
-    if (yesButton.className = "ui no button selected") {
-        resultsAreAcc = "no";
-    } else if (noButton.className = "ui yes button selected"){
+    
+    if (yesButton.className == "ui yes button selected") {
         resultsAreAcc = "yes";
+    } else if (noButton.className == "ui no button selected"){
+        resultsAreAcc = "no";
     } else {
         resultsAreAcc = "n/a";
     }
