@@ -67,12 +67,13 @@ tracker.on('track', function(event) {
     var imageCheckboxDist = document.querySelector("img#distance-check");
     if (event.data.length > 0) {
         imageCheckboxUser.src = "assets/img/check-mark.png"
+        goButton.disabled = false;
     } else {
         imageCheckboxUser.src = "assets/img/x-mark.png"
         // if the user isn't detected in the image, then no faces and no distance
         imageCheckboxFace.src = "assets/img/x-mark.png";
         imageCheckboxDist.src = "assets/img/x-mark.png";
-
+        goButton.disabled = true;
 
     }
     event.data.forEach(function(rect) {
@@ -116,25 +117,25 @@ tracker.on('track', function(event) {
     }
 
     // determine color of rectangle based on thresholds
-    var total = 0;
+    var totalChecks = 0;
     if (brightness >= brightnessThreshold) {
-        ++total;
+        ++totalChecks;
     }
     if (inchesFromScreen <= distanceThreshold) {
-        ++total;
+        ++totalChecks;
     }
     if (oneFace == true){
-        ++total;
+        ++totalChecks;
     }
     if (event.data.length > 0) {
-        ++total;
+        ++totalChecks;
     }
 
-    if (total <= 1) {
+    if (totalChecks <= 1) {
         // red frame
         rectColor = '#F21340';
         goButton.disabled = true;
-    } else if (total < 4) {
+    } else if (totalChecks < 4) {
         // yellow frame
         rectColor = '#FFE739';
         goButton.disabled = false;
@@ -379,7 +380,7 @@ function sendData() {
 
   var x = showForm()
 
-  var IP = '128.237.205.104';
+  var IP = '128.237.207.38';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
