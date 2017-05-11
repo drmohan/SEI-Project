@@ -346,15 +346,15 @@ button.ui.basic.button.redo {
     text-align:center;
 }
 
-.bpm-container .overlay .text-container h1,p{
+.bpm-container .overlay .text-container h1{
     color:#FFF;
     text-transform:uppercase;
     text-align:center;
 }
 
-.bpm-container .overlay .text-container p{
-  margin-top: -20% !important;
-  margin-bottom: 15% !important;
+.bpm-container.overlay.text-container p{
+  /*margin-top: -20% !important;
+  margin-bottom: 15% !important;*/
 }
 
 .bpm-container .overlay .text-container h1{
@@ -364,4 +364,10 @@ button.ui.basic.button.redo {
 .range-form{
   text-transform: none;
   text-align: left;
+}
+
+p#bpm-subtitle{
+  text-align: center;
+  margin-top: -20% !important;
+  margin-bottom: 15% !important;
 }
