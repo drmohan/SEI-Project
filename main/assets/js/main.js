@@ -1,45 +1,31 @@
-//
-//
-//// When window resizes, make sure video container fits into user viewport
-window.onresize = function(event){
-//  resizeVideoDiv();  
-    console.log(window.innerHeight);
-};
-//
-//window.onload = function(event){
-//   resizeVideoDiv();  
-//};
-//
-//
-////// when certain buttons are clicked, hide the intro and continue to the demo
-////function endIntro() {
-////   $('#intro-container').hide();
-////   $('#demo-container').show();
-////};
-//
-//function resizeVideoDiv() {
-//    // change size of video, canvas, and div
-//    newHeight = $(window).height() - 100;
-//    $('#video-container').css({'height':newHeight + 'px'});
-//    $('#canvas').css({'height':newHeight + 'px'});
-//    $('#live').css({'height':newHeight + 'px'});
-//    $('#checklist').css({'height':newHeight + 'px'});
-//    // shift to center
-//    var canv = document.getElementById('canvas');
-//    canvasWidth = (canv.width/2)*(-1);
-//    var vid = document.getElementById('live');
-//    vidWidth = (vid.width/2)*(-1);
-//    var list = document.getElementById('checklist');
-//    listWidth = (list.width/2)*(-1);
-//    
-//    $('#canvas').css({'margin-left':canvasWidth + 'px'});
-//    $('#live').css({'margin-left':vidWidth + 'px'});
-//    $('#checklist').css({'margin-left':listWidth + 'px'});
-//    
-//    
-//    // change position of button
-//    newButtonHeight = newHeight - 40;
-//    $('#go').css({'top':newButtonHeight + 'px'});
-//    $('div#video-controls').css({'top':(newButtonHeight+100) + 'px'});
-//    $('div#video-controls').css({'margin-left':(-40) + 'px'});
-//}
+// Send mail for results page without reloading page
+$("button#submit-results").click(function(e){
+
+    var yesButton = document.getElementById('yes');
+    var noButton = document.getElementById('no');
+    var resultsAreAcc;
+    if (yesButton.className = "ui no button selected") {
+        resultsAreAcc = "no";
+    } else if (noButton.className = "ui yes button selected"){
+        resultsAreAcc = "yes";
+    } else {
+        resultsAreAcc = "n/a";
+    }
+    
+    
+    var data;
+    if ($("input#consent").prop("checked") == true) {
+        data = localStorage.csvData;
+    } else {
+        data = "consent not received";
+    }
+    
+    jQuery.post("data-viz.php", {
+
+        results: resultsAreAcc,
+        data: data
+    }, function(data, textStatus){
+        e.preventDefault();
+    });
+});
+

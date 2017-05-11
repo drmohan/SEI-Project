@@ -1,15 +1,11 @@
 <?php
-if(isset($_POST['send'])) {
-    header("Location: "."http://localhost:8050/");
-    $to = "drmohan@andrew.cmu.edu";
-    $from = "cmuform@gmail.com";
-    $subject = "Heart Rate Analytics: Feedback on Results"
-    $message = "From: Anonymous User" . "\r\n" .
-    "Yes: " . $_POST['yes'] . "\r\n" .
-    "No: " . $_POST['no'] . "\r\n" .
-    "Consent: " . $_POST['consent'];
+  $to = "kaw1@andrew.cmu.edu";
+  $from = "kaw1@andrew.cmu.edu";
+  $subject = "Heart Rate Analytics: Results Accuracy Feedback";
+  $message = "From: Anonymous User" . "\r\n" .
+    "Accurate Results? " . $_POST['results'] . "\r\n" .
+    "Data: " . "\r\n" . $_POST['data'];
 
-    mail($to, $subject, $message, $from);
-
-}
+  (mail($to, $subject, $message, "From:" . $from))
+  
 ?>

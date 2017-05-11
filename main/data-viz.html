@@ -64,7 +64,7 @@
           </div>
 
           <div class="ui segment">
-            <form class = "ui form" id="feedback-form">
+            <form class = "ui form" id="feedback-form" method="post" action="data-viz.php">
               <div class="ui grid">
                 <div class="eight wide column">
                   <h5 id="accuracy"> Does this reading seem accurate? </h5>
@@ -80,12 +80,12 @@
 
               <br>
               <div class="ui checkbox">
-                <input type="checkbox" name="consent">
+                <input type="checkbox" name="consent" id="consent">
                 <label id="agreement" >I would like to allow anonymized data from this session to be used for research purposes.</label>
               </div>
 
               <br><br>
-              <button onclick="showConfirmation()" class="ui tiny button" type="button">Submit</button>
+              <button onclick="showConfirmation()" class="ui tiny button" type="button" name="send" value="submit" id="submit-results">Submit</button>
             </form>
 
             <div id="confirmation" style="display:none;">
@@ -113,10 +113,9 @@
   </div>
 
 </div>
-<br>
+</div>
 <!-- footer -->
   <div id="footer"></div>
-<!-- </div> -->
 </body>
     <script type="text/javascript" src="assets/js/semantic_library/semantic.min.js"></script>
     <script type="text/javascript" src="assets/js/semantic_library/visibility.js"></script>
