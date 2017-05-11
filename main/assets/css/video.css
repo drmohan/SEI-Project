@@ -10,6 +10,13 @@ button#analyze{
     visibility: hidden;
 }
 
+#learn-more {
+    position: absolute;
+    z-index: 200;
+    margin:2%;
+    right: 0;
+}
+
 div#video-time {
     visibility: hidden;
     margin: 4%;
