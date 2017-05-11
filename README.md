@@ -29,8 +29,8 @@ Code development for project with SEI team, creating a website for their researc
     1. Navigate to project directory
     2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully. Such server can be installed with `npm install http-server` and run with `http-server -p 8000`
       * This project must be run from a localhost in order to get around browser security; because you are capturing user video usually only https links are trusted for this, but because the project isn't deployed you can run it locally to circumvent this block
-      * If you do not have python or wish to use another local server, such as a locally hosted apache server for Mac users, that would work as well
-    3. In a new terminal window, navigate to the [websocket](webSocket) directory.
+    3. The user's video is currently being written and read locally for use in the results page (data-viz.html). To access the downloaded video, a symbolic link named 'Down' must be created within the project folder to the Downloads folder. This can be done with `ln -s ~/Downloads Down`
+    4. In a new terminal window, navigate to the [websocket](webSocket) directory.
     5. In the new terminal window, type `npm install socket.io` to install socket.io
     6. After socket.io is installed, start the server by typing `node ss.js`
     7. Navigate to `localhost:8000` (unless a different port was specified) to access the web page, record a video, play it back, and view resulting mock data.
