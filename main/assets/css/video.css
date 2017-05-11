@@ -96,7 +96,7 @@ video {
 #video-controls {
     position: absolute;
     top: 250px;
-    left: 17%;
+    left: 25%;
     
 }
 
@@ -141,6 +141,7 @@ video, canvas {
     height: 100px !important;
     color: rgba(228,3,3,0.47) !important;
     display: block;
+    visibility: hidden;
 }
 
 
