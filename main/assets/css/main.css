@@ -323,3 +323,51 @@ button.ui.basic.button.redo {
 .circular{
   color: black !important;
 }
+
+.bpm-container {
+ position: relative !important;
+ width: 100% !important;
+ height: auto !important;
+ overflow: hidden !important;
+ max-width: 100% !important;
+}
+
+.bpm-container .overlay{
+    position: absolute;
+    width: 20%;
+    height: auto;
+    background:#667289;
+    opacity:0.8;
+    z-index:999;
+}
+
+.bpm-container .overlay .text-container{
+    width:100%;
+    text-align:center;
+}
+
+.bpm-container .overlay .text-container h1{
+    color:#FFF;
+    text-transform:uppercase;
+    text-align:center;
+}
+
+.bpm-container.overlay.text-container p{
+  /*margin-top: -20% !important;
+  margin-bottom: 15% !important;*/
+}
+
+.bpm-container .overlay .text-container h1{
+  margin-top: 10% !important;
+}
+
+.range-form{
+  text-transform: none;
+  text-align: left;
+}
+
+p#bpm-subtitle{
+  text-align: center;
+  margin-top: -20% !important;
+  margin-bottom: 15% !important;
+}
