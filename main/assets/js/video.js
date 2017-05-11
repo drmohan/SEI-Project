@@ -257,7 +257,7 @@ function handleStop(event) {
 }
 
 function toggleRecording() {
-  if (recordButton.textContent === 'Start Recording') {      
+  if (recordButton.textContent === 'Start Recording') {
     startRecording();
     startTimer();
     recordButton.disabled = true;
@@ -265,7 +265,14 @@ function toggleRecording() {
   } else {
     stopRecording();
     recordButton.textContent = 'Start Recording';
-//    playButton.disabled = false;
+
+
+    var iconElem = document.createElement("I");
+    iconElem.className = "record icon"
+    recordButton.appendChild(iconElem)
+
+    // playButton.disabled = false;
+
     analyzeButton.disabled = false;
   }
 }
@@ -293,10 +300,10 @@ function getTimeSinceStart() {
 function startTimer() {
     // get time that start recording button was clicked
     videoStartTime = new Date();
-        
+
     if (recording == true) {
-        // Start the timer 
-        timeTextInterval = setInterval( function() { 
+        // Start the timer
+        timeTextInterval = setInterval( function() {
         videoTimeText.textContent = formatTime(getTimeSinceStart());}, 1000);
     }
 }
@@ -328,7 +335,13 @@ function startRecording() {
   }
   console.log('Created MediaRecorder', mediaRecorder, 'with options', options);
   recordButton.textContent = 'Stop Recording';
-//  playButton.disabled = true;
+
+  var iconElem = document.createElement("I");
+  iconElem.className = "stop icon"
+  recordButton.appendChild(iconElem)
+
+  // playButton.disabled = true;
+
   analyzeButton.disabled = true;
   mediaRecorder.onstop = handleStop;
   mediaRecorder.ondataavailable = handleDataAvailable;
@@ -342,6 +355,7 @@ function stopRecording() {
   mediaRecorder.stop();
   console.log('Recorded Blobs: ', recordedBlobs);
 //  recordedVideo.controls = true;
+
 }
 
 //function play() {
