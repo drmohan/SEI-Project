@@ -20,7 +20,7 @@ $(document).ready(function () {
 
   // };
 
-  Highcharts.chart('container', {
+  Highcharts.chart('chart-container', {
 
       title: {
           text: 'Beats per Minute'

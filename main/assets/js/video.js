@@ -418,8 +418,8 @@ function sendData() {
 
   var x = showForm()
 
-  // this value must be changed every time program started again
-  var IP = '128.237.184.207';
+  // CHANGE IP HERE
+  var IP = 'localhost';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 

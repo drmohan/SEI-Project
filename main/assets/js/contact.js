@@ -1,4 +1,4 @@
-
+// jquery for dropdown functionality
 $('.ui.dropdown')
   .dropdown()
 ;
