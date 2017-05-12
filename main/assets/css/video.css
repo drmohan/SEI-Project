@@ -1,22 +1,18 @@
-button#record{
+button#record {
     visibility: hidden;
 }
-
-button#play{
+button#play {
     visibility: hidden;
 }
-
-button#analyze{
+button#analyze {
     visibility: hidden;
 }
-
 #learn-more {
     position: absolute;
     z-index: 200;
-    margin:2%;
+    margin: 2%;
     right: 0;
 }
-
 div#video-time {
     visibility: hidden;
     margin: 4%;
@@ -28,142 +24,113 @@ div#video-time {
     padding: 10px;
     border-radius: 5px;
 }
-
-button#back{
+button#back {
     visibility: hidden;
     margin: 5%;
     position: absolute;
 }
-
 #canvas {
-    background-color:#4E4E4E;
+    background-color: #4E4E4E;
     opacity: 0.7;
 }
-
 #checklist h2 {
     text-align: center;
     font-size: 2.3em;
-/*    font-size: 4.5vh;*/
 }
-
 #checklist h4 {
     text-align: center;
-/*    font-size: 2.1vh;*/
 }
-
-
 #checklist img {
-   height: 20px;
-   margin-right: 10px;
+    height: 20px;
+    margin-right: 10px;
 }
-
 p.borderBelow {
-  margin: 0 0 20px 0;
-  padding: 0 0 20px 0;
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
 }
-
 video {
     width: auto;
-    overflow:hidden;
-    display:block;
+    overflow: hidden;
+    display: block;
     position: fixed;
 }
-
- #video-text {
+#video-text {
     position: relative;
-      top: 50%;
-      left: 50%;
-      /* bring your own prefixes */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-     -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
-    -moz-transform: translate(-50%, -50%); /* Firefox*/
-     padding: 10%;
-/*     font-size: 2.3vh;*/
+    -webkit-transform: translate(-50%, -50%);
+    /* Safari and Chrome */ 
+    -moz-transform: translate(-50%, -50%);
+    /* Firefox*/  
+    padding: 10%;
     color: whitesmoke;
-/*    display: inline-block;*/
-/*    left: 57%;*/
-/*    top: 5%;*/
 }
-
 #video-container {
     position: relative;
     margin-top: 250px;
-/*    top: 180px;*/
     height: 500px;
     width: 680px;
     overflow: hidden;
     top: 50%;
-      left: 50%;
-      /* bring your own prefixes */
+    left: 50%;
     transform: translate(-50%, -50%);
-     -webkit-transform:translate(-50%, -50%); /* Safari and Chrome */
-    -moz-transform: translate(-50%, -50%); /* Firefox*/
+    -webkit-transform: translate(-50%, -50%);
+    /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%);
+    /* Firefox*/
 }
-
 #video-controls {
     position: absolute;
     top: 250px;
     left: 25%;
 }
-
-video, canvas {
-/*    margin-left: 0px !important;*/
-/*    margin-top: 30px;*/
+video,
+canvas {
     height: inherit;
     width: auto;
     z-index: -2;
     position: absolute;
-      top: 50%;
-      left: 50%;
+    top: 50%;
+    left: 50%;
     margin-top: 2%;
-/*    left: 50%;*/
-/*    margin-top: 1em;*/
-
-     /*flip video image*/
+    /*flip video image*/
     transform: translate(-50%, -50%) rotateY(180deg);
-    -webkit-transform:translate(-50%, -50%) rotateY(180deg) ; /* Safari and Chrome */
-    -moz-transform: translate(-50%, -50%) rotateY(180deg); /* Firefox */
+    -webkit-transform: translate(-50%, -50%) rotateY(180deg);
+    /* Safari and Chrome */
+    -moz-transform: translate(-50%, -50%) rotateY(180deg);
+    /* Firefox */
     /*round corners*/
     -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%);
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
-    border-radius: 10px;
-/*    overflow: hidden;*/
+    border-radius: 10px;    
     border-color: white;
     border-width: 2px;
 }
-
-
 [data-tooltip] {
-    border: 1px solid rgba(101,113,136,0.47);
+    border: 1px solid rgba(101, 113, 136, 0.47);
     background-color: rgba(255, 255, 255, 0.7);
 }
-
-[data-tooltip]:after{
-   border: 1px solid rgba(101,113,136,0.47);
-/*    background-color: rgba(255, 255, 255, 0.7);*/
+[data-tooltip]:after {
+    border: 1px solid rgba(101, 113, 136, 0.47);
     width: 225px !important;
     white-space: pre-wrap;
     height: 115px !important;
-    color: rgba(101,113,136,0.47) !important;
+    color: rgba(101, 113, 136, 0.47) !important;
     display: block;
     visibility: hidden;
 }
-
-button:disabled, 
+button:disabled,
 button[disabled] {
     pointer-events: none !important;
 }
-
-
-.testing{
-  position: relative;
+.testing {
+    position: relative;
 }
-
-.range-form{
-  color:white !important;
+.range-form {
+    color: white !important;
 }
-
-#loading-icon{
-  color:white;
+#loading-icon {
+    color: white;
 }

@@ -1,373 +1,327 @@
-
-
 body {
     min-width: 748px !important;
     min-height: 572px !important;
     overflow: auto;
 }
-
 button.control#go {
-    margin-top:15vh;
+    margin-top: 15vh;
     margin-left: 39%;
     width: 25%;
     height: auto;
     z-index: 100;
 }
-
 strong {
     color: white;
 }
-
-
 h5 {
     color: black;
 }
-
 button.ui.yes.button:focus {
     background-color: darkseagreen;
 }
 .ui.compact.segment {
     left: 38%;
 }
-
 button.ui.no.button:focus {
-    background-color:indianred;
+    background-color: indianred;
 }
-
 button.ui.yes.button.selected {
     background-color: darkseagreen;
 }
-
 button.ui.no.button.selected {
     background-color: darkseagreen;
 }
-
 i.circular.icon {
     box-shadow: 0 0 0 0.08em white;
     margin-left: 1.1em;
     margin-right: 1.1em;
-    border-color:white;
+    border-color: white;
 }
-
 video#background-video {
-  position: fixed;
-  top: 50%; left: 50%;
-  z-index: -2;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: -2;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
 }
-
 video#intro-video {
     max-width: 70%;
     height: auto;
     text-align: center !important;
-    -webkit-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
--moz-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
-box-shadow: 5px -5px 33px -8px rgba(102,102,102,1);
+    -webkit-box-shadow: 5px -5px 33px -8px rgba(102, 102, 102, 1);
+    -moz-box-shadow: 5px -5px 33px -8px rgba(102, 102, 102, 1);
+    box-shadow: 5px -5px 33px -8px rgba(102, 102, 102, 1);
 }
-
 div#background {
-  position: fixed;
-  top: 50%; left: 50%;
-  z-index: -1;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%);
-  background-color: #16294B; /*376369*/
-  opacity: 0.65;
-  filter: alpha(opacity=65); /* For IE8 and earlier */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    background-color: #16294B;
+    /*376369*/
+    
+    opacity: 0.65;
+    filter: alpha(opacity=65);
+    /* For IE8 and earlier */
 }
-
 body {
     font-family: 'Open Sans', 'Helvetica', sans-serif;
     color: whitesmoke;
     font-weight: 200 !important;
     background-color: #667289;
 }
-
 #header {
     z-index: -1 !important;
-    background-color: #667289; /*376369*/
+    background-color: #667289;
+    /*376369*/
+    
     top: 0;
     padding-top: 10px;
     padding-bottom: 10px;
 }
-
-
-
-
 i.big.icon {
-    color:whitesmoke;
+    color: whitesmoke;
     padding-top: 10px;
 }
-
 img.example {
     max-width: 60%;
 }
-
 label {
     text-align: left;
     color: whitesmoke !important;
 }
-
 p {
     font-size: 1.1em;
     color: #D7D7D7;
     text-align: justify;
     letter-spacing: 0.03em;
 }
-
 p.credit {
     font-size: 0.8em;
 }
-
 .ui.huge.inverted.grey.button {
     border: 0px solid whitesmoke !important;
     border-radius: 0px !important;
     background-color: whitesmoke !important;
     color: #667289;
 }
-
 .ui.huge.inverted.grey.button:hover {
     border-radius: 0px !important;
-    background-color: rgba(245,245,245,0.8) !important;
+    background-color: rgba(245, 245, 245, 0.8) !important;
     color: #667289;
     border: 0px solid whitesmoke !important;
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
-
 .ui.submit.button {
-    background-color:whitesmoke;
+    background-color: whitesmoke;
     color: #667289;
 }
-
 .ui.small.button {
-     border-radius: 0px !important;
+    border-radius: 0px !important;
     border: 1px solid whitesmoke !important;
-     background-color: transparent !important;
+    background-color: transparent !important;
     color: whitesmoke;
     font-weight: 300;
 }
-
 .ui.small.button:hover {
-     border-radius: 0px !important;
-     border: 1px solid whitesmoke !important;
-     background-color: rgba(245,245,245,0.9) !important;
-     color: #667289;
+    border-radius: 0px !important;
+    border: 1px solid whitesmoke !important;
+    background-color: rgba(245, 245, 245, 0.9) !important;
+    color: #667289;
     -webkit-transition: all 500ms ease;
--moz-transition: all 500ms ease;
--ms-transition: all 500ms ease;
--o-transition: all 500ms ease;
-transition: all 500ms ease;
+    -moz-transition: all 500ms ease;
+    -ms-transition: all 500ms ease;
+    -o-transition: all 500ms ease;
+    transition: all 500ms ease;
 }
-
-
 #footer {
     margin-top: 1em;
     margin-bottom: 1em;
     text-align: center;
     background-color: #667289 !important;
 }
-
 .hidden.menu {
-      display: none;
-    }
-
-    .masthead.segment {
-      min-height: 700px;
-      padding: 1em 0em;
-    }
-    .masthead .logo.item img {
-      margin-right: 1em;
-    }
-    .masthead .ui.menu .ui.button {
-      margin-left: 0em;
-    }
-    .masthead h1.ui.header {
-      margin-top: 1.2em;
-      margin-bottom: 0em;
-      font-size: 6.2em;
-      font-weight: 300;
-        color: whitesmoke;
-      margin-left: 0.95em;
-transform:scale(1.2,1.1); /* W3C */
--webkit-transform:scale(1.2,1.1); /* Safari and Chrome */
--moz-transform:scale(1.2,1.1); /* Firefox */
--ms-transform:scale(1.2,1.1); /* IE 9 */
--o-transform:scale(1.2,1.1); /* Opera */
-/* Rest Of CSS Code Here*/
-    }
-    .masthead h2 {
-      font-size: 1.7em;
-      font-weight: 300;
-    }
-
-
+    display: none;
+}
+.masthead.segment {
+    min-height: 700px;
+    padding: 1em 0em;
+}
+.masthead .logo.item img {
+    margin-right: 1em;
+}
+.masthead .ui.menu .ui.button {
+    margin-left: 0em;
+}
+.masthead h1.ui.header {
+    margin-top: 1.2em;
+    margin-bottom: 0em;
+    font-size: 6.2em;
+    font-weight: 300;
+    color: whitesmoke;
+    margin-left: 0.95em;
+    transform: scale(1.2, 1.1);
+    /* W3C */
+    
+    -webkit-transform: scale(1.2, 1.1);
+    /* Safari and Chrome */
+    
+    -moz-transform: scale(1.2, 1.1);
+    /* Firefox */
+    
+    -ms-transform: scale(1.2, 1.1);
+    /* IE 9 */
+    
+    -o-transform: scale(1.2, 1.1);
+    /* Opera */
+    /* Rest Of CSS Code Here*/
+}
+.masthead h2 {
+    font-size: 1.7em;
+    font-weight: 300;
+}
 button.ui.basic.button.redo {
     left: 0 !important;
 }
-
-.ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item {
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu a.item {
     color: whitesmoke !important;
     font-weight: 300;
     font-size: 0.9em !important;
 }
-
-.ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item.active {
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu a.item.active {
     color: whitesmoke !important;
 }
-
-.ui.secondary.inverted.menu .link.item, .ui.secondary.inverted.menu a.item:hover {
+.ui.secondary.inverted.menu .link.item,
+.ui.secondary.inverted.menu a.item:hover {
     color: whitesmoke !important;
-/*    font-weight: bold;*/
+    /*    font-weight: bold;*/
+    
     border-radius: 0px !important;
 }
-
 .ui.vertical.segment {
     border-bottom: 0px;
 }
-
-    .ui.vertical.stripe {
-      padding: 8em 0em;
-    }
-    .ui.vertical.stripe h3 {
-      font-size: 2em;
-    }
-    .ui.vertical.stripe .button + h3,
-    .ui.vertical.stripe p + h3 {
-      margin-top: 3em;
-    }
-    .ui.vertical.stripe .floated.image {
-      clear: both;
-    }
-    .ui.vertical.stripe p {
-      font-size: 1.33em;
-    }
-    .ui.vertical.stripe .horizontal.divider {
-      margin: 3em 0em;
-    }
-
+.ui.vertical.stripe {
+    padding: 8em 0em;
+}
+.ui.vertical.stripe h3 {
+    font-size: 2em;
+}
+.ui.vertical.stripe .button + h3,
+.ui.vertical.stripe p + h3 {
+    margin-top: 3em;
+}
+.ui.vertical.stripe .floated.image {
+    clear: both;
+}
+.ui.vertical.stripe p {
+    font-size: 1.33em;
+}
+.ui.vertical.stripe .horizontal.divider {
+    margin: 3em 0em;
+}
 .ui.vertical.masthead.center.aligned.segment {
     padding: 0;
 }
-
 .vertical.masthead.segment {
     padding: 0;
 }
-
-    .quote.stripe.segment {
-      padding: 0em;
-    }
-    .quote.stripe.segment .grid .column {
-      padding-top: 5em;
-      padding-bottom: 5em;
-    }
-
-    .footer.segment {
-      padding: 5em 0em;
-    }
-
-    .secondary.pointing.menu .toc.item {
-      display: none;
-    }
-
-
+.quote.stripe.segment {
+    padding: 0em;
+}
+.quote.stripe.segment .grid .column {
+    padding-top: 5em;
+    padding-bottom: 5em;
+}
+.footer.segment {
+    padding: 5em 0em;
+}
+.secondary.pointing.menu .toc.item {
+    display: none;
+}
 .ui.text.container {
-/*    max-width: 100% !important;*/
+    /*    max-width: 100% !important;*/
+    
     color: black;
     margin-top: 5em;
     margin-left: 5em;
     margin-right: 5em;
 }
-
 .ui.text.container.homepage {
     max-width: 100% !important
 }
-
 .ui.text.container h2 {
     max-width: 100% !important;
     color: whitesmoke;
 }
-
 .small-img {
     width: 30%;
 }
-
-#description{
-  padding: 20px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+#description {
+    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
-
-#agreement{
-  color: gray !important;
+#agreement {
+    color: gray !important;
 }
-
-#accuracy{
-  text-align:left !important;
+#accuracy {
+    text-align: left !important;
 }
-
-#confirmation-content{
-  color:black !important;
+#confirmation-content {
+    color: black !important;
 }
-
-.circular{
-  color: black !important;
+.circular {
+    color: black !important;
 }
-
 .bpm-container {
- position: relative !important;
- width: 100% !important;
- height: auto !important;
- overflow: hidden !important;
- max-width: 100% !important;
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: hidden !important;
+    max-width: 100% !important;
 }
-
-.bpm-container .overlay{
+.bpm-container .overlay {
     position: absolute;
     width: 20%;
     height: auto;
-    background:#667289;
-    opacity:0.8;
-    z-index:999;
+    background: #667289;
+    opacity: 0.8;
+    z-index: 999;
 }
-
-.bpm-container .overlay .text-container{
-    width:100%;
-    text-align:center;
+.bpm-container .overlay .text-container {
+    width: 100%;
+    text-align: center;
 }
-
-.bpm-container .overlay .text-container h1{
-    color:#FFF;
-    text-transform:uppercase;
-    text-align:center;
+.bpm-container .overlay .text-container h1 {
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
 }
-
-.bpm-container.overlay.text-container p{
-  /*margin-top: -20% !important;
-  margin-bottom: 15% !important;*/
+.bpm-container .overlay .text-container h1 {
+    margin-top: 10% !important;
 }
-
-.bpm-container .overlay .text-container h1{
-  margin-top: 10% !important;
+.range-form {
+    text-transform: none;
+    text-align: left;
 }
-
-.range-form{
-  text-transform: none;
-  text-align: left;
-}
-
-p#bpm-subtitle{
-  text-align: center;
-  margin-top: -20% !important;
-  margin-bottom: 15% !important;
+p#bpm-subtitle {
+    text-align: center;
+    margin-top: -20% !important;
+    margin-bottom: 15% !important;
 }

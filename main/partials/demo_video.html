@@ -1,87 +1,69 @@
-
-    <div id="video-container">
-        <div id="back-button">
-        <a href="demo.html"><button class="ui inverted grey basic button" id="back">
-            <i class="icon arrow left"></i>
-          Back
-        </button></a>
-        </div>
-        <div id="video-time">
-            0:00
-        </div>
-        <div id="learn-more">
-            <a href="about.html" id="info"><i class="info circle big icon"></i></a>
-        </div>
-      <video id="live" autoplay muted ></video>
-      <canvas id="canvas"></canvas>
-      <div id="video-text">
-
-          <div id="checklist">
-          <h2> Let's Find Your Heartbeat! </h2>
-          <h4> Please remain still while we check your environment.</h4>
-          <br>
-          <p><img src="assets/img/x-mark.png" id="user-check"> Face detected in front of the computer screen. </p>
-          <p><img src="assets/img/x-mark.png" id="face-check"> Only one face in the camera (no interfering objects in background).</p>
-          <p><img src="assets/img/x-mark.png" id="distance-check"> Sit at least 20 inches away from the screen.</p>
-          <p><img src="assets/img/x-mark.png" id="light-check"> Ensure your environment is properly lit.</p>
-
-          <button id="go" class="large control ui button" data-tooltip="Please ensure that your environment satisfies these video requirements. Any changes may affect the accuracy of your results!" data-position="right center" >Go!</button>
-
-        </div>
-
-          <div id="video-controls">
-
-        <button id="record" class="ui right labeled icon button" disabled><i class="record icon"></i>Start Recording</button>
-        <!-- <button id="play" class="ui right labeled icon button" disabled><i class="play icon"></i>Play</button> -->
-        <button id="analyze" class="ui right labeled icon button" disabled><i class="right arrow icon"></i>Analyze</button>
-        </div>
-      </div>
-    </div>
-
-<div id = "modal" class="ui basic modal">
-
-  <div class="description">
-
-    <div class="ui text container">
-
-      <div class="ui header range-form">We're working on analyzing your video to extract your heart rate...</div>
-      <p class="range-form">Enter your heart rate and gender for more tailored results.</p><br/>
-
-      <form class = "ui form" method="get" action="data-viz.html">
-          <div class="ui input field">
-              <!-- <label>Age</label> -->
-              <input id= "Age" type="text" placeholder="Age" name = "age">
-          <!-- </div> -->
-          <!-- <br> -->
-          &nbsp;&nbsp;
-          <div class="ui selection dropdown">
-              <input type="hidden" name="dropdown">
-              <i class="dropdown icon"></i>
-              <div class="default text">Gender</div>
-              <div class="menu">
-                <div class="item" data-value="M" name = "Male">M</div>
-                <div class="item" data-value="F" name = "Female">F</div>
-              </div>
-          </div>
-        </div>
-        <br><br>
-
-          <!-- <div class="ui clearing segment"> -->
-            <h3 class="ui center aligned header">
-              <button id="view-the-results" style="display:none;"class="ui submit button" type="submit" name = "send" value = "submit">View Results</button>
-              <!-- <i id="loading-icon" class="white spinner loading icon"></i> -->
-              <button id="loading-icon" class="ui inverted loading button">Loading</button>
-              <button class="ui inverted button" id = "cancel-process" type = "button">Cancel</button>
-            </h3>
-          <!-- </div> -->
-      </form>
-    </div>
-
+<div id="video-container">
+	<div id="back-button">
+		<a href="demo.html"><button class="ui inverted grey basic button" id="back"><i class="icon arrow left"></i> Back</button></a>
+	</div>
+	<div id="video-time">
+		0:00
+	</div>
+	<div id="learn-more">
+		<a href="about.html" id="info"><i class="info circle big icon"></i></a>
+	</div><video autoplay="" id="live"></video>
+	<canvas id="canvas"></canvas>
+	<div id="video-text">
+		<div id="checklist">
+			<h2>Let's Find Your Heartbeat!</h2>
+			<h4>Please remain still while we check your environment.</h4><br>
+			<p><img id="user-check" src="assets/img/x-mark.png"> Face detected in front of the computer screen.</p>
+			<p><img id="face-check" src="assets/img/x-mark.png"> Only one face in the camera (no interfering objects in background).</p>
+			<p><img id="distance-check" src="assets/img/x-mark.png"> Sit at least 20 inches away from the screen.</p>
+			<p><img id="light-check" src="assets/img/x-mark.png"> Ensure your environment is properly lit.</p><button class="large control ui button" data-position="right center" data-tooltip="Please ensure that your environment satisfies these video requirements. Any changes may affect the accuracy of your results!" id="go">Go!</button>
+		</div>
+		<div id="video-controls">
+			<button class="ui right labeled icon button" disabled id="record"><i class="record icon"></i>Start Recording</button> <!-- <button id="play" class="ui right labeled icon button" disabled><i class="play icon"></i>Play</button> -->
+			<button class="ui right labeled icon button" disabled id="analyze"><i class="right arrow icon"></i>Analyze</button>
+		</div>
+	</div>
 </div>
-
-<script type="text/javascript">
-  $('.ui.dropdown')
-    .dropdown()
-  ;
-</script>
-  <script src="assets/js/video.js"></script>
+<div class="ui basic modal" id="modal">
+	<div class="description">
+		<div class="ui text container">
+			<div class="ui header range-form">
+				We're working on analyzing your video to extract your heart rate...
+			</div>
+			<p class="range-form">Enter your heart rate and gender for more tailored results.</p><br>
+			<form action="data-viz.html" class="ui form" method="get">
+				<div class="ui input field">
+					<!-- <label>Age</label> -->
+					<input id="Age" name="age" placeholder="Age" type="text"> <!-- </div> -->
+					<!-- <br> -->
+					&nbsp;&nbsp;
+					<div class="ui selection dropdown">
+						<input name="dropdown" type="hidden"> <i class="dropdown icon"></i>
+						<div class="default text">
+							Gender
+						</div>
+						<div class="menu">
+							<div class="item" data-value="M">
+								M
+							</div>
+							<div class="item" data-value="F">
+								F
+							</div>
+						</div>
+					</div>
+				</div><br>
+				<br>
+				<!-- <div class="ui clearing segment"> -->
+				<h3 class="ui center aligned header"><button class="ui submit button" id="view-the-results" name="send" style="display:none;" type="submit" value="submit">View Results</button> <!-- <i id="loading-icon" class="white spinner loading icon"></i> -->
+					<button class="ui inverted loading button" id="loading-icon">Loading</button> <button class="ui inverted button" id="cancel-process" type="button">Cancel</button></h3><!-- </div> -->
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$('.ui.dropdown')
+			.dropdown()
+		;
+	</script> 
+	<script src="assets/js/video.js">
+	</script>
+</div>
