@@ -11,14 +11,7 @@ var bpms = [],
     aboveAvgUpper = 0;
 
 
-// var paramURL = window.location.href;
-
 $(document).ready(function () {
-
-  // window.onload = function() {
-  //   console.log("here");
-
-  // };
 
   Highcharts.chart('chart-container', {
 
@@ -54,7 +47,7 @@ $(document).ready(function () {
 
                             var bpmContainer = document.getElementById("bpm-container")
                             bpmContainer.style.display = "";
-                            
+
                             var bpm = document.getElementById("bpm");
                             bpm.textContent = this.y;
 
@@ -153,9 +146,6 @@ function getParameterByName(name, url) {
 }
 
 function getRanges(age, gender){
-  // console.log(age);
-  // console.log(gender)
-  // console.log(gender == "F")
 
   var belowAvgLower = 76;
   var belowAvgUpper = 82;
@@ -163,7 +153,6 @@ function getRanges(age, gender){
   var avgUpper = 75;
   var aboveAvgLower = 67;
   var aboveAvgUpper = 70;
-  // console.log("getting ranges")
   if( gender == "M" ){
     if( age >= 18 && age <= 25 ){
       belowAvgLower = 74;

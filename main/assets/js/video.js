@@ -22,7 +22,7 @@ var checklistDiv = document.getElementById('checklist');
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
 
-// align all video elements 
+// align all video elements
 liveVideo.width = screen.width*(3/5);
 liveVideo.height = screen.height*(3/5);
 checklistDiv.width = screen.width*(3/5);
@@ -80,7 +80,7 @@ tracker.on('track', function(event) {
     var imageCheckboxUser = document.querySelector("img#user-check");
     var imageCheckboxFace = document.querySelector("img#face-check");
     var imageCheckboxDist = document.querySelector("img#distance-check");
-    
+
     // Check: there is a face in the screen
     if (event.data.length > 0) {
         imageCheckboxUser.src = "assets/img/check-mark.png"
@@ -112,7 +112,7 @@ tracker.on('track', function(event) {
     }
     // keep track of position of last face to see if the box jumps/ there are multiple faces
     lastRect = rect;
-    
+
     // Check: distance from screen
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
@@ -228,7 +228,7 @@ recordButton.onclick = toggleRecording;
 analyzeButton.onclick = sendData;
 
 
-// when go is pressed, hide all elements from video requirements page, 
+// when go is pressed, hide all elements from video requirements page,
 // show video record elements
 function goButtonPressed() {
   $('div#checklist').hide();
@@ -419,7 +419,7 @@ function sendData() {
   var x = showForm()
 
   // CHANGE IP HERE
-  var IP = 'localhost';
+  var IP = '10.0.0.61';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
