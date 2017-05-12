@@ -9,22 +9,22 @@ Code development for project with a government funded research client, creating 
 
 ### Project Folders
 
-- **[main:](main)** The fully functioning interactive web application is located in this folder. 
+- **[main:](main)** The fully functioning interactive web application is located in this folder.
 
     **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
-    * [record.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L29)
-    * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L369)
+    * [demo.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L23)
+    * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L421)
 
     1. Navigate to project directory
-    2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully. 
-    To install this server: `npm install http-server` 
+    2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully.
+    To install this server: `npm install http-server`
     To run the this server: `http-server -p 8000`
       * This project must be run from a localhost in order to get around browser security; usually only https links are trusted for capturing user video, but because the project isn't deployed you can run it locally to circumvent this block
       * If you do not have python or wish to use another local server, such as a locally hosted apache server for Mac users, that would work as well
     3. The user's video is currently being written and read locally for use in the results page (data-viz.html). To access the downloaded video, a symbolic link named 'Down' must be created within the project folder to the Downloads folder. This can be done with `ln -s ~/Downloads Down`
     4. In a new terminal window, navigate to the [websocket](webSocket) directory.
     5. In the new terminal window, a websocket server needs to be set up.
-    To install this server: `npm install socket.io` 
+    To install this server: `npm install socket.io`
     To run this server: `node ss.js`
     6. Navigate to `localhost:8000` (unless a different port was specified) to access the web page, record a video, play it back, and view resulting mock data.
     7. *Tools Used*:
@@ -41,7 +41,7 @@ Code development for project with a government funded research client, creating 
 - **[webSocket:](webSocket)** a project in html and javascript that demonstrates basic data transfer between client and server through websockets
 
   **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
-  * [index.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L29)
+  * [index.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L39)
 
   1. Navigate to project directory
   2. In the terminal, type `npm install socket.io` to install socket.io
@@ -51,5 +51,3 @@ Code development for project with a government funded research client, creating 
   5. *Tools Used*:
     * Node.js
     * Socket IO
-
-

@@ -404,8 +404,7 @@ function stopRecording() {
 
 // show the form between analyze and show results to get gender and age
 function showForm(){
-  // debugger;
-  $('.ui.modal').modal('show');      //things to do on click
+  $('.ui.modal').modal('show');
 };
 //click out of modal
 var cancelButton = document.getElementById('cancel-process');
@@ -419,7 +418,7 @@ function sendData() {
   var x = showForm()
 
   // CHANGE IP HERE
-  var IP = '10.0.0.61';
+  var IP = 'localhost';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
