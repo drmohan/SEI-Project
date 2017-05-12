@@ -12,8 +12,8 @@ Code development for project with a government funded research client, creating 
 - **[main:](main)** The fully functioning interactive web application is located in this folder.
 
     **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
-    * [demo.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L23)
-    * [video.js](https://github.com/KatAnne/SEI-Project/blob/dev/main/assets/js/video.js#L421)
+    * [demo.html](https://github.com/KatAnne/SEI-Project/blob/master/main/demo.html#L23)
+    * [video.js](https://github.com/KatAnne/SEI-Project/blob/master/main/assets/js/video.js#L421)
 
     1. Navigate to project directory
     2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully.
@@ -41,7 +41,7 @@ Code development for project with a government funded research client, creating 
 - **[webSocket:](webSocket)** a project in html and javascript that demonstrates basic data transfer between client and server through websockets
 
   **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
-  * [index.html](https://github.com/KatAnne/SEI-Project/blob/dev/main/demo.html#L39)
+  * [index.html](https://github.com/KatAnne/SEI-Project/blob/master/main/demo.html#L39)
 
   1. Navigate to project directory
   2. In the terminal, type `npm install socket.io` to install socket.io
