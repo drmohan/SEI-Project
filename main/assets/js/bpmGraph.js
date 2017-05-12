@@ -41,7 +41,7 @@ $(document).ready(function () {
                         mouseOver: function (e) {
                             x: e.pageX || e.clientX
                             y: e.pageY || e.clientY
-                            // console.log(data[this.x]);
+
                             var vid = document.getElementById("myVideo");
                             vid.currentTime = this.x;
 
@@ -102,7 +102,6 @@ $(document).ready(function () {
 
 
 function processData(allText) {
-  console.log("in processData");
   localStorage.age = getParameterByName('age');
   localStorage.gender = getParameterByName('dropdown');
 
@@ -124,8 +123,6 @@ function processData(allText) {
   var age = localStorage.age;
   var gender = localStorage.gender;
   var rangeValues = getRanges(Number(age), gender);
-  console.log("testing values");
-  console.log(rangeValues);
 
   for(var n=0; n<lines.length; n++){
     aboveAvg.push([start, rangeValues.aboveAvgLower, rangeValues.aboveAvgUpper]);
@@ -153,6 +150,7 @@ function getRanges(age, gender){
   var avgUpper = 75;
   var aboveAvgLower = 67;
   var aboveAvgUpper = 70;
+
   if( gender == "M" ){
     if( age >= 18 && age <= 25 ){
       belowAvgLower = 74;
