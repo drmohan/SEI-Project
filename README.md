@@ -14,6 +14,7 @@ Code development for project with a government funded research client, creating 
     **Prior to running, IP addresses should be changed in the following places to match that of the user's:**
     * [demo.html](https://github.com/KatAnne/SEI-Project/blob/master/main/demo.html#L23)
     * [video.js](https://github.com/KatAnne/SEI-Project/blob/master/main/assets/js/video.js#L421)
+    * [contact.php](https://github.com/KatAnne/SEI-Project/blob/master/main/contact.php#L4)
 
     1. Navigate to project directory
     2. A server that supports byte serving must be used in order for the video on the data visualization page to load successfully.
