@@ -183,6 +183,9 @@ var videoTimeText = document.querySelector('div#video-time');
 var videoStartTime;
 var recording = false;
 var timeTextInterval;
+var infoButton = document.querySelector('a#info');
+
+
 goButton.onclick = goButtonPressed;
 recordButton.onclick = toggleRecording;
 //playButton.onclick = play;
@@ -193,6 +196,7 @@ function goButtonPressed() {
   $('div#checklist').hide();
   $('canvas#canvas').css("background-color", "transparent");
   $('button#go').hide();
+  $('a#info').hide();
   $('button#record').css("visibility", "visible");
   $('button#play').css("visibility", "visible");
   $('button#analyze').css("visibility", "visible");
