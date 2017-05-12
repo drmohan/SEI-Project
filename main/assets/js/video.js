@@ -1,12 +1,13 @@
 'use strict';
 
-/* globals MediaRecorder */
+// variables for video recording
 var mediaSource = new MediaSource();
 mediaSource.addEventListener('sourceopen', handleSourceOpen, false);
 var mediaRecorder;
 var recordedBlobs;
 var sourceBuffer;
 
+// variable for bpm graph
 var bpms = [],
     data = {},
     ranges = [],
@@ -15,26 +16,38 @@ var bpms = [],
     lowerLimit = 73,
     upperLimit = 84;
 
-var vid;
-
+// variables for video, canvas, and video text elements
 var liveVideo = document.querySelector('video#live');
-liveVideo.width = screen.width*(3/5);
-liveVideo.height = screen.height*(3/5);
 var checklistDiv = document.getElementById('checklist');
-checklistDiv.width = screen.width*(3/5);
-checklistDiv.height = screen.height*(3/5);
-
-// get canvas for facial tracking
 var canvas = document.getElementById('canvas');
-canvas.width = liveVideo.width*(.838);
-canvas.height = liveVideo.height;
 var context = canvas.getContext('2d');
 
-// get box for face tracking
+// align all video elements 
+liveVideo.width = screen.width*(3/5);
+liveVideo.height = screen.height*(3/5);
+checklistDiv.width = screen.width*(3/5);
+checklistDiv.height = screen.height*(3/5);
+canvas.width = liveVideo.width*(.838);
+canvas.height = liveVideo.height;
+
+
+// get box for face tracking and set box options
 var tracker = new tracking.ObjectTracker('face');
 tracker.setInitialScale(5.7);
 tracker.setStepSize(1);
 tracker.setEdgesDensity(0.1);
+
+
+/*************
+
+Requirement Checks
+
+************/
+
+
+// variables to work through checklist features for face tracking
+var lastRect;
+var rectColor = '#fff';
 
 // data collection for proximity to screen
 var percentages = [];
@@ -48,23 +61,27 @@ function rollingAverage(size) {
   return sum / percentages.length;
 }
 
+// face proximity to screen: convert percentage based on face
+// size to inches away from screen
 function percentageToInches(p) {
   return 49 * Math.exp(-0.023 * p);
 }
 
-
+// initialize the tracker for face
 tracking.track('video#live', tracker, { camera: true });
 
-var lastRect;
-var rectColor = '#fff';
 
+// function below triggered whenever a new face is tracked
 tracker.on('track', function(event) {
+    // reset the canvas
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Check: there is a face in the screen
+    // collect variables for checkbox images
     var imageCheckboxUser = document.querySelector("img#user-check");
     var imageCheckboxFace = document.querySelector("img#face-check");
     var imageCheckboxDist = document.querySelector("img#distance-check");
+    
+    // Check: there is a face in the screen
     if (event.data.length > 0) {
         imageCheckboxUser.src = "assets/img/check-mark.png"
         goButton.disabled = false;
@@ -73,10 +90,13 @@ tracker.on('track', function(event) {
         // if the user isn't detected in the image, then no faces and no distance
         imageCheckboxFace.src = "assets/img/x-mark.png";
         imageCheckboxDist.src = "assets/img/x-mark.png";
+        // disable the go button if there is no face in the screen
         goButton.disabled = true;
 
     }
+    // below function triggered for every box/face detected
     event.data.forEach(function(rect) {
+      // box settings
       context.strokeStyle = rectColor;
       context.lineWidth = 5
       context.strokeRect(rect.x, rect.y, rect.width, rect.height);
@@ -90,7 +110,10 @@ tracker.on('track', function(event) {
             imageCheckboxFace.src = "assets/img/x-mark.png";
         }
     }
+    // keep track of position of last face to see if the box jumps/ there are multiple faces
     lastRect = rect;
+    
+    // Check: distance from screen
     var percentage = 100 * rect.height / canvas.height;
     percentages.push(percentage);
     var inchesFromScreen = percentageToInches(rollingAverage(5)).toFixed(0);
@@ -107,7 +130,6 @@ tracker.on('track', function(event) {
     tempCanvas.height = liveVideo.height;
     var tempContext = tempCanvas.getContext('2d');
     var brightness = getBrightness(tempCanvas.width, tempCanvas.height, tempContext, liveVideo, rect);
-
     var imageCheckboxLight = document.querySelector("img#light-check");
     var brightnessThreshold = 75;
     if (brightness >= brightnessThreshold) {
@@ -116,7 +138,8 @@ tracker.on('track', function(event) {
         imageCheckboxLight.src = "assets/img/x-mark.png";
     }
 
-    // determine color of rectangle based on thresholds
+    // determine color of rectangle based on thresholds, checks
+    // first sum up number of check marks
     var totalChecks = 0;
     if (brightness >= brightnessThreshold) {
         ++totalChecks;
@@ -130,7 +153,7 @@ tracker.on('track', function(event) {
     if (event.data.length > 0) {
         ++totalChecks;
     }
-
+    // determine color based on number of checkmarks aka requirements fulfilled
     if (totalChecks <= 1) {
         // red frame
         rectColor = '#F21340';
@@ -147,6 +170,13 @@ tracker.on('track', function(event) {
     });
 });
 
+/*************
+
+Functions for requirement checks
+
+************/
+
+// get the brightness of the video in terms of 0-255
 function getBrightness(w, h, ctx, video, rect) {
         // draw the current image
         ctx.drawImage(video, rect.x, rect.y, rect.width, rect.height, 0, 0, rect.width, rect.height);
@@ -167,7 +197,7 @@ function getBrightness(w, h, ctx, video, rect) {
         return brightness;
     }
 
-// returns true if only one face is visible
+// returns true if only one face is visible based on jumps in tracked squares
 function oneFaceVisible(lastRect, currentRect) {
     if ( Math.abs(lastRect.x - currentRect.x) > 100 || Math.abs(lastRect.y - currentRect.y) > 100) {
         return false;
@@ -175,9 +205,16 @@ function oneFaceVisible(lastRect, currentRect) {
     return true;
 }
 
+
+/*************
+
+Video Controls
+
+************/
+
+// variables for video control buttons and text
 var goButton = document.querySelector('button#go');
 var recordButton = document.querySelector('button#record');
-//var playButton = document.querySelector('button#play');
 var analyzeButton = document.querySelector('button#analyze');
 var videoTimeText = document.querySelector('div#video-time');
 var videoStartTime;
@@ -185,13 +222,14 @@ var recording = false;
 var timeTextInterval;
 var infoButton = document.querySelector('a#info');
 
-
+//click functions for buttons
 goButton.onclick = goButtonPressed;
 recordButton.onclick = toggleRecording;
-//playButton.onclick = play;
 analyzeButton.onclick = sendData;
 
 
+// when go is pressed, hide all elements from video requirements page, 
+// show video record elements
 function goButtonPressed() {
   $('div#checklist').hide();
   $('canvas#canvas').css("background-color", "transparent");
@@ -207,6 +245,13 @@ function goButtonPressed() {
 };
 
 
+/*************
+
+Video Recording & Downloading Functions
+
+************/
+
+// Video recording can only happen with a secure connection
 // window.isSecureContext could be used for Chrome
 var isSecureOrigin = location.protocol === 'https:' ||
 location.hostname === 'localhost';
@@ -216,6 +261,7 @@ if (!isSecureOrigin) {
   location.protocol = 'HTTPS';
 }
 
+// constraints for video
 var constraints = {
   audio: false,
   video: true
@@ -255,6 +301,7 @@ function handleStop(event) {
   console.log('Recorder stopped: ', event);
 }
 
+// toggle between stop and start recording
 function toggleRecording() {
   if (recordButton.textContent === 'Start Recording') {
     startRecording();
@@ -264,18 +311,14 @@ function toggleRecording() {
   } else {
     stopRecording();
     recordButton.textContent = 'Start Recording';
-
-
     var iconElem = document.createElement("I");
     iconElem.className = "record icon"
     recordButton.appendChild(iconElem)
-
-    // playButton.disabled = false;
-
     analyzeButton.disabled = false;
   }
 }
 
+// convert time in ms to time in format m:ss
 function formatTime(time) {
     var timeInSeconds = Math.floor(time/1000);
     var seconds = timeInSeconds%60;
@@ -290,12 +333,14 @@ function formatTime(time) {
     return timeText;
 }
 
+// get time since the user clicked 'start recording' button
 function getTimeSinceStart() {
     var currVidTime = new Date();
     var timeDiff = currVidTime - videoStartTime;
     return timeDiff;
 }
 
+// start the timer when the user hits record
 function startTimer() {
     // get time that start recording button was clicked
     videoStartTime = new Date();
@@ -307,7 +352,7 @@ function startTimer() {
     }
 }
 
-
+// start recording the video
 function startRecording() {
   recording = true;
   recordedBlobs = [];
@@ -348,20 +393,16 @@ function startRecording() {
   console.log('MediaRecorder started', mediaRecorder);
 }
 
+
+// stop recording the video
 function stopRecording() {
   recording = false;
   clearInterval(timeTextInterval);
   mediaRecorder.stop();
-  console.log('Recorded Blobs: ', recordedBlobs);
-//  recordedVideo.controls = true;
 
 }
 
-//function play() {
-//  var superBuffer = new Blob(recordedBlobs, {type: 'video/webm'});
-//  recordedVideo.src = window.URL.createObjectURL(superBuffer);
-//}
-
+// show the form between analyze and show results to get gender and age
 function showForm(){
   // debugger;
   $('.ui.modal').modal('show');      //things to do on click
@@ -369,7 +410,6 @@ function showForm(){
 //click out of modal
 var cancelButton = document.getElementById('cancel-process');
 cancelButton.onclick = function(event) {
-    console.log("cancel clicked");
     $('.ui.modal').modal('hide');
 }
 
@@ -378,12 +418,12 @@ function sendData() {
 
   var x = showForm()
 
+  // this value must be changed every time program started again
   var IP = '128.237.184.207';
   var port = 8888;
   var socket = io.connect('http://' + IP + ':' + port);
 
     socket.on('message', function (data) {
-      console.log("BPMS HAVE BEEN RECEIVED");
       $('#loading-icon').css("display", "none");
       $('#view-the-results').css("display", "");
 
@@ -393,15 +433,8 @@ function sendData() {
 
 
   var blob = new Blob(recordedBlobs, {type: 'video/webm'});
-  console.log("Blob: ");
-  console.log(blob);
-
   var file = new File([blob], 'test.webm');
-  console.log("File: ");
-  console.log(file);
   var file_name = 'test.webm';
-  // socket.emit('message', {data: file,
-  //                         file_name: file_name});
 
   socket.emit('message', {data: file, file_name: file_name}, function (data) {
       console.log(data); // data will be 'BPMs generated' or 'Error'
@@ -412,7 +445,6 @@ function sendData() {
   a.style.display = 'none';
   a.href = url;
   a.download = 'test.webm';
-  // window.location.href = "loading.html"
   document.body.appendChild(a);
   a.click();
   setTimeout(function() {
@@ -420,6 +452,3 @@ function sendData() {
     window.URL.revokeObjectURL(url);
   }, 100);
 }
-
-  console.log("data");
-  console.log(data);

@@ -4,6 +4,7 @@
  * (c) 2009-2016 Torstein Honsi
  *
  * License: www.highcharts.com/license
+ * 5/12/2017: Used for  project in order to visualize bpm graphs
  */
 (function(factory) {
     if (typeof module === 'object' && module.exports) {

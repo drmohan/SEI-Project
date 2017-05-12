@@ -3,6 +3,7 @@ $('.ui.dropdown')
   .dropdown()
 ;
 
+//form validations for contact page
 $('.ui.form')
   .form({
     on: 'blur',
